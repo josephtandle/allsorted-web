@@ -1,0 +1,216 @@
+{
+  "captured": 29,
+  "failed": 1,
+  "pages": [
+    {
+      "url": "/app",
+      "name": "overview",
+      "label": "Dashboard Overview",
+      "success": false,
+      "error": "Navigation timeout of 15000 ms exceeded"
+    },
+    {
+      "url": "/app/tasks",
+      "name": "tasks",
+      "label": "Task Board",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/tasks.png"
+    },
+    {
+      "url": "/app/calendar",
+      "name": "calendar",
+      "label": "Calendar & Automation",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/calendar.png"
+    },
+    {
+      "url": "/app/memory",
+      "name": "memory",
+      "label": "Memory System",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/memory.png"
+    },
+    {
+      "url": "/app/guard-dog",
+      "name": "guard-dog",
+      "label": "Guard-dog Overview",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog.png"
+    },
+    {
+      "url": "/app/guard-dog/vulnerabilities",
+      "name": "guard-dog-vulnerabilities",
+      "label": "Guard-dog Vulnerabilities",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog-vulnerabilities.png"
+    },
+    {
+      "url": "/app/guard-dog/reports",
+      "name": "guard-dog-reports",
+      "label": "Guard-dog Reports",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog-reports.png"
+    },
+    {
+      "url": "/app/guard-dog/audit",
+      "name": "guard-dog-audit",
+      "label": "Guard-dog Audit",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog-audit.png"
+    },
+    {
+      "url": "/app/backups",
+      "name": "backups",
+      "label": "Backups",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/backups.png"
+    },
+    {
+      "url": "/app/installed-skills",
+      "name": "installed-skills",
+      "label": "Installed Skills",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/installed-skills.png"
+    },
+    {
+      "url": "/app/skills",
+      "name": "skills",
+      "label": "Skills Dashboard",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/skills.png"
+    },
+    {
+      "url": "/app/blog-service",
+      "name": "blog-service",
+      "label": "Blog Service",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/blog-service.png"
+    },
+    {
+      "url": "/app/seo",
+      "name": "seo",
+      "label": "SEO Dashboard",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/seo.png"
+    },
+    {
+      "url": "/app/content-creator",
+      "name": "content-creator",
+      "label": "Content Creator",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/content-creator.png"
+    },
+    {
+      "url": "/app/content-autopilot",
+      "name": "content-autopilot",
+      "label": "Content Autopilot",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/content-autopilot.png"
+    },
+    {
+      "url": "/app/clients",
+      "name": "clients",
+      "label": "Client Database",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/clients.png"
+    },
+    {
+      "url": "/app/crm",
+      "name": "crm",
+      "label": "CRM",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/crm.png"
+    },
+    {
+      "url": "/app/mentorships",
+      "name": "mentorships",
+      "label": "Mentorships",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/mentorships.png"
+    },
+    {
+      "url": "/app/human-tasks",
+      "name": "human-tasks",
+      "label": "Human Tasks",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/human-tasks.png"
+    },
+    {
+      "url": "/app/email-cleanup",
+      "name": "email-cleanup",
+      "label": "Email Cleanup",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/email-cleanup.png"
+    },
+    {
+      "url": "/app/whatsapp",
+      "name": "whatsapp",
+      "label": "WhatsApp",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/whatsapp.png"
+    },
+    {
+      "url": "/app/apollo",
+      "name": "apollo",
+      "label": "Apollo Outreach",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/apollo.png"
+    },
+    {
+      "url": "/app/stripe",
+      "name": "stripe",
+      "label": "Stripe Dashboard",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/stripe.png"
+    },
+    {
+      "url": "/app/financial-dashboard",
+      "name": "financial-dashboard",
+      "label": "Financial Dashboard",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/financial-dashboard.png"
+    },
+    {
+      "url": "/app/zoho-books",
+      "name": "zoho-books",
+      "label": "Zoho Books",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/zoho-books.png"
+    },
+    {
+      "url": "/app/postpilot",
+      "name": "postpilot",
+      "label": "PostPilot",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/postpilot.png"
+    },
+    {
+      "url": "/app/ig-video-transcriber",
+      "name": "ig-video",
+      "label": "IG Video Transcriber",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/ig-video.png"
+    },
+    {
+      "url": "/app/daily-summary",
+      "name": "daily-summary",
+      "label": "Daily Summary",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/daily-summary.png"
+    },
+    {
+      "url": "/app/system",
+      "name": "system",
+      "label": "System Dashboard",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/system.png"
+    },
+    {
+      "url": "/app/projects",
+      "name": "projects",
+      "label": "Projects",
+      "success": true,
+      "path": "/Users/openclaw/allsorted-web/screenshots/projects.png"
+    }
+  ]
+}

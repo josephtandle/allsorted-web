@@ -1,0 +1,7 @@
+{
+  "name": "allsorted",
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/features", "destination": "/features.html" }
+  ]
+}

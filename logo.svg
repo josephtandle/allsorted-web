@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72" role="img" aria-label="All Sorted">
+  <defs>
+    <style>
+      @font-face {
+        /* Fallback stack covers macOS, Windows, Linux */
+        font-family: 'AS-Stack';
+        src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Helvetica Neue'), local('Arial');
+      }
+    </style>
+  </defs>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MARK: open-circle tick                 -->
+  <!-- Circle center: (32, 36). Radius: 16   -->
+  <!-- ═══════════════════════════════════════ -->
+  <g>
+    <!-- Circle arc — gaps at top-right corner, suggesting ongoing/motion -->
+    <circle
+      cx="32" cy="36"
+      r="16"
+      fill="none"
+      stroke="#C9A84C"
+      stroke-width="2"
+      stroke-dasharray="80 20"
+      stroke-dashoffset="10"
+      stroke-linecap="round"
+    />
+    <!-- Tick / checkmark — bold, clean -->
+    <polyline
+      points="24,36 30,43 41,27"
+      fill="none"
+      stroke="#C9A84C"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- WORDMARK                               -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- "All" — heavy weight, white -->
+  <text
+    x="58" y="46"
+    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="34"
+    font-weight="700"
+    fill="#FFFFFF"
+    letter-spacing="-0.5"
+  >All</text>
+
+  <!-- Thin separator line between All / Sorted -->
+  <line x1="109" y1="22" x2="109" y2="52" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+
+  <!-- "Sorted" — light weight, warm gold -->
+  <text
+    x="118" y="46"
+    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="34"
+    font-weight="300"
+    fill="#C9A84C"
+    letter-spacing="1.5"
+  >Sorted</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAGLINE — ultra-light, below wordmark  -->
+  <!-- ═══════════════════════════════════════ -->
+  <text
+    x="58" y="63"
+    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="8.5"
+    font-weight="400"
+    fill="rgba(255,255,255,0.38)"
+    letter-spacing="2.8"
+  >EVERYTHING HANDLED</text>
+
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72" role="img" aria-label="All Sorted">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MARK: open-circle tick                 -->
+  <!-- Same geometry as light version         -->
+  <!-- ═══════════════════════════════════════ -->
+  <g>
+    <!-- Circle arc — open corner, suggests motion/ongoing -->
+    <circle
+      cx="32" cy="36"
+      r="16"
+      fill="none"
+      stroke="#A8832A"
+      stroke-width="2"
+      stroke-dasharray="80 20"
+      stroke-dashoffset="10"
+      stroke-linecap="round"
+    />
+    <!-- Tick / checkmark -->
+    <polyline
+      points="24,36 30,43 41,27"
+      fill="none"
+      stroke="#A8832A"
+      stroke-width="2.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- WORDMARK                               -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <!-- "All" — heavy weight, near-black -->
+  <text
+    x="58" y="46"
+    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="34"
+    font-weight="700"
+    fill="#1A1A1A"
+    letter-spacing="-0.5"
+  >All</text>
+
+  <!-- Thin separator line -->
+  <line x1="109" y1="22" x2="109" y2="52" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+
+  <!-- "Sorted" — light weight, deeper amber -->
+  <text
+    x="118" y="46"
+    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="34"
+    font-weight="300"
+    fill="#A8832A"
+    letter-spacing="1.5"
+  >Sorted</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAGLINE                                -->
+  <!-- ═══════════════════════════════════════ -->
+  <text
+    x="58" y="63"
+    font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif"
+    font-size="8.5"
+    font-weight="400"
+    fill="rgba(0,0,0,0.35)"
+    letter-spacing="2.8"
+  >EVERYTHING HANDLED</text>
+
+</svg>
