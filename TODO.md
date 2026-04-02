@@ -14,61 +14,81 @@
 
 ---
 
-## PHASE 0 — Housekeeping
-*Quick admin tasks. Do these first.*
+## CURRENT PLAN (decided 2026-04-02)
 
-- [x] **0.1** Move DOCKER_PLAN.md out of Golden Claw back to Joe's build only. *(done 2026-04-02)*
-- [ ] **0.2** Build AI history ingestion — user exports their Claude or ChatGPT conversation history and imports it into All Sorted. System ingests it into memory/context so the AI already knows them on day one.
-- [ ] **0.3** Build terminal inside Mission Control — embedded terminal in the dashboard (xterm.js, connected to tmux per USER_INTERACTION.md spec). Phase 2: enable remote control via Claude Code CLI so users can also operate it from their own computer.
+**Sequence:**
+1. Build Braindump + Terminal features in Golden Claw — get them working well
+2. Write descriptions for all v1 pages (feeds website copy and screenshot captions)
+3. Pick the top features to highlight on the website
+4. Capture screenshots and video of those features
+5. Update the website with that content (pricing, features page, FAQ, etc.)
 
 ---
 
-## PHASE 1 — Foundation
-*Nothing else can be built or written until these decisions are made.*
+## PHASE 0 — Features to Build First
+*Get these working in Golden Claw before website work.*
 
-- [ ] **1.1 — Decide v1 page list** — go through all 87 Golden Claw pages and mark each: SHIP / HOLD / CUT. See the full inventory below. This defines the product.
+- [x] **0.1** Move DOCKER_PLAN.md out of Golden Claw back to Joe's build only. *(done 2026-04-02)*
+- [ ] **0.2** Build Braindump — voice/text brain dump that captures thoughts and routes them (tasks, memory, notes). Already exists in Joe's build — verify it works in Golden Claw, polish if needed.
+- [ ] **0.3** Build terminal inside Mission Control — embedded terminal in the dashboard (xterm.js, connected to tmux per USER_INTERACTION.md spec). Phase 2: enable remote control via Claude Code CLI so users can also operate it from their own computer.
+- [ ] **0.4** Build AI history ingestion — user exports their Claude or ChatGPT conversation history and imports it into All Sorted. System ingests it into memory/context so the AI already knows them on day one.
+
+---
+
+## PHASE 1 — Foundation Decisions
+*Lock these in before writing website copy.*
+
+- [x] **1.1 — Decide v1 page list** — done via PAGES_OVERVIEW.md *(2026-04-02)*. See V1 PAGE DECISIONS below for remaining SHIP/HOLD/CUT items.
 - [ ] **1.2 — Lock in pricing** — confirm or change the working direction ($99/$299/$999/mo). Decide: monthly subscription, one-time, or both? Self-hosted tier?
 - [ ] **1.3 — Write the All Sorted description** — plain-English, versions: one sentence, one paragraph, full-page. Feeds everything: website copy, social, outreach, onboarding.
 
 ---
 
-## PHASE 2 — Research & Inventory
-*Information gathering before building.*
+## PHASE 2 — Page Descriptions & Research
+*Information gathering before building the website.*
 
-- [ ] **2.1 — Research competitor comparison pages** — find how Zapier, HubSpot, n8n, monday.com present their comparison pages. What do they compare? What works? Return with examples and notes.
-- [ ] **2.2 — List all bundled integrations** — every integration that ships where the user just adds an API key and it works. Format: name, what it does, category. This becomes a trust section on the website.
-- [ ] **2.3 — Audit the help section** — extract the existing descriptions of what each page does from the dashboard's help/docs. These feed the features page and screenshot captions.
-
----
-
-## PHASE 3 — Content & Copy
-*Build the actual website content.*
-
-- [ ] **3.1 — Section audit** — go through every section of index.html. Rate each by how excited the target SMB owner will actually be (1–5). Flag weak sections, missing sections, and anything that needs rewriting.
-- [ ] **3.2 — Screenshots for all v1 pages** — one clean screenshot per page from the v1 page list, with a caption explaining what the user is looking at and why it matters. 31 already exist in /screenshots/ — audit which are usable.
-- [ ] **3.3 — Write FAQ** — handle main objections before they become support emails: "Do I need technical skills?", "What if I already use [tool]?", "Is my data safe?", "What if I cancel?", "How is this different from ChatGPT?"
-- [ ] **3.4 — Write pricing copy** — headline, subhead, plan names, feature lists, CTA for each tier. Feeds the pricing section and pricing page.
+- [ ] **2.1 — Write descriptions for all v1 pages** — one plain-English paragraph per page: what it does, why an SMB owner would care. These feed the features page, screenshot captions, and website copy. Pull from existing help-content.ts entries where available.
+- [ ] **2.2 — Research competitor comparison pages** — find how Zapier, HubSpot, n8n, monday.com present their comparison pages. What do they compare? What works? Return with examples and notes.
+- [ ] **2.3 — List all bundled integrations** — every integration that ships where the user just adds an API key and it works. Format: name, what it does, category. This becomes a trust section on the website.
 
 ---
 
-## PHASE 4 — Website Updates
+## PHASE 3 — Screenshots & Video
+*Capture the product visually.*
+
+- [ ] **3.1 — Pick top features to highlight** — from the v1 page list, select 8-12 features that will have the most impact on an SMB owner seeing them for the first time. These get the hero treatment on the website.
+- [ ] **3.2 — Screenshots for all v1 pages** — one clean screenshot per page, with a caption explaining what the user is looking at and why it matters. 31 already exist in /screenshots/ — audit which are usable.
+- [ ] **3.3 — Demo video** — screencast walking through the top-highlighted features. Script it from the page descriptions (2.1) and feature list (3.1).
+
+---
+
+## PHASE 4 — Content & Copy
+*Write the website content.*
+
+- [ ] **4.1 — Section audit** — go through every section of index.html. Rate each by how excited the target SMB owner will actually be (1-5). Flag weak sections, missing sections, and anything that needs rewriting.
+- [ ] **4.2 — Write FAQ** — handle main objections before they become support emails: "Do I need technical skills?", "What if I already use [tool]?", "Is my data safe?", "What if I cancel?", "How is this different from ChatGPT?"
+- [ ] **4.3 — Write pricing copy** — headline, subhead, plan names, feature lists, CTA for each tier. Feeds the pricing section and pricing page.
+
+---
+
+## PHASE 5 — Website Updates
 *Build and ship the missing pieces.*
 
-- [ ] **4.1 — Add pricing section to index.html** — before the bottom CTA. Use output from 3.4.
-- [ ] **4.2 — Build features.html** — full feature list with screenshots and descriptions from 3.2. One page per major feature group.
-- [ ] **4.3 — Add FAQ section to index.html** — use output from 3.3.
-- [ ] **4.4 — Add comparison table** — once competitor research (2.1) is done and framing is clear.
-- [ ] **4.5 — Add integrations section** — use output from 2.2. "Works with what you already use."
-- [ ] **4.6 — Create OG image** — 1200x630, required before any social sharing push.
-- [ ] **4.7 — Set up waitlist confirmation email** — check Airtable automation. If not set up, add one.
-- [ ] **4.8 — Mobile responsiveness pass** — full review on phone + tablet breakpoints.
-- [ ] **4.9 — Add analytics** — confirm visitor tracking exists. Add Plausible or Fathom if not.
+- [ ] **5.1 — Add pricing section to index.html** — before the bottom CTA. Use output from 4.3.
+- [ ] **5.2 — Build features.html** — full feature list with screenshots and descriptions from 3.2. One page per major feature group.
+- [ ] **5.3 — Add FAQ section to index.html** — use output from 4.2.
+- [ ] **5.4 — Add comparison table** — once competitor research (2.2) is done and framing is clear.
+- [ ] **5.5 — Add integrations section** — use output from 2.3. "Works with what you already use."
+- [ ] **5.6 — Create OG image** — 1200x630, required before any social sharing push.
+- [ ] **5.7 — Set up waitlist confirmation email** — check Airtable automation. If not set up, add one.
+- [ ] **5.8 — Mobile responsiveness pass** — full review on phone + tablet breakpoints.
+- [ ] **5.9 — Add analytics** — confirm visitor tracking exists. Add Plausible or Fathom if not.
 
 ---
 
-## ON HOLD
+## FUTURE (Post-Beta)
 
-- [ ] **Demo video** — screencast of Golden Claw. Hold until Phase 3 content is done so we know what to show and in what order.
+- [ ] **Testimonials** — no users yet. Add once private alpha feedback comes in.
 
 ---
 
