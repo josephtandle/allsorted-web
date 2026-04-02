@@ -1,7 +1,7 @@
 # All Sorted — Legal Risk Analysis
-*Date: 2026-04-02*
+*Date: 2026-04-03 (v2 — updated with additional research)*
 
-> Pre-launch legal review. Written by Uni based on research into Anthropic ToS, Meta ToS, Slack API Terms, and general SaaS liability law.
+> Pre-launch legal review. Written by Uni based on research into Anthropic Commercial/Consumer Terms, Meta Platform Policy, WhatsApp Business Policy, Slack API Terms, Manychat ToS, and general SaaS liability law.
 
 ---
 
@@ -19,6 +19,9 @@
 | Open source license choice and CLAs | YELLOW | Decide AGPL vs MIT intentionally |
 | Stripe agent | GREEN | Fine as-is |
 | Notion agent | GREEN | Fine as-is |
+| Manychat white-labeling/redistribution | RED | Cannot sublicense, white-label, or rebrand |
+| General-purpose AI chatbot on WhatsApp | RED | Banned by WhatsApp as of Jan 2026 |
+| Data privacy (GDPR/CCPA) | YELLOW | Add privacy policy; self-hosted mitigates but does not eliminate |
 | Selling software requiring Claude API keys (commercial terms) | GREEN | Fine once users are on API keys, not subscription OAuth |
 
 ---
@@ -39,6 +42,12 @@ Anthropic enforced this technically in early 2026 with server-side blocks target
 
 **The nuance:** Individuals using Claude Code CLI directly on their own machine for their own personal automation is permitted (Consumer ToS exempts it). What is not allowed is a third-party developer building a paid product that wraps that subscription.
 
+**BYOK (Bring Your Own Key) model is explicitly safe:** Each end user provides their own Anthropic API key and has a direct billing relationship with Anthropic. All Sorted stores and uses their key on their behalf. This is the standard compliance path for products built on Claude and is explicitly supported under Anthropic's Commercial Terms:
+
+> "use the Services, including to power products and services Customer makes available to its own customers and end users."
+
+The key legal test: your product must add substantive value beyond just forwarding API requests. All Sorted clearly passes this test (39 agents, automation framework, pre-built integrations, dashboard).
+
 ---
 
 ## 2. WhatsApp Agent (RED)
@@ -49,17 +58,52 @@ Anthropic enforced this technically in early 2026 with server-side blocks target
 - WhatsApp's Business Solution Terms make the **developer** liable for user violations.
 - Including this in a paid commercial product creates direct exposure to Meta.
 
-**Action:** Remove the WhatsApp agent from any commercial version. It can remain in the personal/open-source GoldenClaw build. The commercial version should either use the official WhatsApp Business API or omit this feature.
+**Additional risk (Jan 2026):** WhatsApp now explicitly bans "general-purpose language models capable of conducting open-ended dialogues on any topic" from the platform. This means even if you used the official Business API, connecting an unrestricted Claude-powered chatbot to WhatsApp violates WhatsApp's 2026 AI policy. Allowed: structured bots for support, bookings, order tracking, notifications, and sales with clear scope limitations.
+
+**Enforcement reality:** Meta suspended thousands of WhatsApp Business accounts in 2025. Unofficial automation tools are detected via high message volume patterns, rapid messaging to unsaved contacts, user blocks/reports, and technical signatures. Bans are permanent with "exceedingly rare" recovery.
+
+**Action:** Remove the WhatsApp agent from any commercial version. It can remain in the personal/open-source GoldenClaw build. The commercial version should either use the official WhatsApp Business API (with structured, scope-limited bots only) or omit this feature entirely.
 
 ---
 
 ## 3. Instagram Automation Agent (RED)
 
-Same risk profile as WhatsApp, arguably higher enforcement intensity. Meta pursued court action against automation tool developers. Instagram enforcement accelerated in late 2025.
+Same risk profile as WhatsApp, arguably higher enforcement intensity. Meta pursued court action against automation tool developers (Voyager Labs, Octopus). Instagram enforcement accelerated dramatically in late 2025 with the "Great Ban Wave."
 
-A disclaimer saying "use at your own risk" does not protect against a third-party ToS violation claim from Meta.
+Key restrictions via official Instagram API:
+- Automated DMs only to users who **engaged with you** in the last 24 hours
+- Rate limit: 200 automated DMs per hour per account
+- No cold outreach, auto-liking, mass follow/unfollow, or bot comments
+- Browser automation / Chrome extension approaches are explicitly banned
 
-**Action:** Remove from any commercial version.
+Meta blocks **billions of suspected unauthorized scraping actions per day** across its platforms. A disclaimer saying "use at your own risk" does not protect against a third-party ToS violation claim from Meta.
+
+**Action:** Remove from any commercial version. The IG Video Transcriber (caption extraction) is lower risk but still uses unofficial methods.
+
+---
+
+## 3a. Manychat White-Labeling (RED)
+
+Manychat's Terms of Service explicitly prohibit sublicensing, white-labeling, and redistribution:
+
+> "A non-exclusive, non-transferable, revocable right, **without the right of sublicense**, to access and use the Manychat Dev Program."
+
+You cannot rebrand the dashboard, hide the ManyChat name, or provide the service under your own brand. Building a competing product using their AI features is explicitly prohibited. Manychat also claims a "perpetual, irrevocable, worldwide, sublicensable" license to any Applications or Integration Products you build on their platform.
+
+**Action:** If All Sorted includes Manychat integrations, they must be positioned as "bring your own Manychat account" with the user configuring their own credentials. Do not bundle, rebrand, or redistribute Manychat functionality. Document clearly that Manychat is a separate product with its own terms.
+
+---
+
+## 3b. Data Privacy (YELLOW)
+
+Even though All Sorted is self-hosted (which eliminates most data-processing liability), there are still considerations:
+
+- **GDPR:** If any EU-based user runs All Sorted and it processes data about EU residents (contacts, emails, messages), the user becomes a data controller. All Sorted should include a note that users are responsible for their own GDPR compliance.
+- **CCPA:** Similar for California residents.
+- **Anthropic data policy:** Under API Commercial Terms, Anthropic explicitly does NOT train models on customer content. This is a selling point worth highlighting.
+- **Credential storage:** All Sorted stores API keys in an encrypted vault. Document this security model clearly. If keys are ever transmitted to any external service beyond the intended API endpoint, that is a breach risk.
+
+**Action:** Add a brief Privacy Policy page to the website. Core message: All Sorted is self-hosted, your data stays on your machine, we never see or store your data. Users are responsible for their own compliance with applicable data protection laws.
 
 ---
 
@@ -125,14 +169,20 @@ Anthropic can change API pricing, rate limits, or terms at any time. If Anthropi
 
 ## Bottom Line
 
-The three things that must change before selling All Sorted commercially:
+The five things that must change before selling All Sorted commercially:
 
-1. **Require API key, not Claude subscription** — this is the single biggest blocker. Reframe it: "You need an Anthropic API key" not "You need Claude Max."
-2. **Remove WhatsApp and Instagram agents from the paid product** — too much Meta exposure.
-3. **Publish Terms that explicitly limit liability** — see TERMS.md.
+1. **Require API key, not Claude subscription** — this is the single biggest blocker. Reframe it: "You need an Anthropic API key" not "You need Claude Max." The BYOK model is explicitly safe under Anthropic's Commercial Terms.
+2. **Remove WhatsApp and Instagram automation agents from the paid product** — too much Meta exposure. WhatsApp's 2026 AI chatbot ban makes even the official API path risky for general-purpose AI agents.
+3. **Remove or reposition Manychat integration** — cannot be white-labeled or sublicensed. Position as "bring your own account" only.
+4. **Publish Terms that explicitly limit liability** — see TERMS.md.
+5. **Add a Privacy Policy** — even for self-hosted software, users need to know what data goes where.
+
+**Launch-safe agents (GREEN):** Stripe, Notion, Zoho Books, Google (with user OAuth), calendar, backups, memory, task executor, daily summaries, Guard Dog, email cleanup, blog posting, Canva, Airtable.
+
+**Launch-risky agents (remove or gate behind warnings):** WhatsApp, Instagram, Manychat, Slack (needs marketplace listing or prominent disclosure).
 
 Getting a 1-hour review from a SaaS lawyer before launch is advisable. Typical cost: $500-$1,500. Worth it at any price point above $149.
 
 ---
 
-*Research sources: Anthropic Consumer Terms, Anthropic Acceptable Use Policy, Anthropic Claude Code legal docs, WhatsApp Business Policy, Meta enforcement history, Slack API Terms October 2025, Google API Scopes policy, TermsFeed liability disclaimers, Traverse Legal dual licensing guide.*
+*Research sources: Anthropic Commercial Terms, Anthropic Consumer Terms, Anthropic Usage Policy, WhatsApp Business Policy (2026 AI update), WhatsApp Business Solution Terms, Meta Platform Policy, Instagram Terms of Use, Manychat Terms of Service, Manychat AI Supplementary Terms, Slack API Terms (Oct 2025), Google API Scopes policy. Enforcement cases: Meta v. Voyager Labs, Meta v. Octopus, Meta v. Bright Data. Industry reporting: TechCrunch, VentureBeat, SitePoint, TheAgentTimes.*

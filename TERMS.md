@@ -1,7 +1,12 @@
 # All Sorted — Terms and Conditions
-*Draft v1.0 — 2026-04-02*
+*Draft v2.0 — 2026-04-03*
 
 > These are the terms of service for All Sorted. Written for plain English clarity. Legal review recommended before public launch.
+>
+> **Three things to know before you read further:**
+> 1. This is a one-man show. There is no support team, no SLA, no 24/7 helpdesk.
+> 2. Not everything will work perfectly. Some agents may break when third-party APIs change. That is expected.
+> 3. This is a powerful tool. You can automate your entire business, but you can also break things. You are in control, and you are responsible.
 
 ---
 
@@ -123,7 +128,29 @@ These Terms are governed by the laws of the jurisdiction in which the developer 
 
 ---
 
-### 12. Contact
+### 12. Data and Privacy
+
+All Sorted is self-hosted software. It runs on your machine or server. The developer does not have access to your data, API keys, credentials, or any information processed by the Software.
+
+- **No telemetry:** All Sorted does not phone home, collect usage data, or transmit analytics.
+- **Your keys stay local:** API keys and credentials are stored in an encrypted vault on your machine. They are only transmitted to the intended third-party API endpoints.
+- **AI provider data policy:** Under Anthropic's Commercial Terms, data sent to the Claude API is not used to train AI models.
+- **Your responsibility:** If you process personal data (contacts, emails, customer records) through All Sorted, you are responsible for compliance with applicable data protection laws (GDPR, CCPA, etc.).
+
+---
+
+### 13. AI-Specific Disclaimers
+
+All Sorted uses AI (specifically Anthropic's Claude) as a core component. AI outputs are probabilistic, not deterministic. This means:
+
+- AI-generated content, decisions, and actions may be incorrect, incomplete, or inappropriate
+- You should review AI outputs before acting on them, especially for financial transactions, client communications, and data modifications
+- The developer is not responsible for errors, omissions, or consequences arising from AI-generated outputs
+- AI capabilities depend entirely on Anthropic's API availability and performance, which is outside the developer's control
+
+---
+
+### 14. Contact
 
 For questions, issues, or feedback, contact the developer directly. There is one person behind this product and they are reachable.
 
