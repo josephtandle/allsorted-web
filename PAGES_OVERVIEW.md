@@ -362,3 +362,111 @@ Joe's personal health tracker integration. Not for shipping.
 - **Recommended CUT (Joe-specific):** iron-amethyst, heliconia-cantik, investments, personal-info, bank-accounts, tokopedia, housing-search, villa-search, whoop, story-engine, smart-sync
 - **Recommended HOLD (niche/unclear):** clanforge, santa/nightcrawler (overlap), business1/business2 (needs customization), venue-finder, remotion, kling, passive-ideas, machine-learning, littlebird, office, disk-cleaner, cashclaw, scrooge, stock-photo-ai, pexel, unsplash, prompt-packs, video-processor, pitch-deck, mc-settings, bookkeeping (may overlap zoho)
 - **Recommended SHIP:** everything else (~45 pages)
+
+---
+
+## Priority Tiers — Based on Golden Claw Nav
+*Sourced from layout.tsx — these are the pages that actually appear in the nav.*
+*Last reviewed: 2026-04-02*
+
+### STAYING — Ships in v1
+
+| Nav Label | Route | Status | Notes |
+|-----------|-------|--------|-------|
+| Tasks | /tasks + /tasks/projects | Done | Core product |
+| Daily Summary | /daily-summary | Half-done | Ship as beta |
+| Memory | /memory | Done | Core |
+| API Keys | /settings | Done | Required |
+| Backups | /backups | Done | Required |
+| Installed Skills | /installed-skills | Done | Required |
+| Agent Logs | /logs | Done | Required |
+| System | /system | Done | Required |
+| Guard Dog | /guard-dog | Done | ACTION: verify it's working correctly |
+| AutoHuman | /human-tasks | Done | Core |
+| Email Cleanup | /email-cleanup | Done | ACTION: needs better sanitization before ship |
+| WhatsApp | /whatsapp | Unreliable | Uses wacli. ACTION: add warning — outside WhatsApp ToS, works sometimes |
+| Stripe | /stripe | Done | Core billing |
+| Websites | /websites | Done | Core |
+| Calendar | /calendar | Done | ACTION: rename to "Agent Calendar" |
+| MC Settings | /mc-settings | Done | Required |
+| Daily Briefing | /daily-briefing | Needs work | Ship with known limitations |
+| File Browser | /projects | Done | Working great |
+| Cohorts | /cohorts + subpages | Done | Keep |
+| Google | /google | Done | Required integration |
+| Slack | /slack | Done | Keep |
+| Zoho Books | /zoho-books | Done | Keep |
+| Apollo | /apollo | Done | Keep |
+| LinkedIn | /linkedin | Done | Keep |
+| SEO | /seo | Done | High value |
+| Content Creator | /content-creator | Unknown | ACTION: verify it works |
+| IG Video Transcriber | /ig-video-transcriber | Done | Works |
+| Canva | /canva | Done | ACTION: note in UI that enterprise plan required |
+| Zoom | /zoom | Done | Keep |
+| TidyCal | /tidycal | Done | Keep |
+| Currency | /currency | Done | Keep |
+| Dropbox | /dropbox | Done | Keep |
+| Airtable | /airtable | Done | Keep |
+| Office Space | /office | Done | Needs visual polish |
+| Machine Learning | /machine-learning | Done | Keep |
+| Disk Cleaner | /disk-cleaner | Done | Keep |
+| Business 1 | /rio | Placeholder | ACTION: rename folder in Golden Claw build |
+| Business 2 | /heliconia-cantik | Placeholder | ACTION: rename folder in Golden Claw build |
+| YouTube | /youtube | Done | Works |
+| X | /x | Done | Not super useful but ship it |
+| Descript | /descript | Done | Keep |
+| LinkedIn Images | /linkedin-images | Unknown | ACTION: verify it works |
+| Pexel | /pexel | Done | Works |
+| Unsplash | /unsplash | Done | Works |
+| Stock Photo AI | /stock-photo-ai | Unknown | ACTION: verify it works |
+| Vercel | /vercel | Done | Keep |
+| Porkbun | /porkbun | Done | Keep |
+| Remotion | /remotion | Done | ACTION: demo this — it's worth showing |
+| Video Processor | /video-processor | Done | Keep |
+| Spotify | /spotify | Done | Keep |
+| Kling | /kling | Done | Keep |
+| Little Bird | /littlebird | Done | Keep |
+| Santa | /santa | Done | Working great. ACTION: rename — note says "overlaps with Nightcrawler" but should have already been renamed |
+| Content Autopilot | /content-autopilot | Unknown | ACTION: check if this is half-baked or done |
+| Paperclip | /paperclip | Unknown | ACTION: verify — is it actually wired up and running in Golden Claw? |
+
+---
+
+### REMOVED — Not Shipping in v1
+
+| Nav Label | Route | Reason |
+|-----------|-------|--------|
+| Form Builder | /form-builder | Not useful enough for v1 |
+| Postiz | /postiz | Not ready — Phase 2 |
+| ManyChat Sync | /manychat-sync | Too complicated to set up — Phase 2 |
+| Online Programs | /online-programs | Not finished |
+| Meta Ads | /meta-ads | Not ready |
+| Basic Pitch Deck | /pitch-deck | Phase 1 cut |
+| Venue Finder | /venue-finder | Phase 1 cut |
+| Passive Ideas | /passive-ideas | Keeping for Joe only |
+| Smart Home | /smart-home | Phase 1 cut |
+| Backlinks | /backlinks | Not ready |
+| ManyChat Giveaways | /manychat-giveaways | Phase 1 cut |
+| Holdings | /iron-amethyst | Joe-specific |
+| Investments | /investments | Joe-specific |
+| Personal Info | /personal-info | Joe-specific |
+| Port Reference | /mc-settings/ports | Internal only |
+
+---
+
+### ACTIONS REQUIRED (from this review)
+
+| # | Action | Page |
+|---|--------|------|
+| 1 | Verify Guard Dog is working correctly in Golden Claw | /guard-dog |
+| 2 | Sanitize Email Cleanup page before shipping | /email-cleanup |
+| 3 | Add ToS warning to WhatsApp page — wacli is outside WhatsApp ToS, unreliable | /whatsapp |
+| 4 | Rename "Calendar" to "Agent Calendar" in nav | /calendar |
+| 5 | Verify Content Creator works | /content-creator |
+| 6 | Add enterprise plan note to Canva page | /canva |
+| 7 | Verify LinkedIn Images works | /linkedin-images |
+| 8 | Verify Stock Photo AI works | /stock-photo-ai |
+| 9 | Demo Remotion — worth showcasing | /remotion |
+| 10 | Rename Santa — note says overlaps with Nightcrawler, should already be renamed | /santa |
+| 11 | Check Content Autopilot — done or half-baked? | /content-autopilot |
+| 12 | Verify Paperclip is wired up and running in Golden Claw | /paperclip |
+| 13 | Rename Business 1 and Business 2 folders in Golden Claw build | /rio, /heliconia-cantik |
