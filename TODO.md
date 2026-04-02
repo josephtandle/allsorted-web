@@ -1,5 +1,5 @@
 # All Sorted Website — Master To-Do
-*Last updated: 2026-04-02*
+*Last updated: 2026-04-02 (session 3)*
 
 > **Every session working on the All Sorted website: read this file first.**
 > Mark items done as completed. Delete when fully shipped.
@@ -17,11 +17,12 @@
 ## CURRENT PLAN (decided 2026-04-02)
 
 **Sequence:**
-1. Build Braindump + Terminal features in Golden Claw — get them working well
-2. Write descriptions for all v1 pages (feeds website copy and screenshot captions)
-3. Pick the top features to highlight on the website
-4. Capture screenshots and video of those features
-5. Update the website with that content (pricing, features page, FAQ, etc.)
+1. ~~Build Braindump + Terminal features in Golden Claw~~ — in progress (Joe building)
+2. ~~Write descriptions for all v1 pages~~ — done via SCREENSHOT_INDEX.md
+3. ~~Pick the top features to highlight~~ — done (P1 ordered by impact in manifest.json)
+4. ~~Capture screenshots of all pages~~ — done (80 screenshots in /screenshots/pages/)
+5. Update the website with that content (pricing, features page, FAQ, etc.) — next up
+6. Demo video — after Genie/Terminal is done
 
 ---
 
@@ -29,8 +30,8 @@
 *Get these working in Golden Claw before website work.*
 
 - [x] **0.1** Move DOCKER_PLAN.md out of Golden Claw back to Joe's build only. *(done 2026-04-02)*
-- [ ] **0.2** Build Braindump — voice/text brain dump that captures thoughts and routes them (tasks, memory, notes). Already exists in Joe's build — verify it works in Golden Claw, polish if needed.
-- [ ] **0.3** Build terminal inside Mission Control — embedded terminal in the dashboard (xterm.js, connected to tmux per USER_INTERACTION.md spec). Phase 2: enable remote control via Claude Code CLI so users can also operate it from their own computer.
+- [x] **0.2** Build Braindump — voice/text brain dump that captures thoughts and routes them (tasks, memory, notes). **DONE.** *(2026-04-02)* Next: sync to Golden Claw, take screenshot, add to manifest + features.html.
+- [ ] **0.3** Build The Genie — embedded terminal in the dashboard (xterm.js + tmux), renamed from "Claude Terminal" to "The Genie." **IN PROGRESS — Joe building.** Screenshot blocked until complete. Phase 2: Claude Code remote control.
 - [ ] **0.4** Build AI history ingestion — user exports their Claude or ChatGPT conversation history and imports it into All Sorted. System ingests it into memory/context so the AI already knows them on day one.
 
 ---
@@ -38,16 +39,16 @@
 ## PHASE 1 — Foundation Decisions
 *Lock these in before writing website copy.*
 
-- [x] **1.1 — Decide v1 page list** — done via PAGES_OVERVIEW.md *(2026-04-02)*. See V1 PAGE DECISIONS below for remaining SHIP/HOLD/CUT items.
-- [ ] **1.2 — Lock in pricing** — confirm or change the working direction ($99/$299/$999/mo). Decide: monthly subscription, one-time, or both? Self-hosted tier?
-- [ ] **1.3 — Write the All Sorted description** — plain-English, versions: one sentence, one paragraph, full-page. Feeds everything: website copy, social, outreach, onboarding.
+- [x] **1.1 — Decide v1 page list** — done via PAGES_OVERVIEW.md *(2026-04-02)*. Cut list removed from Golden Claw nav. See V1 PAGE DECISIONS below.
+- [ ] **1.2 — Lock in pricing** — research suggests $149/$299/$499 one-time (see CONTEXT.md > RESEARCH.md). Decide: one-time vs subscription? Self-hosted tier pricing? Joe to decide.
+- [x] **1.3 — Write the All Sorted description** — done. See COPY.md for one-liner, paragraph, and full-page copy with tagline options. *(2026-04-02)*
 
 ---
 
 ## PHASE 2 — Page Descriptions & Research
 *Information gathering before building the website.*
 
-- [ ] **2.1 — Write descriptions for all v1 pages** — one plain-English paragraph per page: what it does, why an SMB owner would care. These feed the features page, screenshot captions, and website copy. Pull from existing help-content.ts entries where available.
+- [x] **2.1 — Write descriptions for all v1 pages** — done. All 80 pages have plain-English descriptions and SMB-focused website captions. See screenshots/SCREENSHOT_INDEX.md. *(2026-04-02)*
 - [ ] **2.2 — Research competitor comparison pages** — find how Zapier, HubSpot, n8n, monday.com present their comparison pages. What do they compare? What works? Return with examples and notes.
 - [ ] **2.3 — List all bundled integrations** — every integration that ships where the user just adds an API key and it works. Format: name, what it does, category. This becomes a trust section on the website.
 
@@ -56,9 +57,21 @@
 ## PHASE 3 — Screenshots & Video
 *Capture the product visually.*
 
-- [ ] **3.1 — Pick top features to highlight** — from the v1 page list, select 8-12 features that will have the most impact on an SMB owner seeing them for the first time. These get the hero treatment on the website.
-- [ ] **3.2 — Screenshots for all v1 pages** — one clean screenshot per page, with a caption explaining what the user is looking at and why it matters. 31 already exist in /screenshots/ — audit which are usable.
-- [ ] **3.3 — Demo video** — screencast walking through the top-highlighted features. Script it from the page descriptions (2.1) and feature list (3.1).
+- [x] **3.1 — Pick top features to highlight** — done. P1 pages (01-29) are ordered by SMB impact in manifest.json. Top 10: Tasks, Content Autopilot, Content Creator, Guard Dog, Email Cleanup, WhatsApp, CRM, Stripe, SEO, Human Tasks. *(2026-04-02)*
+- [x] **3.2 — Screenshots for all pages** — done. 80 screenshots captured from Golden Claw at port 3002. Saved to screenshots/pages/, indexed in manifest.json and SCREENSHOT_INDEX.md. features.html updated to use new paths. *(2026-04-02)*
+- [ ] **3.3 — Demo video** — blocked until Braindump and The Genie are complete. Script will follow the P1 impact order. Add this to the session after 0.2 and 0.3 are done.
+
+---
+
+## PHASE 3.5 — Legal (Before Any Sales)
+*Must resolve before taking money.*
+
+- [x] **L.1 — Legal risk research** — done. Full analysis in LEGAL.md. *(2026-04-02)*
+- [x] **L.2 — Draft Terms and Conditions** — done. See TERMS.md. *(2026-04-02)*
+- [ ] **L.3 — Switch to Anthropic API key (not Claude subscription)** — Anthropic's ToS prohibits routing requests through a personal Claude Pro/Max subscription in a third-party product. Must require users to use an API key from console.anthropic.com instead. When doing this, add clear user-facing guidance covering: (1) how this works vs. a subscription, (2) that they are billed per token, and (3) the need for token management / budget controls. Not urgent for alpha — address before beta.
+- [x] **L.4 — Remove WhatsApp + Instagram from Golden Claw** — WhatsApp page deleted from Golden Claw nav and app folder. Instagram was never in Golden Claw. Neither will be in the commercial product. *(2026-04-02)*
+- [ ] **L.5 — Add OAuth warning to setup guide + T&C** — users cannot use Claude subscription (OAuth) with All Sorted. Add clear warning in install docs and liability clause in TERMS.md. See memory: allsorted_oauth_warning.md.
+- [ ] **L.6 — Optional: 1-hour SaaS lawyer review** — recommended before public launch at any price point above $149. Not urgent for private alpha.
 
 ---
 
@@ -67,7 +80,7 @@
 
 - [ ] **4.1 — Section audit** — go through every section of index.html. Rate each by how excited the target SMB owner will actually be (1-5). Flag weak sections, missing sections, and anything that needs rewriting.
 - [ ] **4.2 — Write FAQ** — handle main objections before they become support emails: "Do I need technical skills?", "What if I already use [tool]?", "Is my data safe?", "What if I cancel?", "How is this different from ChatGPT?"
-- [ ] **4.3 — Write pricing copy** — headline, subhead, plan names, feature lists, CTA for each tier. Feeds the pricing section and pricing page.
+- [ ] **4.3 — Write pricing copy** — headline, subhead, plan names, feature lists, CTA for each tier. Blocked on 1.2 (pricing decision). Draft skeleton exists in COPY.md.
 
 ---
 
