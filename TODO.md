@@ -18,6 +18,8 @@
 *Quick admin tasks. Do these first.*
 
 - [x] **0.1** Move DOCKER_PLAN.md out of Golden Claw back to Joe's build only. *(done 2026-04-02)*
+- [ ] **0.2** Build AI history ingestion — user exports their Claude or ChatGPT conversation history and imports it into All Sorted. System ingests it into memory/context so the AI already knows them on day one.
+- [ ] **0.3** Build terminal inside Mission Control — embedded terminal in the dashboard (xterm.js, connected to tmux per USER_INTERACTION.md spec). Phase 2: enable remote control via Claude Code CLI so users can also operate it from their own computer.
 
 ---
 
