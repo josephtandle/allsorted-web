@@ -1,216 +1,89 @@
 {
-  "captured": 29,
-  "failed": 1,
+  "captured": 80,
+  "generated": "2026-04-02",
+  "source": "Golden Claw build, port 3002",
+  "folder": "pages/",
+  "note": "All screenshots ordered by SMB impact (P1 first). Use SCREENSHOT_INDEX.md for full descriptions and website captions.",
   "pages": [
-    {
-      "url": "/app",
-      "name": "overview",
-      "label": "Dashboard Overview",
-      "success": false,
-      "error": "Navigation timeout of 15000 ms exceeded"
-    },
-    {
-      "url": "/app/tasks",
-      "name": "tasks",
-      "label": "Task Board",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/tasks.png"
-    },
-    {
-      "url": "/app/calendar",
-      "name": "calendar",
-      "label": "Calendar & Automation",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/calendar.png"
-    },
-    {
-      "url": "/app/memory",
-      "name": "memory",
-      "label": "Memory System",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/memory.png"
-    },
-    {
-      "url": "/app/guard-dog",
-      "name": "guard-dog",
-      "label": "Guard-dog Overview",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog.png"
-    },
-    {
-      "url": "/app/guard-dog/vulnerabilities",
-      "name": "guard-dog-vulnerabilities",
-      "label": "Guard-dog Vulnerabilities",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog-vulnerabilities.png"
-    },
-    {
-      "url": "/app/guard-dog/reports",
-      "name": "guard-dog-reports",
-      "label": "Guard-dog Reports",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog-reports.png"
-    },
-    {
-      "url": "/app/guard-dog/audit",
-      "name": "guard-dog-audit",
-      "label": "Guard-dog Audit",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/guard-dog-audit.png"
-    },
-    {
-      "url": "/app/backups",
-      "name": "backups",
-      "label": "Backups",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/backups.png"
-    },
-    {
-      "url": "/app/installed-skills",
-      "name": "installed-skills",
-      "label": "Installed Skills",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/installed-skills.png"
-    },
-    {
-      "url": "/app/skills",
-      "name": "skills",
-      "label": "Skills Dashboard",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/skills.png"
-    },
-    {
-      "url": "/app/blog-service",
-      "name": "blog-service",
-      "label": "Blog Service",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/blog-service.png"
-    },
-    {
-      "url": "/app/seo",
-      "name": "seo",
-      "label": "SEO Dashboard",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/seo.png"
-    },
-    {
-      "url": "/app/content-creator",
-      "name": "content-creator",
-      "label": "Content Creator",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/content-creator.png"
-    },
-    {
-      "url": "/app/content-autopilot",
-      "name": "content-autopilot",
-      "label": "Content Autopilot",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/content-autopilot.png"
-    },
-    {
-      "url": "/app/clients",
-      "name": "clients",
-      "label": "Client Database",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/clients.png"
-    },
-    {
-      "url": "/app/crm",
-      "name": "crm",
-      "label": "CRM",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/crm.png"
-    },
-    {
-      "url": "/app/mentorships",
-      "name": "mentorships",
-      "label": "Mentorships",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/mentorships.png"
-    },
-    {
-      "url": "/app/human-tasks",
-      "name": "human-tasks",
-      "label": "Human Tasks",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/human-tasks.png"
-    },
-    {
-      "url": "/app/email-cleanup",
-      "name": "email-cleanup",
-      "label": "Email Cleanup",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/email-cleanup.png"
-    },
-    {
-      "url": "/app/whatsapp",
-      "name": "whatsapp",
-      "label": "WhatsApp",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/whatsapp.png"
-    },
-    {
-      "url": "/app/apollo",
-      "name": "apollo",
-      "label": "Apollo Outreach",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/apollo.png"
-    },
-    {
-      "url": "/app/stripe",
-      "name": "stripe",
-      "label": "Stripe Dashboard",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/stripe.png"
-    },
-    {
-      "url": "/app/financial-dashboard",
-      "name": "financial-dashboard",
-      "label": "Financial Dashboard",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/financial-dashboard.png"
-    },
-    {
-      "url": "/app/zoho-books",
-      "name": "zoho-books",
-      "label": "Zoho Books",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/zoho-books.png"
-    },
-    {
-      "url": "/app/postpilot",
-      "name": "postpilot",
-      "label": "PostPilot",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/postpilot.png"
-    },
-    {
-      "url": "/app/ig-video-transcriber",
-      "name": "ig-video",
-      "label": "IG Video Transcriber",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/ig-video.png"
-    },
-    {
-      "url": "/app/daily-summary",
-      "name": "daily-summary",
-      "label": "Daily Summary",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/daily-summary.png"
-    },
-    {
-      "url": "/app/system",
-      "name": "system",
-      "label": "System Dashboard",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/system.png"
-    },
-    {
-      "url": "/app/projects",
-      "name": "projects",
-      "label": "Projects",
-      "success": true,
-      "path": "/Users/openclaw/allsorted-web/screenshots/projects.png"
-    }
+    { "num": "01", "file": "pages/01-tasks.png",               "route": "/app/tasks",               "label": "Task Board",               "tier": "P1", "status": "SHIP" },
+    { "num": "02", "file": "pages/02-content-autopilot.png",   "route": "/app/content-autopilot",   "label": "Content Autopilot",         "tier": "P1", "status": "SHIP" },
+    { "num": "03", "file": "pages/03-content-creator.png",     "route": "/app/content-creator",     "label": "Content Creator",           "tier": "P1", "status": "SHIP" },
+    { "num": "04", "file": "pages/04-guard-dog.png",           "route": "/app/guard-dog",           "label": "Guard Dog",                 "tier": "P1", "status": "SHIP" },
+    { "num": "05", "file": "pages/05-email-cleanup.png",       "route": "/app/email-cleanup",       "label": "Email Cleanup",             "tier": "P1", "status": "SHIP" },
+    { "num": "06", "file": "pages/06-whatsapp.png",            "route": "/app/whatsapp",            "label": "WhatsApp",                  "tier": "P1", "status": "SHIP" },
+    { "num": "07", "file": "pages/07-crm.png",                 "route": "/app/crm",                 "label": "CRM",                       "tier": "P1", "status": "SHIP" },
+    { "num": "08", "file": "pages/08-stripe.png",              "route": "/app/stripe",              "label": "Stripe Dashboard",          "tier": "P1", "status": "SHIP" },
+    { "num": "09", "file": "pages/09-seo.png",                 "route": "/app/seo",                 "label": "SEO Command Center",        "tier": "P1", "status": "SHIP" },
+    { "num": "10", "file": "pages/10-human-tasks.png",         "route": "/app/human-tasks",         "label": "Human Task Auto-Handler",   "tier": "P1", "status": "SHIP" },
+    { "num": "11", "file": "pages/11-daily-summary.png",       "route": "/app/daily-summary",       "label": "Daily Activity Summary",    "tier": "P1", "status": "SHIP" },
+    { "num": "12", "file": "pages/12-memory.png",              "route": "/app/memory",              "label": "Memory",                    "tier": "P1", "status": "SHIP" },
+    { "num": "13", "file": "pages/13-cohorts.png",             "route": "/app/cohorts",             "label": "Online Program HQ",         "tier": "P1", "status": "SHIP" },
+    { "num": "14", "file": "pages/14-mentorships.png",         "route": "/app/mentorships",         "label": "Mentorship Clients",        "tier": "P1", "status": "SHIP" },
+    { "num": "15", "file": "pages/15-meeting-notes.png",       "route": "/app/meeting-notes",       "label": "Meeting Notes",             "tier": "P1", "status": "SHIP" },
+    { "num": "16", "file": "pages/16-calendar.png",            "route": "/app/calendar",            "label": "Agent Calendar",            "tier": "P1", "status": "SHIP" },
+    { "num": "17", "file": "pages/17-apollo.png",              "route": "/app/apollo",              "label": "Apollo",                    "tier": "P1", "status": "SHIP" },
+    { "num": "18", "file": "pages/18-linkedin.png",            "route": "/app/linkedin",            "label": "LinkedIn",                  "tier": "P1", "status": "SHIP" },
+    { "num": "19", "file": "pages/19-carousel-builder.png",    "route": "/app/carousel-builder",    "label": "Carousel Builder",          "tier": "P1", "status": "SHIP" },
+    { "num": "20", "file": "pages/20-ig-video-transcriber.png","route": "/app/ig-video-transcriber","label": "IG Video Transcriber",      "tier": "P1", "status": "SHIP" },
+    { "num": "21", "file": "pages/21-websites.png",            "route": "/app/websites",            "label": "Websites",                  "tier": "P1", "status": "SHIP" },
+    { "num": "22", "file": "pages/22-zoho-books.png",          "route": "/app/zoho-books",          "label": "Zoho Books",                "tier": "P1", "status": "SHIP" },
+    { "num": "23", "file": "pages/23-google.png",              "route": "/app/google",              "label": "Google",                    "tier": "P1", "status": "SHIP" },
+    { "num": "24", "file": "pages/24-backups.png",             "route": "/app/backups",             "label": "Backups",                   "tier": "P1", "status": "SHIP" },
+    { "num": "25", "file": "pages/25-installed-skills.png",    "route": "/app/installed-skills",    "label": "Installed Skills",          "tier": "P1", "status": "SHIP" },
+    { "num": "26", "file": "pages/26-system.png",              "route": "/app/system",              "label": "System Overview",           "tier": "P1", "status": "SHIP" },
+    { "num": "27", "file": "pages/27-logs.png",                "route": "/app/logs",                "label": "Agent Logs",                "tier": "P1", "status": "SHIP" },
+    { "num": "28", "file": "pages/28-settings.png",            "route": "/app/settings",            "label": "Settings",                  "tier": "P1", "status": "SHIP" },
+    { "num": "29", "file": "pages/29-mc-settings.png",         "route": "/app/mc-settings",         "label": "Mission Control Settings",  "tier": "P1", "status": "SHIP" },
+    { "num": "30", "file": "pages/30-projects.png",            "route": "/app/projects",            "label": "Projects / File Browser",   "tier": "P2", "status": "SHIP" },
+    { "num": "31", "file": "pages/31-clients.png",             "route": "/app/clients",             "label": "Clients",                   "tier": "P2", "status": "SHIP" },
+    { "num": "32", "file": "pages/32-blog-service.png",        "route": "/app/blog-service",        "label": "Blog Service",              "tier": "P2", "status": "SHIP" },
+    { "num": "33", "file": "pages/33-postpilot.png",           "route": "/app/postpilot",           "label": "PostPilot",                 "tier": "P2", "status": "SHIP" },
+    { "num": "34", "file": "pages/34-linkedin-images.png",     "route": "/app/linkedin-images",     "label": "LinkedIn Images",           "tier": "P2", "status": "SHIP" },
+    { "num": "35", "file": "pages/35-x.png",                   "route": "/app/x",                   "label": "X (Twitter)",               "tier": "P2", "status": "SHIP" },
+    { "num": "36", "file": "pages/36-youtube.png",             "route": "/app/youtube",             "label": "YouTube",                   "tier": "P2", "status": "SHIP" },
+    { "num": "37", "file": "pages/37-descript.png",            "route": "/app/descript",            "label": "Descript",                  "tier": "P2", "status": "SHIP" },
+    { "num": "38", "file": "pages/38-canva.png",               "route": "/app/canva",               "label": "Canva",                     "tier": "P2", "status": "SHIP" },
+    { "num": "39", "file": "pages/39-zoom.png",                "route": "/app/zoom",                "label": "Zoom",                      "tier": "P2", "status": "SHIP" },
+    { "num": "40", "file": "pages/40-tidycal.png",             "route": "/app/tidycal",             "label": "TidyCal",                   "tier": "P2", "status": "SHIP" },
+    { "num": "41", "file": "pages/41-nightcrawler.png",        "route": "/app/nightcrawler",        "label": "Nightcrawler",              "tier": "P2", "status": "HOLD" },
+    { "num": "42", "file": "pages/42-santa.png",               "route": "/app/santa",               "label": "Santa",                     "tier": "P2", "status": "HOLD" },
+    { "num": "43", "file": "pages/43-cashclaw.png",            "route": "/app/cashclaw",            "label": "CashClaw",                  "tier": "P2", "status": "HOLD" },
+    { "num": "44", "file": "pages/44-currency.png",            "route": "/app/currency",            "label": "Currency",                  "tier": "P2", "status": "SHIP" },
+    { "num": "45", "file": "pages/45-scrooge.png",             "route": "/app/scrooge",             "label": "Scrooge",                   "tier": "P2", "status": "HOLD" },
+    { "num": "46", "file": "pages/46-bookkeeping.png",         "route": "/app/bookkeeping",         "label": "Bookkeeping",               "tier": "P2", "status": "SHIP" },
+    { "num": "47", "file": "pages/47-affiliate-links.png",     "route": "/app/affiliate-links",     "label": "Affiliate Links",           "tier": "P2", "status": "HOLD" },
+    { "num": "48", "file": "pages/48-online-program.png",      "route": "/app/online-program",      "label": "Online Program",            "tier": "P2", "status": "SHIP" },
+    { "num": "49", "file": "pages/49-slack.png",               "route": "/app/slack",               "label": "Slack",                     "tier": "P2", "status": "SHIP" },
+    { "num": "50", "file": "pages/50-airtable.png",            "route": "/app/airtable",            "label": "Airtable",                  "tier": "P2", "status": "SHIP" },
+    { "num": "51", "file": "pages/51-dropbox.png",             "route": "/app/dropbox",             "label": "Dropbox",                   "tier": "P2", "status": "SHIP" },
+    { "num": "52", "file": "pages/52-vercel.png",              "route": "/app/vercel",              "label": "Vercel",                    "tier": "P2", "status": "HOLD" },
+    { "num": "53", "file": "pages/53-porkbun.png",             "route": "/app/porkbun",             "label": "Porkbun",                   "tier": "P2", "status": "HOLD" },
+    { "num": "54", "file": "pages/54-office.png",              "route": "/app/office",              "label": "Agent Office Space",        "tier": "P2", "status": "SHIP" },
+    { "num": "55", "file": "pages/55-machine-learning.png",    "route": "/app/machine-learning",    "label": "Machine Learning",          "tier": "P2", "status": "SHIP" },
+    { "num": "56", "file": "pages/56-disk-cleaner.png",        "route": "/app/disk-cleaner",        "label": "Disk Cleaner",              "tier": "P2", "status": "HOLD" },
+    { "num": "57", "file": "pages/57-business1.png",           "route": "/app/rio",                 "label": "Business One",              "tier": "P2", "status": "HOLD" },
+    { "num": "58", "file": "pages/58-business2.png",           "route": "/app/heliconia-cantik",    "label": "Project One",               "tier": "P2", "status": "HOLD" },
+    { "num": "59", "file": "pages/59-daily-briefing.png",      "route": "/app/daily-briefing",      "label": "Daily Briefing",            "tier": "P2", "status": "HOLD" },
+    { "num": "60", "file": "pages/60-pexel.png",               "route": "/app/pexel",               "label": "Pexel",                     "tier": "P3", "status": "HOLD" },
+    { "num": "61", "file": "pages/61-unsplash.png",            "route": "/app/unsplash",            "label": "Unsplash",                  "tier": "P3", "status": "HOLD" },
+    { "num": "62", "file": "pages/62-stock-photo-ai.png",      "route": "/app/stock-photo-ai",      "label": "Stock Photo AI",            "tier": "P3", "status": "HOLD" },
+    { "num": "63", "file": "pages/63-remotion.png",            "route": "/app/remotion",            "label": "Remotion",                  "tier": "P3", "status": "HOLD" },
+    { "num": "64", "file": "pages/64-video-processor.png",     "route": "/app/video-processor",     "label": "Video Processor",           "tier": "P3", "status": "HOLD" },
+    { "num": "65", "file": "pages/65-kling.png",               "route": "/app/kling",               "label": "Kling",                     "tier": "P3", "status": "HOLD" },
+    { "num": "66", "file": "pages/66-littlebird.png",          "route": "/app/littlebird",          "label": "LittleBird",                "tier": "P3", "status": "HOLD" },
+    { "num": "67", "file": "pages/67-clanforge.png",           "route": "/app/clanforge",           "label": "ClanForge",                 "tier": "P3", "status": "HOLD" },
+    { "num": "68", "file": "pages/68-prompt-packs.png",        "route": "/app/prompt-packs",        "label": "Prompt Packs",              "tier": "P3", "status": "HOLD" },
+    { "num": "69", "file": "pages/69-spotify.png",             "route": "/app/spotify",             "label": "Spotify",                   "tier": "P3", "status": "HOLD" },
+    { "num": "70", "file": "pages/70-task-runner.png",         "route": "/app/task-runner",         "label": "Task Runner",               "tier": "P3", "status": "SHIP" },
+    { "num": "71", "file": "pages/71-smart-sync.png",          "route": "/app/smart-sync",          "label": "Smart Sync",                "tier": "P3", "status": "HOLD" },
+    { "num": "72", "file": "pages/72-skills.png",              "route": "/app/skills",              "label": "Skills",                    "tier": "P3", "status": "HOLD" },
+    { "num": "73", "file": "pages/73-heliconia-cantik.png",    "route": "/app/heliconia-cantik",    "label": "Heliconia Cantik",          "tier": "P3", "status": "HOLD" },
+    { "num": "74", "file": "pages/74-bank-accounts.png",       "route": "/app/bank-accounts",       "label": "Bank Accounts",             "tier": "CUT", "status": "CUT" },
+    { "num": "75", "file": "pages/75-story-engine.png",        "route": "/app/story-engine",        "label": "Story Engine",              "tier": "CUT", "status": "HOLD" },
+    { "num": "76", "file": "pages/76-housing-search.png",      "route": "/app/housing-search",      "label": "Housing Search",            "tier": "CUT", "status": "CUT" },
+    { "num": "77", "file": "pages/77-villa-search.png",        "route": "/app/villa-search",        "label": "Villa Search",              "tier": "CUT", "status": "CUT" },
+    { "num": "78", "file": "pages/78-whoop.png",               "route": "/app/whoop",               "label": "WHOOP",                     "tier": "CUT", "status": "CUT" },
+    { "num": "79", "file": "pages/79-tokopedia.png",           "route": "/app/tokopedia",           "label": "Tokopedia",                 "tier": "CUT", "status": "CUT" },
+    { "num": "80", "file": "pages/80-paperclip.png",           "route": "/app/paperclip",           "label": "Paperclip (legacy)",        "tier": "CUT", "status": "CUT" }
   ]
 }
