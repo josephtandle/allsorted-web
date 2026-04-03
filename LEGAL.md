@@ -174,8 +174,9 @@ The five things that must change before selling All Sorted commercially:
 1. **Require API key, not Claude subscription** — this is the single biggest blocker. Reframe it: "You need an Anthropic API key" not "You need Claude Max." The BYOK model is explicitly safe under Anthropic's Commercial Terms.
 2. **Remove WhatsApp and Instagram automation agents from the paid product** — too much Meta exposure. WhatsApp's 2026 AI chatbot ban makes even the official API path risky for general-purpose AI agents.
 3. **Remove or reposition Manychat integration** — cannot be white-labeled or sublicensed. Position as "bring your own account" only.
-4. **Publish Terms that explicitly limit liability** — see TERMS.md.
-5. **Add a Privacy Policy** — even for self-hosted software, users need to know what data goes where.
+4. **Publish a Digital Purchase Agreement** — see PURCHASE_AGREEMENT.md. Users must digitally sign the covenant before purchase is finalized. This document covers all five points in Joe's brief (VPS ownership, full control, can break things, comply with law, no liability) plus inspirational framing and specific warnings about Anthropic ToS, Meta ToS, and data privacy.
+5. **Publish Terms that explicitly limit liability** — see TERMS.md.
+6. **Add a Privacy Policy** — even for self-hosted software, users need to know what data goes where.
 
 **Launch-safe agents (GREEN):** Stripe, Notion, Zoho Books, Google (with user OAuth), calendar, backups, memory, task executor, daily summaries, Guard Dog, email cleanup, blog posting, Canva, Airtable.
 

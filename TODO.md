@@ -70,8 +70,9 @@
 - [x] **L.2 — Draft Terms and Conditions** — done. See TERMS.md. *(2026-04-02)*
 - [ ] **L.3 — Switch to Anthropic API key (not Claude subscription)** — Anthropic's ToS prohibits routing requests through a personal Claude Pro/Max subscription in a third-party product. Must require users to use an API key from console.anthropic.com instead. When doing this, add clear user-facing guidance covering: (1) how this works vs. a subscription, (2) that they are billed per token, and (3) the need for token management / budget controls. Not urgent for alpha — address before beta.
 - [x] **L.4 — Remove WhatsApp + Instagram from Golden Claw** — WhatsApp page deleted from Golden Claw nav and app folder. Instagram was never in Golden Claw. Neither will be in the commercial product. *(2026-04-02)*
-- [ ] **L.5 — Add OAuth warning to setup guide + T&C** — users cannot use Claude subscription (OAuth) with All Sorted. Add clear warning in install docs and liability clause in TERMS.md. See memory: allsorted_oauth_warning.md.
-- [ ] **L.6 — Optional: 1-hour SaaS lawyer review** — recommended before public launch at any price point above $149. Not urgent for private alpha.
+- [x] **L.5 — Write full legal purchase agreement** — done. See PURCHASE_AGREEMENT.md. Includes all 5 points Joe specified + inspirational opening + clear warnings. Ready for digital signature implementation. *(2026-04-03)*
+- [ ] **L.6 — Add OAuth warning to setup guide + T&C** — users cannot use Claude subscription (OAuth) with All Sorted. Add clear warning in install docs and liability clause in TERMS.md. See memory: allsorted_oauth_warning.md.
+- [ ] **L.7 — Optional: 1-hour SaaS lawyer review** — recommended before public launch at any price point above $149. Not urgent for private alpha. Have lawyer check: PURCHASE_AGREEMENT.md, TERMS.md, LEGAL.md, and privacy policy.
 
 ---
 
