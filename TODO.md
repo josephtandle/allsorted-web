@@ -31,7 +31,7 @@
 
 - [x] **0.1** Move DOCKER_PLAN.md out of Golden Claw back to Joe's build only. *(done 2026-04-02)*
 - [x] **0.2** Build Braindump — voice/text brain dump that captures thoughts and routes them (tasks, memory, notes). **DONE.** *(2026-04-02)* Next: sync to Golden Claw, take screenshot, add to manifest + features.html.
-- [ ] **0.3** Build The Genie — embedded terminal in the dashboard (xterm.js + tmux), renamed from "Claude Terminal" to "The Genie." **IN PROGRESS — Joe building.** Screenshot blocked until complete. Phase 2: Claude Code remote control.
+- [ ] **0.3** Build The Genie — embedded terminal in the dashboard (xterm.js + tmux). **IN PROGRESS — Joe building.** Screenshot blocked until complete. Phase 2: remote control integration.
 - [ ] **0.4** Build AI history ingestion — user exports their Claude or ChatGPT conversation history and imports it into All Sorted. System ingests it into memory/context so the AI already knows them on day one.
 
 ---
