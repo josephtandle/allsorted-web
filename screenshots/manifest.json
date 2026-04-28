@@ -1,5 +1,5 @@
 {
-  "captured": 80,
+  "captured": 79,
   "generated": "2026-04-02",
   "source": "Golden Claw build, port 3002",
   "folder": "pages/",
@@ -49,7 +49,6 @@
     { "num": "42", "file": "pages/42-santa.png",               "route": "/app/santa",               "label": "Santa",                     "tier": "P2", "status": "HOLD" },
     { "num": "43", "file": "pages/43-cashclaw.png",            "route": "/app/cashclaw",            "label": "CashClaw",                  "tier": "P2", "status": "HOLD" },
     { "num": "44", "file": "pages/44-currency.png",            "route": "/app/currency",            "label": "Currency",                  "tier": "P2", "status": "SHIP" },
-    { "num": "45", "file": "pages/45-scrooge.png",             "route": "/app/scrooge",             "label": "Scrooge",                   "tier": "P2", "status": "HOLD" },
     { "num": "46", "file": "pages/46-bookkeeping.png",         "route": "/app/bookkeeping",         "label": "Bookkeeping",               "tier": "P2", "status": "SHIP" },
     { "num": "47", "file": "pages/47-affiliate-links.png",     "route": "/app/affiliate-links",     "label": "Affiliate Links",           "tier": "P2", "status": "HOLD" },
     { "num": "48", "file": "pages/48-online-program.png",      "route": "/app/online-program",      "label": "Online Program",            "tier": "P2", "status": "SHIP" },
