@@ -322,13 +322,6 @@ Genie page: SKIPPED — still being built.
 - **Description:** A live currency converter with quick-access pairs for USD/IDR, EUR, SGD, and AUD. Enter an amount, pick currencies, and see the converted value instantly. Browse the full list of available exchange rates with search filtering. Rates can be refreshed on demand.
 - **Website use:** Convert between any currencies instantly — useful for international invoicing and multi-currency pricing.
 
-### 45 — Scrooge (AI Cost Tracker)
-- **Route:** /app/scrooge
-- **Screenshot:** pages/45-scrooge.png
-- **Status:** SHIP (HOLD in some notes, keep for demo)
-- **Description:** AI token usage and cost tracking dashboard. Filter by time range and model. View cost trends, model breakdowns, and optimization suggestions. Shows spend by model, by day, week, and month, and identifies which tasks are most expensive to help optimize AI usage and budget.
-- **Website use:** See exactly what your AI is costing, broken down by model and task, so you can optimize your spend.
-
 ### 46 — Bookkeeping
 - **Route:** /app/bookkeeping
 - **Screenshot:** pages/46-bookkeeping.png

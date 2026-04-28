@@ -94,7 +94,7 @@
 - [ ] **5.4 — Add comparison table** — once competitor research (2.2) is done and framing is clear.
 - [ ] **5.5 — Add integrations section** — use output from 2.3. "Works with what you already use."
 - [ ] **5.6 — Create OG image** — 1200x630, required before any social sharing push.
-- [ ] **5.7 — Set up waitlist confirmation email** — check Airtable automation. If not set up, add one.
+- [ ] **5.7 — Set up waitlist confirmation email** — check waitlist automation. If not set up, add one.
 - [ ] **5.8 — Mobile responsiveness pass** — full review on phone + tablet breakpoints.
 - [ ] **5.9 — Add analytics** — confirm visitor tracking exists. Add Plausible or Fathom if not.
 
@@ -245,7 +245,7 @@
 
 ## Already Built (index.html)
 
-- [x] Nav, hero, waitlist form (Airtable backend, live on Vercel)
+- [x] Nav, hero, waitlist form (Supabase backend, live on Vercel)
 - [x] Features section (3 cards)
 - [x] Websites section
 - [x] "How it works" (3 steps)
@@ -263,8 +263,8 @@
 ## Reference
 
 - Site live on Vercel. Edits to ~/allsorted-web/ auto-deploy.
-- Waitlist backend: Airtable (appMlPbIGYa1Z9Ded). See WAITLIST.md.
+- Waitlist backend: Supabase. See WAITLIST.md.
 - Design system: DESIGN.md. Do not deviate.
 - Screenshots: /screenshots/ — 31 files.
-- Product strategy: ~/.openclaw/workspace/projects/all-sorted/CONTEXT.md
+- Product strategy: ~/.myos/workspace/projects/all-sorted/CONTEXT.md
 - No em dashes in any copy.

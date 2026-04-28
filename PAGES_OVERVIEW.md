@@ -309,7 +309,7 @@ Browse and import free stock photos from Pexels directly into the dashboard for 
 Browse and import free stock photos from Unsplash.
 
 ### /smart-sync — Smart Sync
-The OpenClaw → Golden Claw synchronization tool. Manages the sync manifest: route renames, text replacements, label renames, and paths to skip. This is what powers the sanitization pipeline. Not a customer-facing feature — internal tooling.
+The MyOS → Golden Claw synchronization tool. Manages the sync manifest: route renames, text replacements, label renames, and paths to skip. This is what powers the sanitization pipeline. Not a customer-facing feature — internal tooling.
 
 ### /littlebird — LittleBird
 Market intelligence and research reports. Aggregates reports from external sources, stores them with titles and dates, and makes them searchable. Think of it as a private research feed.

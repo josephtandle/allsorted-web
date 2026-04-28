@@ -1,32 +1,22 @@
-# All Sorted Waitlist — Setup Notes
+# All Sorted Waitlist
 
-## Airtable
+## Storage
 
-- **Base:** Personal Container
-- **Base ID:** `appMlPbIGYa1Z9Ded`
-- **Table:** Waitlist
-- **Table ID:** `tblUJGoDMd35GxZEF`
-- **Base URL:** https://airtable.com/appMlPbIGYa1Z9Ded
+- **Backend:** Supabase
+- **Project:** `vthjaejffmicevfrickp` (existing MyOS project)
+- **Table:** `waitlist`
+- **URL:** https://supabase.com/dashboard/project/vthjaejffmicevfrickp/editor
 
 ### Table Fields
-| Field | Type |
-|-------|------|
-| First Name | singleLineText (primary) |
-| Email | email |
-| Signed Up At | dateTime (ISO, UTC) |
 
-### Notes
-- The Waitlist table was created inside the existing "Personal Container" base because the Airtable PAT did not have access to list workspaces (required to create a new base via the meta API).
-- The table is fully functional — records can be written to it via the API.
-
-## Vercel Environment Variables
-
-Both variables are set on the **production** environment for the `allsorted` project (scope: `newyork1-6840s-projects`):
-
-| Variable | Value |
-|----------|-------|
-| `AIRTABLE_API_KEY` | `REDACTED-ROTATED-CREDENTIAL` |
-| `AIRTABLE_BASE_ID` | `appMlPbIGYa1Z9Ded` |
+| Field | Type | Notes |
+|-------|------|-------|
+| id | uuid | auto-generated |
+| first_name | text | required |
+| email | text | required, unique |
+| source | text | default: `all-sorted` |
+| created_at | timestamptz | auto-generated |
+| synced_to_crm | boolean | default false, set true after CRM sync |
 
 ## API Endpoint
 
@@ -35,7 +25,30 @@ Both variables are set on the **production** environment for the `allsorted` pro
 - **Body:** `{ "firstName": "...", "email": "..." }`
 - **Response (success):** `{ "success": true }`
 - **Response (error):** `{ "error": "..." }`
+- **Duplicate emails:** Returns 200 silently (no email enumeration)
+
+## Vercel Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `SUPABASE_URL` | `https://vthjaejffmicevfrickp.supabase.co` |
+| `SUPABASE_SERVICE_KEY` | Service role JWT (set in Vercel dashboard) |
+
+## CRM Sync
+
+**Script:** `~/.myos/workspace/scripts/sync-allsorted-waitlist.js`
+
+**Cron:** Every 30 minutes via local crontab
+
+**What it does:**
+- Fetches rows where `synced_to_crm = false`
+- Upserts into local `crm.db` (`crm_contacts` table)
+- Sets `source_first` and `source_latest` to `all-sorted`
+- Assigns label `custom.all-sorted` ("All Sorted") in `crm_contact_wix_labels`
+- Marks rows `synced_to_crm = true` in Supabase
+
+**Log:** `~/.myos/workspace/logs/sync-allsorted-waitlist.log`
 
 ## Setup Date
 
-2026-03-28
+2026-04-13 (migrated from Airtable)
