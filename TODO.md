@@ -59,7 +59,7 @@
 
 - [x] **3.1 — Pick top features to highlight** — done. P1 pages (01-29) are ordered by SMB impact in manifest.json. Top 10: Tasks, Content Autopilot, Content Creator, Guard Dog, Email Cleanup, WhatsApp, CRM, Stripe, SEO, Human Tasks. *(2026-04-02)*
 - [x] **3.2 — Screenshots for all pages** — done. 80 screenshots captured from Golden Claw at port 3002. Saved to screenshots/pages/, indexed in manifest.json and SCREENSHOT_INDEX.md. features.html updated to use new paths. *(2026-04-02)*
-- [ ] **3.3 — Demo video** — blocked until Braindump and The Genie are complete. Script will follow the P1 impact order. Add this to the session after 0.2 and 0.3 are done.
+- [ ] **3.3 — Demo video** — quick intro video recorded on 2026-05-05. Full walkthrough still pending.
 
 ---
 

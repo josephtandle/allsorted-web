@@ -1,0 +1,41 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /app
+Disallow: /dashboard
+Disallow: /account
+Disallow: /settings
+Disallow: /auth
+Disallow: /login
+Disallow: /checkout
+Disallow: /api
+Disallow: /webhook
+Disallow: /internal
+Disallow: /private
+Disallow: /preview
+Disallow: /staging
+Disallow: /search
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://getallsorted.ai/sitemap.xml
+LLMs: https://getallsorted.ai/llms.txt

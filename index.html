@@ -360,6 +360,35 @@
       }
     }
 
+    .hero-video-wrap {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto var(--space-12);
+      padding: var(--space-3);
+      border: 1px solid rgba(201, 168, 76, 0.22);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(11, 15, 24, 0.92);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    .hero-video {
+      display: block;
+      width: 100%;
+      border-radius: calc(var(--radius-xl) - 4px);
+      background: #000;
+    }
+
+    .hero-video-note {
+      margin-top: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 760px;
+      text-align: left;
+    }
+
     /* =========================================
        WAITLIST FORM
        ========================================= */
@@ -1550,6 +1579,329 @@
       border-bottom: 1px solid var(--color-border);
     }
 
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+
+    .pricing-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(23, 28, 39, 0.96), rgba(18, 22, 31, 0.96));
+      padding: var(--space-8);
+      box-shadow: var(--shadow-card);
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(240, 160, 48, 0.45);
+      box-shadow: var(--shadow-card), var(--shadow-accent);
+    }
+
+    .pricing-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-4);
+    }
+
+    .pricing-kicker.founding {
+      color: #f6cf7a;
+    }
+
+    .pricing-name {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .pricing-desc {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-6);
+      min-height: 72px;
+    }
+
+    .pricing-price {
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .pricing-subprice {
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-6);
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: grid;
+      gap: var(--space-3);
+      color: var(--color-text-secondary);
+    }
+
+    .pricing-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .pricing-list svg {
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pricing-callout {
+      margin-top: var(--space-8);
+      border: 1px solid rgba(240, 160, 48, 0.28);
+      border-radius: var(--radius-lg);
+      background: rgba(240, 160, 48, 0.08);
+      padding: var(--space-6);
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .pricing-callout-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-accent);
+    }
+
+    .pricing-callout strong {
+      color: var(--color-text);
+    }
+
+    .pricing-lock-note {
+      margin-top: var(--space-6);
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+      max-width: 860px;
+    }
+
+    .support-addon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+    }
+
+    .support-addon {
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: rgba(15, 17, 23, 0.72);
+    }
+
+    .support-addon h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+    }
+
+    .support-addon-price {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .support-addon p {
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+    }
+
+    .comparison-wrap {
+      margin-top: var(--space-12);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: rgba(23, 28, 39, 0.9);
+      box-shadow: var(--shadow-card);
+    }
+
+    .comparison-note {
+      padding: var(--space-4) var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+      background: rgba(74, 122, 175, 0.1);
+      color: var(--color-text-secondary);
+      font-size: var(--text-sm);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: var(--space-4) var(--space-5);
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(42, 51, 71, 0.9);
+    }
+
+    .comparison-table th {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-text-secondary);
+      background: rgba(15, 17, 23, 0.72);
+    }
+
+    .comparison-table td:first-child {
+      color: var(--color-text);
+      font-weight: var(--weight-medium);
+      width: 32%;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-yes,
+    .compare-no,
+    .compare-unknown,
+    .compare-partial {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      white-space: nowrap;
+    }
+
+    .compare-yes { color: var(--color-text); }
+    .compare-no { color: var(--color-text-secondary); }
+    .compare-unknown { color: var(--color-text-muted); }
+    .compare-partial { color: var(--color-accent-hover); }
+
+    .compare-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid currentColor;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .install-details {
+      margin-top: var(--space-12);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(23, 28, 39, 0.94), rgba(15, 17, 23, 0.98));
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .install-details summary {
+      list-style: none;
+      cursor: pointer;
+      padding: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+
+    .install-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .install-summary-title {
+      font-size: var(--text-xl);
+      font-family: var(--font-heading);
+    }
+
+    .install-summary-sub {
+      color: var(--color-text-secondary);
+      max-width: 700px;
+      margin-top: var(--space-2);
+    }
+
+    .install-chevron {
+      font-size: var(--text-xl);
+      color: var(--color-accent);
+      transition: transform var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .install-details[open] .install-chevron {
+      transform: rotate(45deg);
+    }
+
+    .install-details-body {
+      padding: 0 var(--space-6) var(--space-6);
+      display: grid;
+      gap: var(--space-8);
+    }
+
+    .install-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .install-pillar {
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(42, 51, 71, 0.9);
+      background: rgba(15, 17, 23, 0.66);
+    }
+
+    .install-pillar h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-3);
+    }
+
+    .install-pillar ul {
+      padding-left: 1.2rem;
+      color: var(--color-text-secondary);
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .install-footnote {
+      padding: var(--space-5);
+      border-radius: var(--radius-md);
+      background: rgba(74, 122, 175, 0.08);
+      border: 1px solid rgba(74, 122, 175, 0.18);
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 1024px) {
+      .pricing-grid,
+      .install-pillars,
+      .support-addon-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-desc {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .comparison-wrap {
+        overflow-x: auto;
+      }
+
+      .comparison-table {
+        min-width: 760px;
+      }
+
+      .install-details summary {
+        align-items: flex-start;
+      }
+    }
+
     /* 6. prefers-reduced-motion safety */
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -1614,6 +1966,14 @@
       <p class="hero-sub">
         <span data-count="39">39</span> pre-built AI agents arrive ready on day one, CRM, billing, email, scheduling, content, and security. No setup. No configuration. No onboarding. Just open the dashboard and it's already done.
       </p>
+
+      <div class="hero-video-wrap">
+        <video class="hero-video" controls playsinline preload="metadata">
+          <source src="https://pub-c8d5d807eda94fd7a89d74f95de97030.r2.dev/all-sorted/videos/welcome-video.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+        <p class="hero-video-note">Start with the welcome video. It explains what All Sorted replaces, how much time it can win back, and why it acts more like an operating system than another tool.</p>
+      </div>
 
       <!-- HERO WAITLIST FORM -->
       <div class="waitlist-form" id="hero-form-wrap">
@@ -2258,6 +2618,239 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       PRICING
+       ========================================= -->
+  <section class="section" aria-labelledby="pricing-title" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Pricing</span>
+        <h2 class="section-title" id="pricing-title">Choose the rollout that matches how you want to start.</h2>
+        <p class="section-sub">We launch the system with you. One path installs directly on your current Mac. The other starts from a clean new machine we prepare around your business. Hosted comes later.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card featured">
+          <div class="pricing-kicker founding">Founding members</div>
+          <h3 class="pricing-name">All-Sorted Personal Install</h3>
+          <p class="pricing-desc">We install All Sorted directly on your current Mac, gather your projects into one place, and shape the system around the machine you already work from.</p>
+          <div class="pricing-price">$4,499</div>
+          <div class="pricing-subprice">One-time installation</div>
+          <ul class="pricing-list">
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Installed on your current Mac</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Initial migration of your AI sessions and project context into one organized workspace</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>30 days of WhatsApp and text support</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>1 hour of phone support plus 1 hour of live training after setup</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>2 weeks of bug-fix coverage and 90 days of optional feature updates through GitHub</span></li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-kicker founding">Founding members</div>
+          <h3 class="pricing-name">All-Sorted Ready System</h3>
+          <p class="pricing-desc">We source a brand new Mac, prepare it, install All Sorted, and hand you a machine that is already organized around your workflows.</p>
+          <div class="pricing-price">$3,499</div>
+          <div class="pricing-subprice">One-time setup cost, plus hardware cost</div>
+          <ul class="pricing-list">
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Brand new Mac prepared for your business</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Cleaner install because we control the environment</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>30 days of WhatsApp and text support</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>1 hour of phone support plus 1 hour of live training after setup</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>2 weeks of bug-fix coverage and 90 days of optional feature updates through GitHub</span></li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-kicker">Coming soon</div>
+          <h3 class="pricing-name">All-Sorted Hosted</h3>
+          <p class="pricing-desc">The future browser-based version of All Sorted. Mission Control in the web, persistent agents, and a managed environment without installing on your machine.</p>
+          <div class="pricing-price">Waitlist</div>
+          <div class="pricing-subprice">Pricing not announced yet</div>
+          <ul class="pricing-list">
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Browser-based Mission Control</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Managed infrastructure later</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Join the waitlist for launch updates</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pricing-callout">
+        <span class="pricing-callout-label">Closest public comparator we found</span>
+        <p><strong>Corex OS</strong> is the closest high-touch AI operating system setup we found with public pricing. Its done-for-you setup is advertised at <strong>$12,500 to $25,000</strong>. All Sorted starts far lower because we're launching with a tighter, install-first scope.</p>
+      </div>
+
+      <p class="pricing-lock-note">These are founding-member rates. Pricing and hourly support rates will rise over time, but once you join, you lock in the rates attached to your package.</p>
+
+      <div class="support-addon-grid">
+        <div class="support-addon">
+          <h3>Included support</h3>
+          <div class="support-addon-price">Included</div>
+          <p>Every live install includes 30 days of WhatsApp and text support, 1 hour of phone support, 1 hour of live training, and dedicated help sections built into each page.</p>
+        </div>
+        <div class="support-addon">
+          <h3>Updates &amp; Support Plan</h3>
+          <div class="support-addon-price">$399 / month</div>
+          <p>Continued access to future feature releases, update emails, install guidance, and ongoing WhatsApp/text support after the included 90-day update period ends. Founding members lock in their rate when they join.</p>
+        </div>
+        <div class="support-addon">
+          <h3>Extra build time</h3>
+          <div class="support-addon-price">$175/hr team</div>
+          <p>Support-team hours are $175 per hour. If Joe is specifically requested, his time is billed at $349 per hour. These founding-member rates are locked in when you join. Custom feature work is scoped separately per project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       COMPARISON
+       ========================================= -->
+  <section class="section" aria-labelledby="comparison-title" style="background: var(--color-surface-1);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Comparison</span>
+        <h2 class="section-title" id="comparison-title">What you actually get, line by line.</h2>
+        <p class="section-sub">We compared All Sorted against the closest public AI operating system offers we could find. The table below reflects what each company publicly advertises, not private sales calls or custom scopes.</p>
+      </div>
+
+      <div class="comparison-wrap">
+        <div class="comparison-note">Public feature claims checked in May 2026. Blank or neutral cells mean the feature was not clearly advertised on the public offer page we reviewed.</div>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>All Sorted</th>
+              <th>Corex OS</th>
+              <th>AI BOS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Installed directly on your current Mac</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Yes</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>Custom setup advertised</span></td>
+              <td><span class="compare-no"><span class="compare-box">–</span>No public install offer</span></td>
+            </tr>
+            <tr>
+              <td>Brand new machine option</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Yes</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not advertised</span></td>
+              <td><span class="compare-no"><span class="compare-box">–</span>No public hardware option</span></td>
+            </tr>
+            <tr>
+              <td>Migrates your ChatGPT and Claude history into organized projects</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Yes</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not advertised</span></td>
+              <td><span class="compare-no"><span class="compare-box">–</span>No public migration claim</span></td>
+            </tr>
+            <tr>
+              <td>Provider-agnostic routing</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Anthropic, OpenAI, Gemini</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not advertised</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>AI assistants advertised</span></td>
+            </tr>
+            <tr>
+              <td>Open terminal access you can keep customizing later</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Yes</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>OS-style workflow advertised</span></td>
+              <td><span class="compare-no"><span class="compare-box">–</span>No public terminal claim</span></td>
+            </tr>
+            <tr>
+              <td>Editable pages, databases, tracking, and system structure</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Built to be changed</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>Custom AI system advertised</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>Workflow package model</span></td>
+            </tr>
+            <tr>
+              <td>One month of WhatsApp support included</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Included with text support</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not clearly advertised</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>Support period varies by package</span></td>
+            </tr>
+            <tr>
+              <td>Phone support and live training included</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>2 hours total</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not advertised</span></td>
+              <td><span class="compare-no"><span class="compare-box">–</span>No public training hour listed</span></td>
+            </tr>
+            <tr>
+              <td>90 days of optional feature updates via GitHub</td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Included</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not advertised</span></td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>Package support window</span></td>
+            </tr>
+            <tr>
+              <td>Hosted browser version</td>
+              <td><span class="compare-partial"><span class="compare-box">~</span>Coming soon</span></td>
+              <td><span class="compare-unknown"><span class="compare-box">?</span>Not clearly advertised</span></td>
+              <td><span class="compare-yes"><span class="compare-box">✓</span>Yes</span></td>
+            </tr>
+            <tr>
+              <td>Public price for the closest implementation offer</td>
+              <td><span class="compare-yes"><span class="compare-box">$</span>$3,499 to $4,499</span></td>
+              <td><span class="compare-yes"><span class="compare-box">$</span>$12,500 to $25,000</span></td>
+              <td><span class="compare-yes"><span class="compare-box">$</span>£499 to £4,999+</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       PERSONAL INSTALL
+       ========================================= -->
+  <section class="section" aria-labelledby="install-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">How it works</span>
+        <h2 class="section-title" id="install-title">What happens when we install it on your machine.</h2>
+        <p class="section-sub">This is not a download link and a login page. We install the operating system, move your context in, and leave you with a machine that is ready to keep evolving.</p>
+      </div>
+
+      <details class="install-details">
+        <summary>
+          <div>
+            <div class="install-summary-title">All-Sorted Personal Install</div>
+            <p class="install-summary-sub">A guided install on your Mac that brings over the context, files, AI sessions, routing, and controls that make the system feel like yours from day one.</p>
+          </div>
+          <span class="install-chevron">+</span>
+        </summary>
+        <div class="install-details-body">
+          <div class="install-pillars">
+            <div class="install-pillar">
+              <h3>1. Installation and Migration</h3>
+              <ul>
+                <li>We install the system locally and migrate the business context, files, and structure you want inside your own MyOS environment.</li>
+                <li>We gather your ChatGPT and Claude sessions into one organized project structure that makes sense for your business, then leave room for you to keep refining it.</li>
+              </ul>
+            </div>
+
+            <div class="install-pillar">
+              <h3>2. Configuration and Compatibility</h3>
+              <ul>
+                <li>We handle routing so your API keys are used intelligently across the system instead of being wasted through bad defaults.</li>
+                <li>The system is provider-agnostic, which helps keep your machine usable even if one provider rate-limits, changes policy, or disappears.</li>
+                <li>Current support includes Anthropic, OpenAI, and Google Gemini.</li>
+              </ul>
+            </div>
+
+            <div class="install-pillar">
+              <h3>3. Training and Setup</h3>
+              <ul>
+                <li>We include a one-hour training session to show you the basics and get you comfortable using the machine.</li>
+                <li>We include one hour of phone support and set up your terminal so you can keep changing the operating system whenever you want.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="install-footnote">
+            This is a system that works out of the box but stays fully customizable. You can add Mission Control pages, change databases, add personal tracking, build new visualizations, and shape the machine around how you actually run your business. Every page includes its own dedicated help section, and future feature releases can be pulled in when you decide the timing is right.
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 

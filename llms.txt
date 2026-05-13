@@ -1,0 +1,14 @@
+# All Sorted
+
+> All Sorted is an AI-powered business operating system with prebuilt agents for CRM, billing, scheduling, email, content, and business admin. It is positioned as a ready-to-run system for service-based businesses that want operations handled without complex setup.
+
+## Primary Page
+
+- [Home](https://getallsorted.ai): Main product page covering the offer, core agents, key workflows, and call to action.
+
+## Summary
+
+- Product: AI business operating system
+- Audience: service-based small business owners and operators
+- Promise: core business workflows handled by prebuilt AI agents
+- Key surfaces: CRM, billing, scheduling, email, content, security, and business operations
