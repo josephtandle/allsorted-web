@@ -5,6 +5,41 @@ const DITTOFEED_API_URL = process.env.DITTOFEED_API_URL ?? "http://localhost:300
 // DITTOFEED_WRITE_KEY format: "secretId:secretValue" (base64-encoded for Basic auth)
 const DITTOFEED_WRITE_KEY = process.env.DITTOFEED_WRITE_KEY ?? "";
 
+function getInsightCollectorUrl() {
+  if (process.env.INSIGHT_TO_FIX_COLLECTOR_URL) return process.env.INSIGHT_TO_FIX_COLLECTOR_URL;
+  return process.env.NODE_ENV === "production" ? "" : "http://localhost:3000/api/insight-to-fix/event";
+}
+
+async function trackInsightEvent(eventType, payload = {}) {
+  const collectorUrl = getInsightCollectorUrl();
+  if (!collectorUrl) return;
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 1200);
+    await fetch(collectorUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        project: "allsorted",
+        event_type: eventType,
+        route: "/waitlist",
+        source: "all-sorted-web",
+        email: payload.email,
+        properties: {
+          reason: payload.reason,
+          duplicate: payload.duplicate === true,
+          supabase_status: payload.supabaseStatus,
+        },
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+  } catch (err) {
+    console.warn("[insight-to-fix] waitlist event skipped:", err?.message ?? err);
+  }
+}
+
 async function trackWaitlistJoin(email, firstName) {
   if (!DITTOFEED_WRITE_KEY) return;
   try {
@@ -55,11 +90,13 @@ export default async function handler(req, res) {
   const { firstName, email } = req.body;
 
   if (!firstName || !email) {
+    await trackInsightEvent("waitlist_submit_failed", { reason: "missing_fields" });
     return res.status(400).json({ error: 'First name and email required' });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
+    await trackInsightEvent("waitlist_submit_failed", { reason: "invalid_email" });
     return res.status(400).json({ error: 'Invalid email address' });
   }
 
@@ -81,19 +118,38 @@ export default async function handler(req, res) {
 
     // 409 = duplicate email, treat as success so we don't leak whether email exists
     if (response.status === 409) {
+      await trackInsightEvent("waitlist_submit_success", {
+        email: email.trim().toLowerCase(),
+        duplicate: true,
+        supabaseStatus: response.status,
+      });
       return res.status(200).json({ success: true });
     }
 
     if (!response.ok) {
       const err = await response.text();
       console.error('Supabase error:', response.status, err);
+      await trackInsightEvent("waitlist_submit_failed", {
+        email: email.trim().toLowerCase(),
+        reason: "supabase_error",
+        supabaseStatus: response.status,
+      });
       return res.status(500).json({ error: 'Failed to save. Please try again.' });
     }
 
     void trackWaitlistJoin(email.trim().toLowerCase(), firstName.trim());
+    await trackInsightEvent("waitlist_submit_success", {
+      email: email.trim().toLowerCase(),
+      duplicate: false,
+      supabaseStatus: response.status,
+    });
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('Server error:', err);
+    await trackInsightEvent("waitlist_submit_failed", {
+      email: typeof email === "string" ? email.trim().toLowerCase() : undefined,
+      reason: "exception",
+    });
     return res.status(500).json({ error: 'Server error. Please try again.' });
   }
 }
