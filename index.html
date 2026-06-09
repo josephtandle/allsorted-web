@@ -2968,6 +2968,17 @@
 
         if (!form) return;
 
+        function getJourneyId() {
+          var key = 'insight_journey_id';
+          var existing = window.localStorage && window.localStorage.getItem(key);
+          if (existing) return existing;
+          var id = (window.crypto && window.crypto.randomUUID)
+            ? window.crypto.randomUUID()
+            : String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+          window.localStorage && window.localStorage.setItem(key, id);
+          return id;
+        }
+
         form.addEventListener('submit', function (e) {
           e.preventDefault();
 
@@ -3001,7 +3012,14 @@
           fetch('/api/waitlist', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ firstName: firstName, email: email })
+            body: JSON.stringify({
+              firstName: firstName,
+              email: email,
+              journeyId: getJourneyId(),
+              acquisitionRoute: window.location.pathname,
+              acquisitionQuery: window.location.search,
+              referrer: document.referrer || undefined
+            })
           })
           .then(function (res) {
             return res.json().then(function (data) {

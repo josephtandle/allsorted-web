@@ -26,10 +26,14 @@ async function trackInsightEvent(eventType, payload = {}) {
         route: "/waitlist",
         source: "all-sorted-web",
         email: payload.email,
+        session_id: payload.sessionId,
         properties: {
           reason: payload.reason,
           duplicate: payload.duplicate === true,
           supabase_status: payload.supabaseStatus,
+          acquisition_route: payload.acquisitionRoute,
+          acquisition_query: payload.acquisitionQuery,
+          referrer: payload.referrer,
         },
       }),
       signal: controller.signal,
@@ -87,7 +91,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { firstName, email } = req.body;
+  const { firstName, email, journeyId, acquisitionRoute, acquisitionQuery, referrer } = req.body;
 
   if (!firstName || !email) {
     await trackInsightEvent("waitlist_submit_failed", { reason: "missing_fields" });
@@ -99,6 +103,14 @@ export default async function handler(req, res) {
     await trackInsightEvent("waitlist_submit_failed", { reason: "invalid_email" });
     return res.status(400).json({ error: 'Invalid email address' });
   }
+
+  await trackInsightEvent("lead_acquired", {
+    email: email.trim().toLowerCase(),
+    sessionId: journeyId,
+    acquisitionRoute: acquisitionRoute || "/",
+    acquisitionQuery,
+    referrer,
+  });
 
   try {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
@@ -120,6 +132,7 @@ export default async function handler(req, res) {
     if (response.status === 409) {
       await trackInsightEvent("waitlist_submit_success", {
         email: email.trim().toLowerCase(),
+        sessionId: journeyId,
         duplicate: true,
         supabaseStatus: response.status,
       });
@@ -140,6 +153,7 @@ export default async function handler(req, res) {
     void trackWaitlistJoin(email.trim().toLowerCase(), firstName.trim());
     await trackInsightEvent("waitlist_submit_success", {
       email: email.trim().toLowerCase(),
+      sessionId: journeyId,
       duplicate: false,
       supabaseStatus: response.status,
     });
