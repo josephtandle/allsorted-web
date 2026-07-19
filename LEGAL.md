@@ -46,7 +46,7 @@ Anthropic enforced this technically in early 2026 with server-side blocks target
 
 > "use the Services, including to power products and services Customer makes available to its own customers and end users."
 
-The key legal test: your product must add substantive value beyond just forwarding API requests. All Sorted clearly passes this test (39 agents, automation framework, pre-built integrations, dashboard).
+The key legal test: your product must add substantive value beyond just forwarding API requests. All Sorted clearly passes this test (157 agents, automation framework, pre-built integrations, dashboard).
 
 ---
 

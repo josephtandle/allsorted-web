@@ -3,7 +3,7 @@
 
 ## Core Value Proposition
 
-**All Sorted** is a pre-loaded AI operating system for small business owners. It arrives ready to work on day one — no setup, no onboarding, no configuration. 39 pre-built agents handle your CRM, billing, email, scheduling, content, and security from a single dashboard.
+**All Sorted** is a pre-loaded AI operating system for small business owners. It arrives ready to work on day one — no setup, no onboarding, no configuration. 157 pre-built agents handle your CRM, billing, email, scheduling, content, and security from a single dashboard.
 
 The problem: SMB owners can't hire an operations person ($60k/year), and generic AI tools require months of setup. All Sorted arrives pre-wired for their workflows, their industry, their pain points.
 
@@ -13,7 +13,7 @@ The problem: SMB owners can't hire an operations person ($60k/year), and generic
 
 ## What Ships on Day One
 
-- **39 integrated agents** — toggle any on/off with one click
+- **157 integrated agents** — toggle any on/off with one click
 - **33 automated jobs** — running 24/7 without intervention
 - **Security stack** — nightly vulnerability scanning, threat intelligence, CVE monitoring
 - **Task board** — 33 pre-loaded cards across 7 columns, your industry workflow ready
@@ -25,7 +25,7 @@ The problem: SMB owners can't hire an operations person ($60k/year), and generic
 
 ---
 
-## The 39 Agents
+## The 157 Agents
 
 **Tier 1 — Universal (every SMB needs these)**
 Paperclip (task executor), Daily Summary, Task Board, Calendar, Human Task Handler, Guard-dog (security), Backups, Memory
@@ -65,7 +65,7 @@ Pain points:
 
 | vs. | The gap |
 |-----|---------|
-| ChatGPT / Claude | Generic chat vs. 39 pre-wired business agents |
+| ChatGPT / Claude | Generic chat vs. 157 pre-wired business agents |
 | Zapier / Make | Build workflows yourself vs. 33 workflows on day one |
 | HubSpot | CRM-only, $50–3,200/mo vs. everything, one price |
 | n8n | Requires DevOps knowledge vs. click install, ready in 2 minutes |
@@ -114,7 +114,7 @@ Running 24/7. Zero manual input.
 ## Pricing Direction
 
 - **Starter** — $99/mo (core agents, up to 5 employees)
-- **Professional** — $299/mo (all 39 agents, up to 50 employees)
+- **Professional** — $299/mo (all 157 agents, up to 50 employees)
 - **Enterprise** — $999/mo (custom agents, dedicated support, on-premise)
 
 ---

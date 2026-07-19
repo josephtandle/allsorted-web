@@ -6,13 +6,13 @@
 
 ## One-Liner
 
-Your AI operating system: 60+ agents running your business behind the scenes, 24 hours a day, so you can focus on what only you can do.
+Your AI operating system: 157 agents running your business behind the scenes, 24 hours a day, so you can focus on what only you can do.
 
 ---
 
 ## One Paragraph
 
-Most business owners are paying for 12 different tools that don't talk to each other, spending hours on repetitive work, and being the human glue that holds it all together. All Sorted replaces that chaos with one intelligent system — your personal AI operating system, running 24/7 on your own server, with 60+ built-in agents handling everything from content and sales to bookkeeping and security. Drop in your API keys and it connects to everything you already use. Tell The Genie what you want in plain English and it makes it happen. The more you run it, the smarter it gets. This isn't software you buy and occasionally use. It's a system that learns your business, evolves around it, and runs it.
+Most business owners are paying for 12 different tools that don't talk to each other, spending hours on repetitive work, and being the human glue that holds it all together. All Sorted replaces that chaos with one intelligent system — your personal AI operating system, running 24/7 on your own server, with 157 built-in agents handling everything from content and sales to bookkeeping and security. Drop in your API keys and it connects to everything you already use. Tell The Genie what you want in plain English and it makes it happen. The more you run it, the smarter it gets. This isn't software you buy and occasionally use. It's a system that learns your business, evolves around it, and runs it.
 
 ---
 
@@ -134,7 +134,7 @@ This is what leverage looks like.
 | Intelligence | Machine Learning, Daily Summary, Agent Logs, Genie |
 | Infrastructure | System Monitor, Cron Scheduler, Settings, Installed Skills |
 
-60+ agents. 50+ skills. One system.
+157 agents. 50+ skills. One system.
 
 ---
 
@@ -168,7 +168,7 @@ Small type: Early access includes setup support and direct access to the team.
 
 1. The AI operating system for people who are done doing everything manually.
 2. Your business, running itself.
-3. 60+ AI agents. One system. Zero excuses.
+3. 157 AI agents. One system. Zero excuses.
 4. From idea to done. Without the overhead.
 5. The last tool you'll ever need to add.
 
