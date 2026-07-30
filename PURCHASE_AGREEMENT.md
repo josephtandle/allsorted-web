@@ -32,6 +32,21 @@ By purchasing All Sorted, you receive:
 
 ---
 
+## Setup & Support Access
+
+"We cannot access your information by design" describes your system once it's running. There is one narrow exception: if you purchase a white-glove installation or ongoing support session, the developer has temporary access during that specific, scheduled window. Here is exactly what that means and doesn't mean.
+
+- **You watch everything.** Setup happens live, with you present. Either the developer drives remotely while you watch every action on your own screen, or you drive with the developer guiding you. Nothing happens on your machine that you can't see happening.
+- **Access is scoped to installation, nothing else.** The developer will not open, read, or copy any file unrelated to installing and configuring All Sorted.
+- **Nothing phones home.** No telemetry, background logging, or standing remote-access channel is installed as part of setup. Once the session ends, there is no ongoing connection back to the developer.
+- **Access is revoked when setup ends.** Any temporary remote-access credential created for the session is removed once installation is verified working. The only exception is an active, separately-purchased support plan, which is scoped and revocable by you at any time on request.
+- **A new machine carries no exposure.** A freshly wiped or newly purchased machine has nothing on it yet, so there's nothing to protect beyond the install itself.
+- **An existing machine gets a backup first.** If All Sorted is being installed onto a machine you already use for other things, the developer confirms a backup (Time Machine or equivalent) exists before making any changes. The installer itself only writes to its own target paths, and backs up any existing file before touching it.
+
+This exception applies only to the setup/support window. It does not change anything in "What You Own" above once that session ends.
+
+---
+
 ## What Can Happen
 
 Because you have full control and the system is powerful, things can break.
