@@ -130,7 +130,7 @@ These Terms are governed by the laws of the jurisdiction in which the developer 
 
 ### 12. Data and Privacy
 
-All Sorted is self-hosted software. It runs on your machine or server. The developer does not have access to your data, API keys, credentials, or any information processed by the Software.
+All Sorted is self-hosted software. It runs on your machine or server. The developer does not have access to your data, API keys, credentials, or any information processed by the Software, outside of a scheduled setup or support session you purchase (see "Setup & Support Access" in the Purchase Agreement for exactly what that access is limited to and when it ends).
 
 - **No telemetry:** All Sorted does not phone home, collect usage data, or transmit analytics.
 - **Your keys stay local:** API keys and credentials are stored in an encrypted vault on your machine. They are only transmitted to the intended third-party API endpoints.
