@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T06:08:14.486Z",
+  "generatedAt": "2026-08-07T06:10:29.093Z",
   "generatedBy": "projects/all-sorted/scripts/build-agent-catalog.js",
   "source": "allsorted-dist shipped member repo",
   "counts": {
@@ -9,7 +9,7 @@
     "categories": 43,
     "groups": 11,
     "offline": 22,
-    "gated": 22
+    "gated": 23
   },
   "groups": [
     {
@@ -1061,7 +1061,7 @@
           "category": "documents",
           "categoryLabel": "Documents and signing",
           "tagline": "Send documents for signature and chase the people who have not signed.",
-          "description": "It sends a PDF out to the signers you name, tracks who has completed it and who has not, reminds the ones still outstanding, and downloads the finished document. Every call goes to your own DocuSeal instance with your own API key. It never signs on anyone's behalf, and it never sends to a person you did not name.",
+          "description": "It sends a PDF out to the signers you name, tracks who has completed it and who has not, reminds the ones still outstanding, and downloads the finished document. Every call goes to your own DocuSeal instance with your own API key. Nothing reaches a signer until you confirm the send, and it never signs on anyone behalf.",
           "canDo": [
             "Send a PDF out for signature to the signers you name",
             "Check who has signed and who is still pending",
@@ -1070,7 +1070,7 @@
             "Download a completed, fully signed document"
           ],
           "needs": "Your own DocuSeal URL and API key",
-          "confirmationGated": false,
+          "confirmationGated": true,
           "recipeCount": 5
         },
         {
