@@ -2088,7 +2088,7 @@
       </a>
       <nav class="nav-links" aria-label="Page navigation">
         <a href="/features" class="nav-link">Features</a>
-        <a href="/agents" class="nav-link">Agents</a>
+        <a href="#agents" class="nav-link">Agents</a>
         <a href="#hero-form" class="nav-link">Get Access</a>
       </nav>
     </div>
@@ -2256,7 +2256,9 @@
        ========================================= -->
   <!-- AGENT-CATALOG:START -->
   <style>
-    .ac-sec { padding: var(--section-padding-y) 0; border-top: 1px solid var(--color-border); }
+    /* scroll-margin keeps the heading clear of the sticky nav when the
+       in-page #agents link is followed. */
+    .ac-sec { padding: var(--section-padding-y) 0; border-top: 1px solid var(--color-border); scroll-margin-top: 84px; }
     .ac-stats { display: flex; flex-wrap: wrap; gap: 0 48px; margin: 36px 0 8px; padding-top: 28px; border-top: 1px solid var(--color-border); }
     .ac-stat-n { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; color: var(--color-accent); line-height: 1; }
     .ac-stat-l { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 7px; }
@@ -4860,7 +4862,7 @@
       <div class="tech-grid">
         <div class="tech-card">
           <h3 class="tech-card-title">155 agents in the live system. 61 supported on day one.</h3>
-          <p class="tech-card-desc">Joe's working MyOS workspace has 155 agents and grows every week. All Sorted ships the 61 supported, sanitized agents that cover the full service-business workflow, and you can read every one of them on the <a href="/agents">full agent catalog</a> before you buy. The rest are pulled into your install as they harden, on your schedule, never forced.</p>
+          <p class="tech-card-desc">Joe's working MyOS workspace has 155 agents and grows every week. All Sorted ships the 61 supported, sanitized agents that cover the full service-business workflow, and you can read every one of them in <a href="#agents">the full catalog above</a> before you buy. The rest are pulled into your install as they harden, on your schedule, never forced.</p>
         </div>
 
         <div class="tech-card">
@@ -5609,7 +5611,7 @@
           <h4 class="footer-heading">Product</h4>
           <ul class="footer-links">
             <li><a href="/features">Features</a></li>
-            <li><a href="/agents">Every agent</a></li>
+            <li><a href="#agents">Every agent</a></li>
             <li><a href="/#hero-form">Join Waitlist</a></li>
             <li><a href="/#security">Security</a></li>
           </ul>
