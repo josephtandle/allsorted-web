@@ -584,9 +584,7 @@
       font-size: 0.625rem; font-weight: 600; letter-spacing: 0.06em;
       text-transform: uppercase; padding: 3px 8px; border-radius: 999px; white-space: nowrap;
     }
-    .tag-gate { background: var(--green-dim); color: var(--green); }
-    .tag-offline { background: var(--gold-dim); color: var(--gold); }
-    .tag-kind { background: var(--blue-dim); color: var(--blue); }
+    .tag-key { background: var(--blue-dim); color: var(--blue); }
     .row-plus { position: relative; width: 26px; height: 26px; }
     .row-plus::before, .row-plus::after {
       content: ''; position: absolute; top: 50%; left: 50%;
@@ -702,8 +700,8 @@
         <div class="stat"><div class="stat-n">61</div><div class="stat-l">agents</div></div>
         <div class="stat"><div class="stat-n">66</div><div class="stat-l">modules</div></div>
         <div class="stat"><div class="stat-n">367</div><div class="stat-l">things to ask for</div></div>
-        <div class="stat"><div class="stat-n">22</div><div class="stat-l">need no account</div></div>
-        <div class="stat"><div class="stat-n">22</div><div class="stat-l">ask before acting</div></div>
+        <div class="stat"><div class="stat-n">11</div><div class="stat-l">areas of your business</div></div>
+        <div class="stat"><div class="stat-n">22</div><div class="stat-l">run with no setup</div></div>
       </div>
     </div>
   </header>
@@ -752,7 +750,7 @@
                 <span class="row-name">Autonomy Policy</span>
                 <span class="row-tag">Declare what an automated run may touch, then read the policy back.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-santa" hidden>
@@ -785,7 +783,7 @@
                 <span class="row-name">Doctor</span>
                 <span class="row-tag">Check whether your install is actually healthy, then fix two of the faults.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-doctor" hidden>
@@ -820,7 +818,7 @@
                 <span class="row-name">Evolver</span>
                 <span class="row-tag">Notices what you keep repeating and proposes a fix you have to approve.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-evolver" hidden>
@@ -854,7 +852,7 @@
                 <span class="row-name">Identity Ontology</span>
                 <span class="row-tag">A starter identity map so one person is not three separate records.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span><span class="tag tag-kind">Data</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-ontology" hidden>
@@ -888,7 +886,7 @@
                 <span class="row-name">Mac Cleaner</span>
                 <span class="row-tag">Finds what is eating your disk, and removes nothing until you confirm.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-mac-cleaner" hidden>
@@ -922,7 +920,7 @@
                 <span class="row-name">Mission Control</span>
                 <span class="row-tag">The workspace the rest of All Sorted plugs into.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span><span class="tag tag-kind">App</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-mission-control-core" hidden>
@@ -956,7 +954,7 @@
                 <span class="row-name">Organizer</span>
                 <span class="row-tag">Keep an index of every recipe, skill, and workflow on your machine.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-organizer" hidden>
@@ -989,7 +987,7 @@
                 <span class="row-name">Overseer</span>
                 <span class="row-tag">Tells you when something you run has stopped, filled up, or gone stale.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-overseer" hidden>
@@ -1024,7 +1022,7 @@
                 <span class="row-name">Parallel Sidecars</span>
                 <span class="row-tag">Works out which parts of a job can run in the background at once.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-parallel-sidecars" hidden>
@@ -1058,7 +1056,7 @@
                 <span class="row-name">Report Relay</span>
                 <span class="row-tag">Formats a status report and shows you exactly what would be sent.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-report-relay" hidden>
@@ -1092,7 +1090,7 @@
                 <span class="row-name">Skills Pack</span>
                 <span class="row-tag">Twenty ready-made skills for planning, debugging, writing, and reviewing.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span><span class="tag tag-kind">Skill pack</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-skills" hidden>
@@ -1127,7 +1125,7 @@
                 <span class="row-name">Strategist</span>
                 <span class="row-tag">One short brief each morning on the three things that actually matter.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-strategist" hidden>
@@ -1173,7 +1171,7 @@
                 <span class="row-name">Apollo</span>
                 <span class="row-tag">Look up companies and people for sales research, using your own Apollo account.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-apollo" hidden>
@@ -1207,7 +1205,7 @@
                 <span class="row-name">Bookkeeper</span>
                 <span class="row-tag">Imports your statements, sorts the entries, and holds back the doubtful ones.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-bookkeeper" hidden>
@@ -1242,7 +1240,7 @@
                 <span class="row-name">CRM</span>
                 <span class="row-tag">A contact and pipeline workspace that lives in your own Mission Control.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span><span class="tag tag-kind">App</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-crm" hidden>
@@ -1277,7 +1275,7 @@
                 <span class="row-name">Kajabi</span>
                 <span class="row-tag">Runs contacts, tags, offers, and orders inside your own Kajabi site.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-kajabi" hidden>
@@ -1312,7 +1310,7 @@
                 <span class="row-name">Lusha</span>
                 <span class="row-tag">Looks up business contact details for one named person at a time.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-lusha" hidden>
@@ -1346,7 +1344,7 @@
                 <span class="row-name">Stripe</span>
                 <span class="row-tag">Answers revenue questions and sets up checkout without five dashboards.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-stripe" hidden>
@@ -1381,7 +1379,7 @@
                 <span class="row-name">Zoho Books</span>
                 <span class="row-tag">Read your books and raise invoices, bills and expenses in your own Zoho.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-zoho-books" hidden>
@@ -1428,7 +1426,7 @@
                 <span class="row-name">Calendar Brief</span>
                 <span class="row-tag">Turn your calendar into a daily brief, open windows, and meeting prep.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-calendar-brief-mcp" hidden>
@@ -1463,7 +1461,7 @@
                 <span class="row-name">Chat Cleanup</span>
                 <span class="row-tag">Turn a chat export into a cleanup list you review yourself.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-teddy" hidden>
@@ -1497,7 +1495,7 @@
                 <span class="row-name">Email Agent</span>
                 <span class="row-tag">Triage your inbox and write replies you send yourself.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-email-agent" hidden>
@@ -1530,7 +1528,7 @@
                 <span class="row-name">Postmaster Tools</span>
                 <span class="row-tag">See how Gmail treats the mail going out from your sending domain.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-postmaster-tools" hidden>
@@ -1565,7 +1563,7 @@
                 <span class="row-name">Resend</span>
                 <span class="row-tag">Drafts a transactional email and sends it only when you say go.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-resend" hidden>
@@ -1599,7 +1597,7 @@
                 <span class="row-name">Slack</span>
                 <span class="row-tag">Read your Slack workspace, and post only when you confirm it.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-slack" hidden>
@@ -1634,7 +1632,7 @@
                 <span class="row-name">Telegram Access Gate</span>
                 <span class="row-tag">Paid members get into your Telegram group, lapsed ones get removed.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span><span class="tag tag-kind">Connector</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-ai-agent-income-telegram-gate" hidden>
@@ -1668,7 +1666,7 @@
                 <span class="row-name">WhatsApp</span>
                 <span class="row-tag">Links a WhatsApp account you own, and tells you if it is still connected.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-whatsapp" hidden>
@@ -1702,7 +1700,7 @@
                 <span class="row-name">Zoom</span>
                 <span class="row-tag">Handles meeting admission and recording retention, never the content.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-zoom" hidden>
@@ -1749,7 +1747,7 @@
                 <span class="row-name">Branding Manager</span>
                 <span class="row-tag">Keeps a written brand brain per project, and checks your copy against it.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-branding-manager" hidden>
@@ -1784,7 +1782,7 @@
                 <span class="row-name">Instagram</span>
                 <span class="row-tag">Reads your account, drafts the post, and publishes only when you confirm.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-instagram" hidden>
@@ -1819,7 +1817,7 @@
                 <span class="row-name">PostPilot</span>
                 <span class="row-tag">Research, draft and SEO-shape a blog post, then publish only when you say.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-postpilot" hidden>
@@ -1853,7 +1851,7 @@
                 <span class="row-name">Sales Video Planner</span>
                 <span class="row-tag">Plans a sales video from your brief. You still write the script.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-vsl-agent" hidden>
@@ -1888,7 +1886,7 @@
                 <span class="row-name">Slide Deck Builder</span>
                 <span class="row-tag">Turns a goal into a deck that argues something, then builds it.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-slide-deck-builder" hidden>
@@ -1923,7 +1921,7 @@
                 <span class="row-name">Testimonial Selector</span>
                 <span class="row-tag">Ranks the customer quotes you already hold and shows what they do not prove.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-testimonial-selector" hidden>
@@ -1969,7 +1967,7 @@
                 <span class="row-name">Backlinks</span>
                 <span class="row-tag">Find backlink prospects, watch the links you have, and draft the outreach.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-backlinks" hidden>
@@ -2004,7 +2002,7 @@
                 <span class="row-name">Dittofeed</span>
                 <span class="row-tag">Runs the lifecycle email automations on a Dittofeed you host yourself.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-dittofeed" hidden>
@@ -2039,7 +2037,7 @@
                 <span class="row-name">Meta Ads</span>
                 <span class="row-tag">Read your Facebook and Instagram ad numbers, and pause or resume a campaign.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-meta-ads" hidden>
@@ -2074,7 +2072,7 @@
                 <span class="row-name">SEO Agent</span>
                 <span class="row-tag">Audit a page, build a content brief, and write a draft for review.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-seo" hidden>
@@ -2107,7 +2105,7 @@
                 <span class="row-name">SEO Monitor</span>
                 <span class="row-tag">Audits the public SEO signals on a page and says what is missing.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-seo-monitor" hidden>
@@ -2153,7 +2151,7 @@
                 <span class="row-name">Descript</span>
                 <span class="row-tag">Imports media, tracks jobs and edits projects in your own Descript account.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-descript" hidden>
@@ -2188,7 +2186,7 @@
                 <span class="row-name">ElevenLabs</span>
                 <span class="row-tag">Turn a script into narration on your own ElevenLabs account.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-elevenlabs" hidden>
@@ -2222,7 +2220,7 @@
                 <span class="row-name">Flow</span>
                 <span class="row-tag">Generate a short video clip from a written description.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-flow" hidden>
@@ -2256,7 +2254,7 @@
                 <span class="row-name">Generative Media Connector</span>
                 <span class="row-tag">Sends image and video requests to your own muapi, fal.ai, or Replicate account.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-open-generative-ai" hidden>
@@ -2290,7 +2288,7 @@
                 <span class="row-name">Image Upscaler</span>
                 <span class="row-tag">Upscale PNGs on your own machine, with the originals left untouched.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-image-upscaler" hidden>
@@ -2324,7 +2322,7 @@
                 <span class="row-name">Kling</span>
                 <span class="row-tag">Make video from a description, a photo, or an audio track for lip sync.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-kling" hidden>
@@ -2358,7 +2356,7 @@
                 <span class="row-name">Video Editor</span>
                 <span class="row-tag">Trim, resize, and caption video on your own machine, with no keys.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-video-editor" hidden>
@@ -2393,7 +2391,7 @@
                 <span class="row-name">Whisk</span>
                 <span class="row-tag">Blend a subject, a scene, and a style into one new image.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-whisk" hidden>
@@ -2439,7 +2437,7 @@
                 <span class="row-name">Gemini Search</span>
                 <span class="row-tag">Answer questions with current web results and the sources behind them.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-gemini-search" hidden>
@@ -2472,7 +2470,7 @@
                 <span class="row-name">Web Fetch</span>
                 <span class="row-tag">Fetches, screenshots and extracts web pages, politely and by the rules.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-webfetch" hidden>
@@ -2507,7 +2505,7 @@
                 <span class="row-name">Website Enrichment</span>
                 <span class="row-tag">Builds a short, sourced profile of a public website from its own pages.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-enrichment" hidden>
@@ -2554,7 +2552,7 @@
                 <span class="row-name">Contract Structure Check</span>
                 <span class="row-tag">A mechanical structure check over a contract, before a lawyer reads it.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-lawyer" hidden>
@@ -2589,7 +2587,7 @@
                 <span class="row-name">DocuSeal</span>
                 <span class="row-tag">Send documents for signature and chase the people who have not signed.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-docuseal" hidden>
@@ -2623,7 +2621,7 @@
                 <span class="row-name">Dropbox</span>
                 <span class="row-tag">Moves documents in your own Dropbox, and sends them out for signature.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-dropbox" hidden>
@@ -2669,7 +2667,7 @@
                 <span class="row-name">Git Guardian</span>
                 <span class="row-tag">Tells you which project folders hold work that is not backed up yet.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-git-guardian" hidden>
@@ -2703,7 +2701,7 @@
                 <span class="row-name">Guard-dog</span>
                 <span class="row-tag">Check a package for known trouble before it gets into your project.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-guard-dog" hidden>
@@ -2737,7 +2735,7 @@
                 <span class="row-name">Threat Intelligence</span>
                 <span class="row-tag">Sorts a pile of security findings into a ranked list you can act on.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-threat-intelligence" hidden>
@@ -2784,7 +2782,7 @@
                 <span class="row-name">Domain Search</span>
                 <span class="row-tag">Finds candidate domain names and checks whether they are actually free.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-domain-search" hidden>
@@ -2818,7 +2816,7 @@
                 <span class="row-name">Git Manager</span>
                 <span class="row-tag">Backs up work in progress, and commits to your branch only when you confirm.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-git-manager" hidden>
@@ -2852,7 +2850,7 @@
                 <span class="row-name">Porkbun</span>
                 <span class="row-tag">Reads and edits DNS for the domains you already own at Porkbun.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-porkbun" hidden>
@@ -2887,7 +2885,7 @@
                 <span class="row-name">Shlink</span>
                 <span class="row-tag">Turns a long URL into a short link on your own Shlink server.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-shlink" hidden>
@@ -2920,7 +2918,7 @@
                 <span class="row-name">Supabase</span>
                 <span class="row-tag">Reads and edits rows in your own Supabase tables, inside set limits.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-gate">Asks first</span></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-supabase" hidden>
@@ -2955,7 +2953,7 @@
                 <span class="row-name">Vercel</span>
                 <span class="row-tag">Shows what is deployed on Vercel, and runs a deploy when you ask.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-vercel" hidden>
@@ -3002,7 +3000,7 @@
                 <span class="row-name">Bee</span>
                 <span class="row-tag">Read back what your Bee wearable already captured, on your own account.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-bee" hidden>
@@ -3035,7 +3033,7 @@
                 <span class="row-name">Shopping Planner</span>
                 <span class="row-tag">Turns a shopping list into a research plan before you spend anything.</span>
               </span>
-              <span class="row-tags"><span class="tag tag-offline">No account</span></span>
+              <span class="row-tags"></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-amazon-shopping" hidden>
@@ -3069,7 +3067,7 @@
                 <span class="row-name">Smart Home</span>
                 <span class="row-tag">Controls your own Hue lights and Tuya devices by outcome, not by command.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-smart-home" hidden>
@@ -3103,7 +3101,7 @@
                 <span class="row-name">Spotify</span>
                 <span class="row-tag">Search, play, and build playlists on your own Spotify account.</span>
               </span>
-              <span class="row-tags"></span>
+              <span class="row-tags"><span class="tag tag-key">API key</span></span>
               <span class="row-plus" aria-hidden="true"></span>
             </button>
             <div class="row-body" id="a-spotify" hidden>
