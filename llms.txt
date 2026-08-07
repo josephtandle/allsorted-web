@@ -8,6 +8,7 @@ Last updated: 2026-06-19
 
 - [Home](https://getallsorted.ai): Main product page covering the offer, core agents, key workflows, and call to action.
 - [Features](https://getallsorted.ai/features): Detailed feature page covering the included task board, security, content, CRM, reporting, and install architecture.
+- [Agents](https://getallsorted.ai/agents): The full catalog. Every one of the 61 agents and 66 modules that ship, grouped into 11 areas of a service business, with what each one does, what it can do, what it needs from the customer, and whether it requires explicit confirmation before acting. Machine-readable at https://getallsorted.ai/data/agents.json.
 
 ## Summary
 

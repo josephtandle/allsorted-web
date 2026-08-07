@@ -2,6 +2,7 @@
   "name": "allsorted",
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/features", "destination": "/features.html" }
+    { "source": "/features", "destination": "/features.html" },
+    { "source": "/agents", "destination": "/agents.html" }
   ]
 }

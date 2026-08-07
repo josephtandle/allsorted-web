@@ -1,0 +1,1369 @@
+{
+  "generatedAt": "2026-08-07T03:21:30.582Z",
+  "generatedBy": "projects/all-sorted/scripts/build-agent-catalog.js",
+  "source": "allsorted-dist shipped member repo",
+  "counts": {
+    "total": 66,
+    "agents": 61,
+    "recipes": 365,
+    "categories": 43,
+    "groups": 11,
+    "offline": 22,
+    "gated": 22
+  },
+  "groups": [
+    {
+      "slug": "operating-system",
+      "label": "The operating system itself",
+      "blurb": "The parts that keep the rest of it running, indexed, healthy and honest.",
+      "modules": [
+        {
+          "name": "santa",
+          "label": "Autonomy Policy",
+          "kind": "agent",
+          "category": "operations",
+          "categoryLabel": "Operations",
+          "tagline": "Declare what an automated run may touch, then read the policy back.",
+          "description": "You write four files: which projects an automated run may touch, which capabilities are allowed at all, whether web and outbound message actions are approved, and whether the whole thing is in dry run. It reads those back and reports which of the actions you declared pass your own filters. It runs none of them, and it ships with the policy empty on purpose.",
+          "canDo": [
+            "List the candidate actions you declared that pass your own policy",
+            "Show which projects and capabilities are currently in scope",
+            "Report the state of the web and outbound message approval gates",
+            "Confirm whether the whole thing is still in dry run"
+          ],
+          "needs": "Nothing, works offline. You fill in the policy files yourself.",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "doctor",
+          "label": "Doctor",
+          "kind": "agent",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "Check whether your install is actually healthy, then fix two of the faults.",
+          "description": "It runs five read-only checks on your own install: is the app serving, are your modules intact, is the automation hook registered, is the search index fresh, and are any installs broken. Two of those findings it can put right, by re-running an installer you already listed in your config or rebuilding a stale index. Nothing else gets touched.",
+          "canDo": [
+            "Check whether your app is serving on the address you configured",
+            "Verify every installed module still has the files it installed",
+            "Confirm the automation hook is registered in your settings file",
+            "Report whether the search index exists and how stale it is",
+            "Rebuild a missing or stale index using your own rebuild command",
+            "Re-run the installer for a module that came back broken"
+          ],
+          "needs": "Nothing, it reads your own install once you fill in the paths",
+          "confirmationGated": false,
+          "recipeCount": 9
+        },
+        {
+          "name": "evolver",
+          "label": "Evolver",
+          "kind": "agent",
+          "category": "operations",
+          "categoryLabel": "Operations",
+          "tagline": "Notices what you keep repeating and proposes a fix you have to approve.",
+          "description": "Evolver watches how you actually work on this machine, spots the same request coming round again, and writes it up as a proposal: a shortcut, a repair, a route worth making permanent. Watching is off until you switch it on, everything stays in a locked folder on your own machine, and nothing is applied until you approve it by token. Its own safety rules cannot be edited by a proposal.",
+          "canDo": [
+            "Record what you ask for and find the patterns that repeat",
+            "Surface recurring failures and gaps worth fixing",
+            "Draft a bounded repair or a shortcut for a weekly routine",
+            "Hold every proposal until you approve it by token",
+            "Report exactly what it can and cannot do right now"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "ontology",
+          "label": "Identity Ontology",
+          "kind": "data",
+          "category": "identity",
+          "categoryLabel": "Data model",
+          "tagline": "A starter identity map so one person is not three separate records.",
+          "description": "The ontology names your records, the stores that hold them, and the safe rules for joining them. It ships one worked example: resolve a contact across a CRM and an address book by matching normalised email first, then phone. It is a small teaching scaffold with synthetic demo data, meant to be replaced with your own entities and rules.",
+          "canDo": [
+            "Resolve a contact across your identity stores",
+            "Match on normalised email first, then normalised phone",
+            "Describe entities, stores and join rules in one registry",
+            "Try the resolver against synthetic demo data before wiring real records",
+            "Extend the schema with your own entities and stores"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 1
+        },
+        {
+          "name": "mac-cleaner",
+          "label": "Mac Cleaner",
+          "kind": "agent",
+          "category": "maintenance",
+          "categoryLabel": "Machine maintenance",
+          "tagline": "Finds what is eating your disk, and removes nothing until you confirm.",
+          "description": "Mac Cleaner looks only inside the folders you list in its config, and that config ships empty, so a fresh install cannot see any of your files. It reports exact paths and sizes, and applies the backup retention rules you set. Removal takes a second run carrying the confirmation token, and every file is rechecked in the moment before it goes. Deletion is permanent.",
+          "canDo": [
+            "Audit the folders you configured and show what is taking up space",
+            "Preview the old files a cleanup would remove",
+            "Delete those files once you pass the confirmation token",
+            "Preview which backup archives your retention rules would drop",
+            "Prune old backup archives after you confirm"
+          ],
+          "needs": "A config listing the folders it may look at. No account needed.",
+          "confirmationGated": true,
+          "recipeCount": 3
+        },
+        {
+          "name": "mission-control-core",
+          "label": "Mission Control",
+          "kind": "app",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "The workspace the rest of All Sorted plugs into.",
+          "description": "A local app that runs on your own machine: a dashboard, a task board, projects, a calendar view, settings, and a page showing which modules you have installed. It ships as the core, and modules such as the CRM add their own pages on top of it. Your notes and files stay in a workspace folder you control.",
+          "canDo": [
+            "Run a dashboard, task board and project notes on your own machine",
+            "See which All Sorted modules are installed and what state they are in",
+            "Keep working notes and decisions in a workspace folder you own",
+            "Take module pages, such as the CRM, as overlays on the same app",
+            "Back up workspace data with credential files kept out of the archive"
+          ],
+          "needs": "Node.js on your own machine, nothing else to start",
+          "confirmationGated": true,
+          "recipeCount": 0
+        },
+        {
+          "name": "organizer",
+          "label": "Organizer",
+          "kind": "agent",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "Keep an index of every recipe, skill, and workflow on your machine.",
+          "description": "It walks a directory you point it at, finds every recipe, skill, workflow, and project file, and writes them into a local index that the routing system reads. It also tells you whether that index has gone stale, and finds dead links or orphan entries inside it. Everything stays on your machine, and no source file it reads is ever rewritten.",
+          "canDo": [
+            "Index a directory of recipes, skills, workflows, and projects",
+            "Check whether the index is stale before paying for a full rebuild",
+            "Audit the index for dead links and orphan entries",
+            "Confirm the machine is ready to index"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 4
+        },
+        {
+          "name": "overseer",
+          "label": "Overseer",
+          "kind": "agent",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "Tells you when something you run has stopped, filled up, or gone stale.",
+          "description": "Six checks over the things you configure: services and processes, scheduled jobs, free disk space, log directory size, backup freshness, and env file syntax. All six only read. Two repairs can act, restarting a service you listed and clearing a lock once it is genuinely stale. Both run straight away, and both only touch entries you put in the config yourself.",
+          "canDo": [
+            "Check whether your configured services and processes are still alive",
+            "Check whether scheduled jobs have reported in recently",
+            "Watch free disk space and log directory size against your own limits",
+            "Check backups are recent and env files are not malformed",
+            "Restart a stopped service you listed, then verify it came back",
+            "Clear a lock file once it is past the stale window you set"
+          ],
+          "needs": "A config listing the services, jobs, paths and locks you want watched",
+          "confirmationGated": false,
+          "recipeCount": 10
+        },
+        {
+          "name": "parallel-sidecars",
+          "label": "Parallel Sidecars",
+          "kind": "agent",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "Works out which parts of a job can run in the background at once.",
+          "description": "Before a long job starts, this decides which parts can run beside the main thread, how many lanes there should be, and what each one is allowed to touch. It plans only: it never launches a worker and never edits your files. Writable lanes are off by default, and when you turn them on they work in a disposable copy of the repository and hand back a patch to read.",
+          "canDo": [
+            "Plan which parts of a job can run in parallel",
+            "Cap how many lanes run and how much each one may touch",
+            "See the exact gate that held a writable lane back",
+            "Inspect what a sidecar patch would change before anything is applied",
+            "Check what this install is currently allowed to do"
+          ],
+          "needs": "Nothing, works offline. Git on your PATH for writable lanes",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "report-relay",
+          "label": "Report Relay",
+          "kind": "agent",
+          "category": "reporting",
+          "categoryLabel": "Reporting",
+          "tagline": "Formats a status report and shows you exactly what would be sent.",
+          "description": "Report Relay turns a title, a summary and a priority into a consistently formatted status report, then previews where that report would go. The recipes format and preview only: nothing is delivered to Telegram or anywhere else from here. It states plainly whether a destination is configured, so a preview is never mistaken for a send.",
+          "canDo": [
+            "Format a title, summary and priority into a clean report",
+            "Keep the priority honest instead of marking everything urgent",
+            "Preview the delivery destination before anything goes out",
+            "Confirm whether a Telegram destination is actually configured",
+            "Keep bot tokens and chat IDs out of the output"
+          ],
+          "needs": "Nothing to format a report. Your own Telegram bot token and chat ID to preview a real destination",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "skills",
+          "label": "Skills Pack",
+          "kind": "skill-pack",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "Twenty ready-made skills for planning, debugging, writing, and reviewing.",
+          "description": "Twenty skills that need no keys and no setup: twelve written for All Sorted, and eight third-party MIT skills that ship with their original licences and credit. They cover planning before you build, debugging to root cause, verifying a change, and getting the AI smell out of your writing. Two of them, CRM and Form Builder, need their matching app modules.",
+          "canDo": [
+            "Plan a change properly before any code gets written",
+            "Debug a failure to root cause instead of guessing at a fix",
+            "Verify a change actually works before calling it done",
+            "Strip AI writing patterns out of a draft and put your voice back",
+            "Review a diff with a fresh set of eyes",
+            "Check a site for broken links or a service for uptime"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 0
+        },
+        {
+          "name": "strategist",
+          "label": "Strategist",
+          "kind": "agent",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "One short brief each morning on the three things that actually matter.",
+          "description": "You describe your business once, drop in notes as things happen, and it produces a daily brief: three ranked priorities, what is at risk, where the money is, and an honest line on whether you are drifting. Seven strategy lenses argue it out first, and disagreement is kept rather than averaged away. It is an advisor: it sends nothing and moves no money.",
+          "canDo": [
+            "Produce a daily brief with three ranked priorities",
+            "Run a weekly portfolio review instead of the daily brief",
+            "Check mid-day whether what you are doing matches today's priorities",
+            "Read the last three briefs so priorities cannot quietly roll forward",
+            "Write out the full prompt when the local Claude tool is not installed"
+          ],
+          "needs": "Node.js and Claude Code on your own machine, under your own login",
+          "confirmationGated": false,
+          "recipeCount": 3
+        }
+      ]
+    },
+    {
+      "slug": "clients-and-money",
+      "label": "Clients, sales and money",
+      "blurb": "Who is in your pipeline, what they owe you, and what the books say.",
+      "modules": [
+        {
+          "name": "apollo",
+          "label": "Apollo",
+          "kind": "agent",
+          "category": "sales",
+          "categoryLabel": "Prospecting and lead research",
+          "tagline": "Look up companies and people for sales research, using your own Apollo account.",
+          "description": "Apollo is where you check a company or a contact before you go after them. It searches for people and companies, and fills in a record when you already have an email address or a domain. It runs on your own Apollo key, spends your credits, and reports only what Apollo actually returned. If a field comes back empty, it says so rather than guessing.",
+          "canDo": [
+            "Search for companies by industry, size, or location",
+            "Find the people at a target company by role",
+            "Fill in a contact record from an email address",
+            "Fill in a company record from a domain",
+            "Check your key is set up before you spend any credits"
+          ],
+          "needs": "Your own Apollo API key. There is a credential-free demo without one.",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "bookkeeper",
+          "label": "Bookkeeper",
+          "kind": "agent",
+          "category": "finance",
+          "categoryLabel": "Books and accounting",
+          "tagline": "Imports your statements, sorts the entries, and holds back the doubtful ones.",
+          "description": "Bookkeeper reads bank statements as CSV, OFX, QIF or PDF, builds balanced double entry journals, and puts anything it is not confident about into a review queue with the reason. It runs on your machine and takes no bank login. Nothing reaches your ledger until you have seen the diff and confirmed it. It reports on money, it never moves it.",
+          "canDo": [
+            "Import statements as CSV, OFX, QIF or PDF",
+            "Pull vendor, date, totals and line items off an invoice or receipt",
+            "Sort transactions into accounts and flag the uncertain ones",
+            "Work a review queue, and turn your corrections into rules",
+            "Post balanced journals once you confirm the diff",
+            "Run profit and loss, cash position and ageing reports"
+          ],
+          "needs": "Your own statement files. No bank login, no credentials",
+          "confirmationGated": false,
+          "recipeCount": 12
+        },
+        {
+          "name": "crm",
+          "label": "CRM",
+          "kind": "app",
+          "category": "crm",
+          "categoryLabel": "Clients and pipeline",
+          "tagline": "A contact and pipeline workspace that lives in your own Mission Control.",
+          "description": "Contacts, a pipeline board, activity history, labels and saved views, all held in a local database on your machine. Automation rules can draft follow-up messages from your own templates, but every one lands in an approval queue first. Live sending stays off until you add your own credentials and switch the channel on.",
+          "canDo": [
+            "Keep contacts, notes and activity history in one place",
+            "Move leads through pipeline stages on a board",
+            "Group people with labels and saved views",
+            "Draft follow-up messages from your own templates",
+            "Hold every automated message in an approval queue before delivery",
+            "Track affiliates and their payouts"
+          ],
+          "needs": "A Mission Control install, plus your own email credentials if you want to send",
+          "confirmationGated": true,
+          "recipeCount": 0
+        },
+        {
+          "name": "kajabi",
+          "label": "Kajabi",
+          "kind": "agent",
+          "category": "commerce",
+          "categoryLabel": "Courses and commerce",
+          "tagline": "Runs contacts, tags, offers, and orders inside your own Kajabi site.",
+          "description": "This connects to your Kajabi site through its API. It reads contacts, courses, offers, orders, and payouts, so you can answer a question without logging in. Anything that changes a student's record, their access, or their subscription shows you the plan first and waits for your approval. It does not email students, and it does not publish or edit course content.",
+          "canDo": [
+            "Find a contact and see what they bought",
+            "List your courses, offers, orders, and payouts",
+            "Add a contact, a tag, or a note once you approve it",
+            "Grant or revoke access to an offer, record by record",
+            "Cancel, pause, or reactivate a purchase after you confirm",
+            "Set up or remove an API webhook"
+          ],
+          "needs": "Your own Kajabi client ID and secret",
+          "confirmationGated": true,
+          "recipeCount": 12
+        },
+        {
+          "name": "lusha",
+          "label": "Lusha",
+          "kind": "agent",
+          "category": "sales",
+          "categoryLabel": "Prospecting and lead research",
+          "tagline": "Looks up business contact details for one named person at a time.",
+          "description": "Lusha connects to your own Lusha account and finds a business contact you can already name, by email, full name or LinkedIn URL. One person per request: there is no batch, CSV or list import, and it refuses anything shaped like a bulk export. Results are not stored, logged or cached by the module.",
+          "canDo": [
+            "Search for one named business contact",
+            "Reveal emails or phone numbers for a contact you have confirmed",
+            "Find a phone number in one step, search then reveal",
+            "Check how many account credits you have left",
+            "Refuse bulk or list shaped requests before they reach the API"
+          ],
+          "needs": "Your own Lusha account and API key",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "stripe",
+          "label": "Stripe",
+          "kind": "agent",
+          "category": "payments",
+          "categoryLabel": "Money in",
+          "tagline": "Answers revenue questions and sets up checkout without five dashboards.",
+          "description": "Stripe reads the account you connect: balance, revenue over a date range, payment links and promotion codes. Creating a payment link or a promo code starts as a plan and only runs when you type the exact confirmation phrase. Refunds, direct charges and subscription changes are not built into it, so it cannot move your money.",
+          "canDo": [
+            "Summarise available and pending balance",
+            "Summarise revenue over a chosen number of days",
+            "List existing payment links and promotion codes",
+            "Plan a payment link, then create it on your confirmation",
+            "Plan a promo code, then create it on your confirmation",
+            "Verify a new promo code at live checkout before you share the link"
+          ],
+          "needs": "Your own Stripe secret key",
+          "confirmationGated": true,
+          "recipeCount": 8
+        },
+        {
+          "name": "zoho-books",
+          "label": "Zoho Books",
+          "kind": "agent",
+          "category": "finance",
+          "categoryLabel": "Books and accounting",
+          "tagline": "Read your books and raise invoices, bills and expenses in your own Zoho.",
+          "description": "It talks to your own Zoho Books organisation with your own credentials. Most of it reads: invoices, bills, expenses, contacts, items, bank accounts and transactions, payments in and out, the chart of accounts and the dashboard. Creating an invoice, contact or expense, pushing journals, and sending an invoice are the write actions, and each one needs your say-so.",
+          "canDo": [
+            "List and open invoices, bills, expenses and payments",
+            "Pull the chart of accounts, bank accounts and bank transactions",
+            "Read contacts, items and your organisation settings",
+            "See the accounting dashboard at a glance",
+            "Create an invoice, contact or expense, and push validated journal entries",
+            "Send an invoice to a customer, on your confirmation"
+          ],
+          "needs": "Your own Zoho OAuth client, refresh token and organisation ID",
+          "confirmationGated": true,
+          "recipeCount": 22
+        }
+      ]
+    },
+    {
+      "slug": "inbox-and-conversations",
+      "label": "Inbox, messaging and meetings",
+      "blurb": "The channels that eat your day, handled with drafts you approve.",
+      "modules": [
+        {
+          "name": "calendar-brief-mcp",
+          "label": "Calendar Brief",
+          "kind": "agent",
+          "category": "calendar",
+          "categoryLabel": "Calendar",
+          "tagline": "Turn your calendar into a daily brief, open windows, and meeting prep.",
+          "description": "It reads your own calendar through a connection you configure and tells you what the day looks like: what is busy, what clashes, where the gaps are, and what you need to know before the next call. It can also add, move, and cancel events on your own calendar. It refuses outright if you try to add attendees, because inviting someone is a message to a real person.",
+          "canDo": [
+            "Build a daily brief with conflicts and free time",
+            "Find open windows today, tomorrow, or across the week",
+            "Prep you for a meeting with attendees, links, and nearby context",
+            "Add an event to your own calendar without double booking on a retry",
+            "Move or retitle an event and report exactly what changed",
+            "Cancel an event on your own calendar"
+          ],
+          "needs": "Your own calendar account, connected through a command you configure",
+          "confirmationGated": false,
+          "recipeCount": 7
+        },
+        {
+          "name": "teddy",
+          "label": "Chat Cleanup",
+          "kind": "agent",
+          "category": "communications",
+          "categoryLabel": "Inbox and conversations",
+          "tagline": "Turn a chat export into a cleanup list you review yourself.",
+          "description": "You give it an export of your conversations and a retention window. It flags two things: threads that are nothing but automated notifications, and threads with no activity since your cut off. Everything comes back as a plan you can read or save to a file. It never logs into an account and deletes nothing, because it has no connection to delete through.",
+          "canDo": [
+            "Flag conversations with no activity past your retention window",
+            "Flag threads that carry only automated or service messages",
+            "Preview the full review list before you touch anything",
+            "Save the plan to a file for review or approval",
+            "Set and check the retention window it works to"
+          ],
+          "needs": "A conversation export you provide. No account login.",
+          "confirmationGated": false,
+          "recipeCount": 6
+        },
+        {
+          "name": "email-agent",
+          "label": "Email Agent",
+          "kind": "agent",
+          "category": "communications",
+          "categoryLabel": "Inbox and conversations",
+          "tagline": "Triage your inbox and write replies you send yourself.",
+          "description": "It reads a message you give it, sorts it against your own keywords and sender rules, and suggests review or a label. It writes reply drafts that stay on your machine. It never sends, never auto-replies, and never changes your mailbox: the sending happens in your own mail client, by you.",
+          "canDo": [
+            "Triage a message into a review or label suggestion",
+            "Draft a reply for you to review and send yourself",
+            "Sort against your own urgent keywords and sender rules",
+            "Check whether your mailbox connector is configured"
+          ],
+          "needs": "Nothing to start. Your own Google OAuth connector only if you want it reading a live mailbox",
+          "confirmationGated": false,
+          "recipeCount": 4
+        },
+        {
+          "name": "postmaster-tools",
+          "label": "Postmaster Tools",
+          "kind": "agent",
+          "category": "email",
+          "categoryLabel": "Email delivery",
+          "tagline": "See how Gmail treats the mail going out from your sending domain.",
+          "description": "It reads Google Postmaster Tools for a domain your own Google account already has in there: spam rate, SPF, DKIM and DMARC pass rates, delivery errors, and outbound TLS. It can register a new domain for tracking, but it cannot verify one, that is a DNS record you add yourself at Google. Every number comes back with the window it covers.",
+          "canDo": [
+            "Check your domain's Gmail spam rate",
+            "Check SPF, DKIM, and DMARC pass rates",
+            "Check the delivery error rate and outbound TLS encryption rate",
+            "Pull a full deliverability and reputation report for a domain",
+            "Register a new sending domain for tracking",
+            "Re-check whether Google now lists a domain you registered"
+          ],
+          "needs": "Your own Google OAuth client ID, secret, and refresh token",
+          "confirmationGated": false,
+          "recipeCount": 8
+        },
+        {
+          "name": "resend",
+          "label": "Resend",
+          "kind": "agent",
+          "category": "email",
+          "categoryLabel": "Email delivery",
+          "tagline": "Drafts a transactional email and sends it only when you say go.",
+          "description": "This sends email through your own Resend account. Ask it to send and it comes back with the full draft first: recipient, sender, subject, body. Nothing reaches an inbox until you confirm that exact message, every time. It also tells you which of your sending domains are verified, and whether an earlier email arrived. Single sends, not bulk lists.",
+          "canDo": [
+            "Draft an email and show you exactly what would go out",
+            "Send it once you confirm that specific message",
+            "List the domains you are verified to send from",
+            "Check whether an earlier email was delivered",
+            "Test that the connection to your account is live"
+          ],
+          "needs": "Your own Resend API key",
+          "confirmationGated": true,
+          "recipeCount": 4
+        },
+        {
+          "name": "slack",
+          "label": "Slack",
+          "kind": "agent",
+          "category": "messaging",
+          "categoryLabel": "Messaging channels",
+          "tagline": "Read your Slack workspace, and post only when you confirm it.",
+          "description": "It lists channels, reads channel history, searches messages, and checks which identity your token belongs to. It can post a channel message or a direct message, but both default to a preview: you see the exact text and the target, and nothing is sent until you confirm that specific message. A previous yes never carries over to the next one.",
+          "canDo": [
+            "List the channels your token can see",
+            "Read recent messages in a channel",
+            "Search message history across your workspace",
+            "Check which identity the connected token belongs to",
+            "Draft a channel message or a direct message and preview it first",
+            "Post that message only after you confirm it"
+          ],
+          "needs": "Your own Slack bot token, plus a user token for search",
+          "confirmationGated": true,
+          "recipeCount": 6
+        },
+        {
+          "name": "ai-agent-income-telegram-gate",
+          "label": "Telegram Access Gate",
+          "kind": "connector",
+          "category": "messaging",
+          "categoryLabel": "Messaging channels",
+          "tagline": "Paid members get into your Telegram group, lapsed ones get removed.",
+          "description": "It binds your checkout links to Telegram accounts, issues a single-use invite once a subscription is active, and removes members after a subscription lapses. It runs against your own Telegram bot and your own Supabase billing records. Removal never happens on a first run: reconcile shows you who would go, and acts only when you confirm.",
+          "canDo": [
+            "Issue a one-time group invite when a subscription is active",
+            "Remove a member when their subscription is deleted or lapses",
+            "Preview a full reconcile before anyone is removed",
+            "Refuse a run that would empty the group or that reads an empty billing source",
+            "Report which configuration values are set without printing them"
+          ],
+          "needs": "Your Telegram bot token, group ID, Supabase keys, and a webhook secret",
+          "confirmationGated": true,
+          "recipeCount": 0
+        },
+        {
+          "name": "whatsapp",
+          "label": "WhatsApp",
+          "kind": "agent",
+          "category": "messaging",
+          "categoryLabel": "Messaging channels",
+          "tagline": "Links a WhatsApp account you own, and tells you if it is still connected.",
+          "description": "This pairs a WhatsApp account you own with a local server on your machine, by QR code or pairing code. The recipe it ships is a read-only status check: not linked, linked but offline, or connected. Checking never sends anything and never triggers a reconnect. Sending is a separate command that refuses to run without an explicit send confirmation, every time.",
+          "canDo": [
+            "Pair a WhatsApp account you own by QR or pairing code",
+            "Check whether it is unlinked, offline, or connected",
+            "List the contacts held in the local session",
+            "Send a message only when you pass the explicit send confirmation",
+            "Unlink the local session, behind its own confirmation"
+          ],
+          "needs": "A WhatsApp account you own, a phone to scan with, and Node 22",
+          "confirmationGated": true,
+          "recipeCount": 1
+        },
+        {
+          "name": "zoom",
+          "label": "Zoom",
+          "kind": "agent",
+          "category": "meetings",
+          "categoryLabel": "Meetings",
+          "tagline": "Handles meeting admission and recording retention, never the content.",
+          "description": "Zoom connects to your own account with server to server OAuth credentials. It counts cloud recording sets for a date range, queues local recordings by filename, and sets waiting room and join before host on a meeting. It never downloads, transcribes or exports what was said. Deleting old cloud recordings needs a confirmation token matching the previewed count.",
+          "canDo": [
+            "Count cloud recording sets for a date range",
+            "Queue local recordings by filename only",
+            "Set waiting room and join before host on a meeting",
+            "Verify a meeting's admission settings",
+            "Preview which cloud recordings a retention cutoff would delete",
+            "Delete them once you supply the matching confirmation token"
+          ],
+          "needs": "Your own Zoom server to server OAuth credentials",
+          "confirmationGated": true,
+          "recipeCount": 9
+        }
+      ]
+    },
+    {
+      "slug": "content-and-brand",
+      "label": "Content and brand",
+      "blurb": "Writing, decks, proof and posts, in your voice rather than a generic one.",
+      "modules": [
+        {
+          "name": "branding-manager",
+          "label": "Branding Manager",
+          "kind": "agent",
+          "category": "branding",
+          "categoryLabel": "Brand",
+          "tagline": "Keeps a written brand brain per project, and checks your copy against it.",
+          "description": "Branding Manager builds a living brand file for each project you register: who you speak to, how you sound, what you are allowed to claim. Then it scores drafts against the right brand, tracks drift across weeks rather than one snapshot, and audits a funnel for the point where the story stops holding. It runs on your machine with no API key.",
+          "canDo": [
+            "Set up a brand brain for a new project",
+            "Score a draft against the right brand, with the evidence shown",
+            "Check recent content for brand drift, and trend it over time",
+            "Compare two brands when they start sounding the same",
+            "Run a guided positioning workshop, one exercise at a time",
+            "Audit a funnel against the brand positioning"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 9
+        },
+        {
+          "name": "instagram",
+          "label": "Instagram",
+          "kind": "agent",
+          "category": "social",
+          "categoryLabel": "Social publishing",
+          "tagline": "Reads your account, drafts the post, and publishes only when you confirm.",
+          "description": "Instagram connects to your own account, through the official Meta Graph API when you provide those credentials, or through an unofficial fallback when you do not. It reads account and post statistics, reads comments on your own posts, and drafts feed images, carousels and reels. Publishing, replying and direct messages are irreversible, so each one needs the word PUBLISH for that exact request.",
+          "canDo": [
+            "Read account and recent media statistics",
+            "Read comments on your own posts and reels",
+            "Draft a feed image, a carousel of 2 to 10 images, or a reel",
+            "Publish a post, reel or story once you confirm with PUBLISH",
+            "Reply to a comment after the same confirmation",
+            "Send a direct message after the same confirmation, on the fallback transport only"
+          ],
+          "needs": "Your own Meta Graph API credentials, or an Instagram login for the unofficial fallback, which may breach Instagram's terms",
+          "confirmationGated": true,
+          "recipeCount": 10
+        },
+        {
+          "name": "postpilot",
+          "label": "PostPilot",
+          "kind": "agent",
+          "category": "content",
+          "categoryLabel": "Content production",
+          "tagline": "Research, draft and SEO-shape a blog post, then publish only when you say.",
+          "description": "It researches a topic, outlines it, writes a draft, scores readability and keyword density, works out a slug and schema, and stages the result on your machine. That is the whole automatic part. Publishing to WordPress, Ghost or a markdown file is one separate command with an explicit confirm flag, and there is no scheduler that could run it for you.",
+          "canDo": [
+            "Suggest blog topics from your business and content pillars",
+            "Research, outline and write a draft from a brief you supply",
+            "Score readability and keyword density, and write meta title and description",
+            "Stage drafts locally and list what is waiting",
+            "Publish to WordPress, Ghost or markdown, only on an explicit confirmation"
+          ],
+          "needs": "Nothing to draft. Your own CMS details only when you want to publish",
+          "confirmationGated": true,
+          "recipeCount": 5
+        },
+        {
+          "name": "vsl-agent",
+          "label": "Sales Video Planner",
+          "kind": "agent",
+          "category": "content",
+          "categoryLabel": "Content production",
+          "tagline": "Plans a sales video from your brief. You still write the script.",
+          "description": "It turns your brief into an ordered beat sheet: hook, stakes, mechanism, demonstration, proof, objections, offer and terms, call to action. Every beat carries your own material, and any beat you have not supplied the material for is marked blocked rather than filled in with invention. It checks the material terms are stated before the ask.",
+          "canDo": [
+            "Outline the beats of a sales video from your own brief",
+            "Mark every beat you have not supplied the material for",
+            "Check price, billing, delivery, guarantee and eligibility are stated before the ask",
+            "Scan a draft for the ten kinds of statement that need evidence or sign-off",
+            "Critique a draft against the beat and scene standard",
+            "Show a worked example plan from an invented brief"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 7
+        },
+        {
+          "name": "slide-deck-builder",
+          "label": "Slide Deck Builder",
+          "kind": "agent",
+          "category": "content",
+          "categoryLabel": "Content production",
+          "tagline": "Turns a goal into a deck that argues something, then builds it.",
+          "description": "It drafts the five beat story first, turns your brief into an outline, and renders a self contained HTML deck that opens without a network connection. The build fails on craft and layout breaks rather than shipping six bullets and no point of view. It can also create the deck in your own Google Slides account, and it never shares or emails it.",
+          "canDo": [
+            "Draft a five beat narrative arc before writing a single slide",
+            "Turn a goal or brief into a deck outline",
+            "Build a self contained HTML deck that opens offline",
+            "Fail the build on bullet count, headline length and layout breaks",
+            "Critique a finished deck against the craft rules",
+            "Create the deck in your own Google Slides account"
+          ],
+          "needs": "Nothing for local decks. Your own Google service account for the Slides export",
+          "confirmationGated": false,
+          "recipeCount": 8
+        },
+        {
+          "name": "testimonial-selector",
+          "label": "Testimonial Selector",
+          "kind": "agent",
+          "category": "content",
+          "categoryLabel": "Content production",
+          "tagline": "Ranks the customer quotes you already hold and shows what they do not prove.",
+          "description": "It reads your approved quotes, ranks them against a chosen audience, and explains every placing: measured results, timeframes, before and after, the speaker's role, answered doubts, and the vague praise it marks down. It also checks a quote for the problems that would stop you publishing it, and reports which of your claims no approved quote backs up.",
+          "canDo": [
+            "Rank your approved quotes for a specific audience",
+            "Explain in plain words why each quote placed where it did",
+            "Flag wording that needs sign-off, such as earnings, health or absolute claims",
+            "Catch the record problems people forget: no attribution, no consent, no capture date",
+            "Report which of your claims have no approved quote behind them"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 4
+        }
+      ]
+    },
+    {
+      "slug": "marketing-and-search",
+      "label": "Marketing and search",
+      "blurb": "Getting found, staying found, and following up without nagging.",
+      "modules": [
+        {
+          "name": "backlinks",
+          "label": "Backlinks",
+          "kind": "agent",
+          "category": "seo",
+          "categoryLabel": "Search visibility",
+          "tagline": "Find backlink prospects, watch the links you have, and draft the outreach.",
+          "description": "It looks for link opportunities using your own Ahrefs, SerpAPI and Hunter.io keys, then checks every placement you have registered with a real request to see whether your link is still on the page. It can write an outreach email for a prospect it found. It never sends it. That part stays with you.",
+          "canDo": [
+            "Find link prospects from competitor gaps and search footprints",
+            "Track every placement you register and flag links that have gone",
+            "Look up a contact for a prospect domain when Hunter.io is configured",
+            "Draft an outreach email for a prospect it actually found",
+            "Report prospects and live placements by Domain Rating",
+            "Run an offline demo before you add any keys"
+          ],
+          "needs": "Optional Ahrefs, SerpAPI and Hunter.io keys. Link tracking needs none.",
+          "confirmationGated": false,
+          "recipeCount": 6
+        },
+        {
+          "name": "dittofeed",
+          "label": "Dittofeed",
+          "kind": "agent",
+          "category": "lifecycle-marketing",
+          "categoryLabel": "Lifecycle email",
+          "tagline": "Runs the lifecycle email automations on a Dittofeed you host yourself.",
+          "description": "This connects to a Dittofeed deployment you run and own. It updates customer profiles, records lifecycle events, tells you what is sitting in the local send queue, and retries anything stuck. It lists your journeys, reads the email copy inside them, and pauses or resumes one only when you name the journey and confirm. It never sends a campaign or a test email itself.",
+          "canDo": [
+            "Update a customer profile or record a lifecycle event",
+            "Check what is waiting in the local send queue",
+            "Retry the events that got stuck",
+            "List your automation journeys and see which are running",
+            "Read the email copy a journey actually sends",
+            "Pause or resume a journey after you confirm it"
+          ],
+          "needs": "Your own Dittofeed deployment, plus its write and admin keys",
+          "confirmationGated": true,
+          "recipeCount": 8
+        },
+        {
+          "name": "meta-ads",
+          "label": "Meta Ads",
+          "kind": "agent",
+          "category": "marketing-growth",
+          "categoryLabel": "Paid acquisition",
+          "tagline": "Read your Facebook and Instagram ad numbers, and pause or resume a campaign.",
+          "description": "It pulls campaigns, ad sets, ads, and insights from your own Meta ad account so you can see what is spending and what is working. It can pause or activate a campaign, but only after you confirm that exact campaign by name and ID. It cannot change budgets, build campaigns, or edit creative. Without credentials it stays offline and only checks readiness.",
+          "canDo": [
+            "List the campaigns, ad sets, and ads on your account",
+            "Pull account and campaign insights for a date range you choose",
+            "Show a dashboard of how the ad account is doing",
+            "Pause a live campaign after you confirm that exact campaign",
+            "Activate a paused campaign after you confirm that exact campaign",
+            "Check whether your ad account is connected yet"
+          ],
+          "needs": "Your own Meta access token and ad account ID",
+          "confirmationGated": true,
+          "recipeCount": 10
+        },
+        {
+          "name": "seo",
+          "label": "SEO Agent",
+          "kind": "agent",
+          "category": "marketing",
+          "categoryLabel": "Marketing",
+          "tagline": "Audit a page, build a content brief, and write a draft for review.",
+          "description": "It fetches a public page and checks the on-page basics: title, description, H1, canonical link, image alt text, HTTP status. It turns a target keyword into a structured brief with an outline and FAQs, then turns that brief into a Markdown draft. There is no publishing command, no rank tracking, and no Search Console writes: nothing it produces reaches a live site.",
+          "canDo": [
+            "Audit a public page for on-page issues",
+            "Turn a target keyword into a brief with an outline and FAQs",
+            "Write a review-only Markdown draft from that brief",
+            "Report which optional search providers are configured"
+          ],
+          "needs": "Nothing, the audit, brief and draft all run without an API key",
+          "confirmationGated": false,
+          "recipeCount": 4
+        },
+        {
+          "name": "seo-monitor",
+          "label": "SEO Monitor",
+          "kind": "agent",
+          "category": "seo",
+          "categoryLabel": "Search visibility",
+          "tagline": "Audits the public SEO signals on a page and says what is missing.",
+          "description": "SEO Monitor fetches a public page and reports the title, meta description, canonical tag, robots.txt and sitemap.xml as they actually are, not as they should be. Core Web Vitals come from Google's public PageSpeed API when you add your own key. It reads only: it cannot change a page and it does not log into Search Console.",
+          "canDo": [
+            "Audit a public page's title, meta description and canonical tag",
+            "Check robots.txt and sitemap.xml, and flag a broken one as missing",
+            "Pull Core Web Vitals from the public PageSpeed API",
+            "Report a failed fetch as a failure instead of guessing a result",
+            "Run an offline demo before pointing it at your own site"
+          ],
+          "needs": "Your site URL. A PageSpeed API key only for Core Web Vitals",
+          "confirmationGated": false,
+          "recipeCount": 3
+        }
+      ]
+    },
+    {
+      "slug": "audio-video-images",
+      "label": "Audio, video and images",
+      "blurb": "Production work that used to mean an editor, a freelancer, or an afternoon.",
+      "modules": [
+        {
+          "name": "descript",
+          "label": "Descript",
+          "kind": "agent",
+          "category": "media",
+          "categoryLabel": "Audio, video and images",
+          "tagline": "Imports media, tracks jobs and edits projects in your own Descript account.",
+          "description": "Descript connects to your own account with your API key. It imports media from a URL or a local file into a new project, tracks the job, lists and inspects projects, and fetches transcripts from anything you have published. The AI editor instruction applies straight to the live project with no preview step, so be clear about which project you mean.",
+          "canDo": [
+            "Import media from a URL into a new project",
+            "Import a local file through your own cloudflared tunnel",
+            "Check the state, progress and result of a running job",
+            "List projects and inspect their compositions",
+            "Fetch a published transcript as text, VTT or raw JSON",
+            "Send a plain language edit instruction to Descript's own AI editor"
+          ],
+          "needs": "Your own Descript API key, plus cloudflared for local file imports",
+          "confirmationGated": false,
+          "recipeCount": 8
+        },
+        {
+          "name": "elevenlabs",
+          "label": "ElevenLabs",
+          "kind": "agent",
+          "category": "audio",
+          "categoryLabel": "Audio",
+          "tagline": "Turn a script into narration on your own ElevenLabs account.",
+          "description": "It lists your voices, resolves a voice by name, checks your remaining balance, and writes generated speech to a file you name. Long scripts get split into safe chunks. Generation runs straight away and reports the character cost, so ask for the plan first if you only want the estimate. It stops if the text is bigger than the credits you have left.",
+          "canDo": [
+            "List the voices on your account and resolve one by name",
+            "Generate speech from text into an audio file you name",
+            "Narrate a long script by splitting it into safe chunks",
+            "Estimate the character cost before you spend anything",
+            "Check how many speech credits you have left"
+          ],
+          "needs": "Your own ElevenLabs API key and credit balance",
+          "confirmationGated": false,
+          "recipeCount": 7
+        },
+        {
+          "name": "flow",
+          "label": "Flow",
+          "kind": "agent",
+          "category": "video",
+          "categoryLabel": "Video",
+          "tagline": "Generate a short video clip from a written description.",
+          "description": "It submits video generation jobs to your own configured model and hands you back a job reference. Video takes minutes, so nothing comes back finished: you check the status when you want it. Every submission spends money on your account immediately, with no confirmation step in between, and reports the cost when the provider gives one.",
+          "canDo": [
+            "Submit a video job from a written description",
+            "Include a reference image and an aspect ratio with the request",
+            "Check whether a submitted job has finished",
+            "Report what a submission cost when the provider returns a figure",
+            "Confirm your video key is configured before you try to generate"
+          ],
+          "needs": "Your own Gemini API key with billing enabled",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "open-generative-ai",
+          "label": "Generative Media Connector",
+          "kind": "agent",
+          "category": "generative-media",
+          "categoryLabel": "Generative media",
+          "tagline": "Sends image and video requests to your own muapi, fal.ai, or Replicate account.",
+          "description": "This is plumbing, not a creative tool. It forwards a request to whichever generative media account you have connected, muapi.ai, fal.ai, or Replicate, and hands back exactly what that provider returned. Every call previews for free first and runs only when you confirm, because most of them cost money. It never quietly routes a call to a provider you did not ask for.",
+          "canDo": [
+            "See which providers you have connected and which one is active",
+            "Check a provider is reachable without spending anything",
+            "Preview a request before any money is spent",
+            "Send the request to your chosen provider once you confirm",
+            "Report back any cost or credit figure the provider returned"
+          ],
+          "needs": "Your own API key for muapi.ai, fal.ai, or Replicate",
+          "confirmationGated": true,
+          "recipeCount": 4
+        },
+        {
+          "name": "image-upscaler",
+          "label": "Image Upscaler",
+          "kind": "agent",
+          "category": "media",
+          "categoryLabel": "Audio, video and images",
+          "tagline": "Upscale PNGs on your own machine, with the originals left untouched.",
+          "description": "It finds the PNGs in a folder you choose and runs your local Upscayl binary over them, writing results into a separate output directory. Originals are never overwritten, and neither are existing outputs. Nothing leaves the machine: no upload, no account, no API call.",
+          "canDo": [
+            "Upscale a single PNG into a separate output directory",
+            "Upscale every PNG in a folder you choose",
+            "Preview the filenames, count, scale and model before processing",
+            "Refuse to overwrite an original or an existing output",
+            "Check that the upscaler binary and model folder are configured"
+          ],
+          "needs": "A local Upscayl binary and model folder on your machine",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "kling",
+          "label": "Kling",
+          "kind": "agent",
+          "category": "media",
+          "categoryLabel": "Audio, video and images",
+          "tagline": "Make video from a description, a photo, or an audio track for lip sync.",
+          "description": "It submits jobs to your own Kling account: text to video, a still photo animated into a clip, or a video lip synced to an audio file. Jobs run in the background, so you get a task ID back rather than a finished video, and you check on it when you like. Every generation is billed to your own account, and each result names the model and price band it charged.",
+          "canDo": [
+            "Submit a video job from a written description",
+            "Animate a still image into a video clip",
+            "Lip sync an existing video to an audio track",
+            "Check whether a submitted job is ready yet",
+            "See the model and price band charged for each job"
+          ],
+          "needs": "Your own Kling access key and secret key",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "video-editor",
+          "label": "Video Editor",
+          "kind": "agent",
+          "category": "media",
+          "categoryLabel": "Audio, video and images",
+          "tagline": "Trim, resize, and caption video on your own machine, with no keys.",
+          "description": "It drives ffmpeg on your machine for the mechanical jobs: cut a clip, resize it for Reels, TikTok, YouTube, or square, pull the audio out, and burn in a caption file you already have. It never edits your original and refuses to overwrite an existing output. No network calls, no credentials, and no AI generation of any kind.",
+          "canDo": [
+            "Trim a clip between a start and an end point",
+            "Resize a video for Instagram Reels, TikTok, YouTube, or square",
+            "Extract the audio track as a WAV file",
+            "Burn an existing SRT or VTT caption file into a video",
+            "Inspect a file's duration, resolution, codec, and size",
+            "Check whether ffmpeg and caption burning are available here"
+          ],
+          "needs": "ffmpeg installed on your machine, nothing else",
+          "confirmationGated": false,
+          "recipeCount": 7
+        },
+        {
+          "name": "whisk",
+          "label": "Whisk",
+          "kind": "agent",
+          "category": "images",
+          "categoryLabel": "Images",
+          "tagline": "Blend a subject, a scene, and a style into one new image.",
+          "description": "You give it three reference images: what the picture is of, where it is set, and how it should look. It describes each one, composes them into a single prompt, and generates a new image into a folder you choose. Describing and generating both call a paid provider on your account and run straight away, and every result names the model and the cost.",
+          "canDo": [
+            "Describe a reference image before you use it",
+            "Combine subject, scene, and style references into one new image",
+            "Save generated images to an output folder you choose",
+            "Report the model used and the cost of each call",
+            "Check whether an image provider key is configured"
+          ],
+          "needs": "Your own OpenAI or HuggingFace API key",
+          "confirmationGated": false,
+          "recipeCount": 3
+        }
+      ]
+    },
+    {
+      "slug": "research-and-web",
+      "label": "Research and the web",
+      "blurb": "Finding out what is true before you act on it.",
+      "modules": [
+        {
+          "name": "gemini-search",
+          "label": "Gemini Search",
+          "kind": "agent",
+          "category": "research",
+          "categoryLabel": "Research and enrichment",
+          "tagline": "Answer questions with current web results and the sources behind them.",
+          "description": "It calls Gemini's own Google Search grounding to answer a question with current results and the sources that produced them. A second mode runs a two-step pass for a deeper look at a topic. It only reads: no scraping, no crawling, no logins, no forms, and it says so plainly when a call comes back with no sources.",
+          "canDo": [
+            "Run a grounded web search and return the sources with the answer",
+            "Run a two-step research pass on a topic",
+            "Report an unsourced or failed call rather than answering from memory",
+            "Check whether your API key is configured"
+          ],
+          "needs": "Your own Gemini API key",
+          "confirmationGated": false,
+          "recipeCount": 4
+        },
+        {
+          "name": "webfetch",
+          "label": "Web Fetch",
+          "kind": "agent",
+          "category": "web",
+          "categoryLabel": "Web retrieval",
+          "tagline": "Fetches, screenshots and extracts web pages, politely and by the rules.",
+          "description": "Web Fetch takes a page request and picks the cheapest tool that can answer it, from a plain static fetch up to a full browser. It checks robots.txt and waits between requests to the same domain. Media downloads that would need your browser cookies require an explicit authorisation, so it is not a way around a login or a paywall.",
+          "canDo": [
+            "Fetch and read a page, checking robots.txt first",
+            "Take a full page screenshot",
+            "Save a page as a PDF",
+            "Extract text or attributes by CSS selector",
+            "Download public or explicitly authorised media",
+            "Wait between repeat requests to the same domain"
+          ],
+          "needs": "Nothing for basic fetching. Playwright for screenshots and PDFs, yt-dlp for media",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "enrichment",
+          "label": "Website Enrichment",
+          "kind": "agent",
+          "category": "research",
+          "categoryLabel": "Research and enrichment",
+          "tagline": "Builds a short, sourced profile of a public website from its own pages.",
+          "description": "Give it one URL and it returns the title, description, canonical URL, an og:image reference, and any contact links the site already prints in public. It checks up to three of that same site's contact and about pages, never another domain. It does not guess an email address, write to a CRM, or keep anything after the response.",
+          "canDo": [
+            "Profile a public website from a single URL you supply",
+            "Pull the title, description and canonical URL",
+            "Collect emails and phone numbers the page already publishes",
+            "Check the site's own contact, about and team pages",
+            "See exactly which pages were read for each result",
+            "Switch the extra page scan off and read only the URL you gave"
+          ],
+          "needs": "A public website URL. No account or key",
+          "confirmationGated": false,
+          "recipeCount": 3
+        }
+      ]
+    },
+    {
+      "slug": "documents-and-contracts",
+      "label": "Documents, contracts and files",
+      "blurb": "Paperwork read, checked, signed and filed.",
+      "modules": [
+        {
+          "name": "lawyer",
+          "label": "Contract Structure Check",
+          "kind": "agent",
+          "category": "legal",
+          "categoryLabel": "Contracts",
+          "tagline": "A mechanical structure check over a contract, before a lawyer reads it.",
+          "description": "It reads the text of a document and reports which of eighteen standard sections it can find, every blank never filled in, every cross reference pointing at a clause number no heading uses, every term defined and then never used again, and every sentence over sixty words. It is not legal advice, it rates no risk, and it makes no judgement about whether a term is fair or right for you.",
+          "canDo": [
+            "Report which of eighteen standard sections a document contains",
+            "Find every blank, placeholder and TBD marker, with its line",
+            "Catch cross references pointing at a clause number no heading uses",
+            "Flag terms defined in quotation marks and then never used again",
+            "List every sentence over sixty words",
+            "Outline a services, non-disclosure, supply, licence or employment document"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "docuseal",
+          "label": "DocuSeal",
+          "kind": "agent",
+          "category": "documents",
+          "categoryLabel": "Documents and signing",
+          "tagline": "Send documents for signature and chase the people who have not signed.",
+          "description": "It sends a PDF out to the signers you name, tracks who has completed it and who has not, reminds the ones still outstanding, and downloads the finished document. Every call goes to your own DocuSeal instance with your own API key. It never signs on anyone's behalf, and it never sends to a person you did not name.",
+          "canDo": [
+            "Send a PDF out for signature to the signers you name",
+            "Check who has signed and who is still pending",
+            "Remind only the signers who still need to act",
+            "List documents still awaiting signature",
+            "Download a completed, fully signed document"
+          ],
+          "needs": "Your own DocuSeal URL and API key",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "dropbox",
+          "label": "Dropbox",
+          "kind": "agent",
+          "category": "storage",
+          "categoryLabel": "Files",
+          "tagline": "Moves documents in your own Dropbox, and sends them out for signature.",
+          "description": "This connects to your own Dropbox through OAuth. It moves files where you want them, clears out the conflicted copies Dropbox leaves behind, and sends a document out for e-signature through Dropbox Sign. The cleanup lists the exact files first and deletes nothing without your confirmation. A signature request waits for your approval before it goes anywhere.",
+          "canDo": [
+            "Move a document to a different folder",
+            "List the conflicted copies before anything is removed",
+            "Delete those conflicted copies once you confirm",
+            "Send a document out for e-signature, after you approve it",
+            "Check that your Dropbox connection is working"
+          ],
+          "needs": "Your own Dropbox account, connected by OAuth",
+          "confirmationGated": true,
+          "recipeCount": 4
+        }
+      ]
+    },
+    {
+      "slug": "security",
+      "label": "Security",
+      "blurb": "The stack that watches your business while you are not looking.",
+      "modules": [
+        {
+          "name": "git-guardian",
+          "label": "Git Guardian",
+          "kind": "agent",
+          "category": "infra-ops",
+          "categoryLabel": "Code safety",
+          "tagline": "Tells you which project folders hold work that is not backed up yet.",
+          "description": "Git Guardian checks the repositories you point it at and reports uncommitted work, missing remotes, unpushed commits and unfinished merges. Everything but one action is read only. The save action shows you what would be committed and whether it would be pushed, and does nothing until you type SAVE. It never force pushes or rewrites history.",
+          "canDo": [
+            "Check repository health across every folder you list",
+            "Rank repositories by how much work is at risk of being lost",
+            "Find branches that have gone quiet or fallen behind their remote",
+            "Preview what a checkpoint commit would include and where it would go",
+            "Commit and push that checkpoint once you confirm with SAVE"
+          ],
+          "needs": "Nothing beyond the Git setup already on your machine",
+          "confirmationGated": true,
+          "recipeCount": 5
+        },
+        {
+          "name": "guard-dog",
+          "label": "Guard-dog",
+          "kind": "agent",
+          "category": "security",
+          "categoryLabel": "Security",
+          "tagline": "Check a package for known trouble before it gets into your project.",
+          "description": "It looks up npm and PyPI packages against public vulnerability feeds, download reputation, GitHub advisories, and suspicious code patterns, then returns one of three verdicts: silent, whine, or bark. The useful baseline needs no keys at all. An install only goes ahead once you confirm it, and a bark verdict blocks the install outright.",
+          "canDo": [
+            "Scan a single npm or PyPI package before you install it",
+            "Scan every dependency listed in a project's package file",
+            "Install a package only after the scan clears and you confirm",
+            "Block an install outright on a dangerous verdict",
+            "Check which optional security integrations are switched on"
+          ],
+          "needs": "Nothing for the baseline. VirusTotal and Telegram alerts need your own keys.",
+          "confirmationGated": true,
+          "recipeCount": 5
+        },
+        {
+          "name": "threat-intelligence",
+          "label": "Threat Intelligence",
+          "kind": "agent",
+          "category": "security",
+          "categoryLabel": "Security",
+          "tagline": "Sorts a pile of security findings into a ranked list you can act on.",
+          "description": "Give it your findings and it deduplicates them where identifiers match, scores impact, exploit evidence, exposure and patch state separately, and explains every ranking including what it is unsure about. It can pull a single CVE from the National Vulnerability Database, or a GitHub advisory with your own token. It recommends a next action and an owner, never an automatic production change.",
+          "canDo": [
+            "Assess a supplied set of security findings",
+            "Deduplicate items only where the identifiers match",
+            "Rank work by impact, exploit evidence, exposure and patch state",
+            "Fetch a CVE record from the National Vulnerability Database",
+            "Look up a GitHub security advisory by ID or by package",
+            "Write a local Markdown review report"
+          ],
+          "needs": "Nothing for offline triage. A GitHub token for advisory lookups",
+          "confirmationGated": false,
+          "recipeCount": 5
+        }
+      ]
+    },
+    {
+      "slug": "websites-and-infrastructure",
+      "label": "Websites, code and infrastructure",
+      "blurb": "The plumbing under your own web presence, owned by you.",
+      "modules": [
+        {
+          "name": "domain-search",
+          "label": "Domain Search",
+          "kind": "agent",
+          "category": "domains",
+          "categoryLabel": "Domains and DNS",
+          "tagline": "Finds candidate domain names and checks whether they are actually free.",
+          "description": "Domain Search suggests clean, pronounceable names for a brand, then checks availability against public RDAP and DNS, or against Cloudflare Registrar when you add your own credentials. It reads only. It cannot register, buy, renew or transfer anything, so the purchase still happens with your registrar of choice.",
+          "canDo": [
+            "Suggest candidate domain names for a brand or keyword",
+            "Check one domain against public RDAP and DNS records",
+            "Get registrar grade status and price through your Cloudflare account",
+            "See how strong each availability signal really is",
+            "Run the suggestion demo offline before adding any credentials"
+          ],
+          "needs": "Nothing for the basic checks. A Cloudflare account ID and API token for registrar checks",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "git-manager",
+          "label": "Git Manager",
+          "kind": "agent",
+          "category": "developer-tools",
+          "categoryLabel": "Developer tools",
+          "tagline": "Backs up work in progress, and commits to your branch only when you confirm.",
+          "description": "Git Manager keeps your unsaved work safe. A snapshot parks the current state on its own checkpoint reference without touching your working files, your index, or any branch, so it can run at any moment. Turning that into a real commit on your branch previews first and waits for the exact confirmation word. It never pushes, resets, rebases, or rewrites history.",
+          "canDo": [
+            "Snapshot uncommitted work without touching your branch",
+            "Show what has changed since the last commit, and by how much",
+            "List branches and recap recent commits",
+            "Run a health check on the repository",
+            "Commit a checkpoint onto your branch after you confirm"
+          ],
+          "needs": "The path to your own repository. No account, no credentials.",
+          "confirmationGated": true,
+          "recipeCount": 8
+        },
+        {
+          "name": "porkbun",
+          "label": "Porkbun",
+          "kind": "agent",
+          "category": "domains",
+          "categoryLabel": "Domains and DNS",
+          "tagline": "Reads and edits DNS for the domains you already own at Porkbun.",
+          "description": "This connects to your Porkbun account with your own API keys. Lookups are free and instant: what you own, what a domain costs, which nameservers it uses, what its DNS records say. Changing a record, a forward, or a nameserver returns a preview of exactly what would change and waits for you to confirm. It does not buy, renew, or transfer domains.",
+          "canDo": [
+            "Check whether a domain is available and what it costs",
+            "List the domains you own and their DNS records",
+            "See the nameservers and URL forwards on a domain",
+            "Create, edit, or delete a DNS record after you confirm",
+            "Add or remove a URL forward once you approve it",
+            "Fetch the SSL bundle for one of your domains"
+          ],
+          "needs": "Your Porkbun API key and secret key",
+          "confirmationGated": true,
+          "recipeCount": 14
+        },
+        {
+          "name": "shlink",
+          "label": "Shlink",
+          "kind": "agent",
+          "category": "links",
+          "categoryLabel": "Links",
+          "tagline": "Turns a long URL into a short link on your own Shlink server.",
+          "description": "This makes short links on a server you run, so the links sit on your own domain and nobody else holds the click data. It logs into your VPS over SSH and calls a helper script there. Until the host, key, and script are set up, it tells you exactly what is missing instead of failing quietly, and there is a smoke mode for trying it with no server at all.",
+          "canDo": [
+            "Turn a long URL into a short link on your own domain",
+            "Set the slug yourself, for an event or a campaign",
+            "Run it in smoke mode with nothing connected",
+            "Check whether your host, SSH key, and helper script are configured"
+          ],
+          "needs": "A VPS you can SSH into, an SSH key, and your short-link domain",
+          "confirmationGated": false,
+          "recipeCount": 2
+        },
+        {
+          "name": "supabase",
+          "label": "Supabase",
+          "kind": "agent",
+          "category": "database",
+          "categoryLabel": "Database",
+          "tagline": "Reads and edits rows in your own Supabase tables, inside set limits.",
+          "description": "A bounded operator for your Supabase project. Reads name their columns and carry a row limit. Inserts, updates, and upserts run when you call them, and an update or delete with no filter is refused before anything is sent. A delete always previews: it shows the matching rows and the count, and removing them takes a second call carrying that count. No raw SQL, no schema changes.",
+          "canDo": [
+            "Read rows from a table with named columns and a row limit",
+            "Insert a row, or upsert one that may already exist",
+            "Update the rows that match a filter you supply",
+            "Preview exactly which rows a delete would remove",
+            "Delete them on a second call carrying the confirmed count",
+            "Check that your project URL and key are set up"
+          ],
+          "needs": "Your Supabase project URL and key",
+          "confirmationGated": true,
+          "recipeCount": 7
+        },
+        {
+          "name": "vercel",
+          "label": "Vercel",
+          "kind": "agent",
+          "category": "deployment",
+          "categoryLabel": "Deployment",
+          "tagline": "Shows what is deployed on Vercel, and runs a deploy when you ask.",
+          "description": "This reads your Vercel account so a release stops being a hunt across four screens: projects, recent deployments, the state of one release, its build logs, and which domains point where. A deploy runs the moment you call it, so use the plan flag first to see the folder and environment it would use. Production needs its own flag, set on purpose.",
+          "canDo": [
+            "List your projects and recent deployments",
+            "Check the state of a single deployment",
+            "Read the build logs when a release fails",
+            "See which domains are connected",
+            "Preview a deploy before it runs",
+            "Deploy, with production behind its own explicit flag"
+          ],
+          "needs": "Your own Vercel token",
+          "confirmationGated": false,
+          "recipeCount": 7
+        }
+      ]
+    },
+    {
+      "slug": "home-and-personal",
+      "label": "Home and personal",
+      "blurb": "The rest of your life, on the same machine, off by default.",
+      "modules": [
+        {
+          "name": "bee",
+          "label": "Bee",
+          "kind": "agent",
+          "category": "personal-data",
+          "categoryLabel": "Personal data",
+          "tagline": "Read back what your Bee wearable already captured, on your own account.",
+          "description": "A thin wrapper around your own Bee CLI. It checks whether the device is connected, summarises what today captured, and searches back through the conversations, facts and todos the device already synced. It records nothing itself, and it will not authenticate for you or export your data anywhere outside your own sync folder.",
+          "canDo": [
+            "Check whether your Bee wearable is connected",
+            "Summarise what the device captured today",
+            "Search past conversations, facts and todos by keyword",
+            "Report an empty result plainly instead of inventing a memory"
+          ],
+          "needs": "Your own Bee account and CLI, plus a sync directory you choose",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "amazon-shopping",
+          "label": "Shopping Planner",
+          "kind": "agent",
+          "category": "shopping",
+          "categoryLabel": "Shopping",
+          "tagline": "Turns a shopping list into a research plan before you spend anything.",
+          "description": "Give it your list and it returns a research plan for each item, plus a comparison checklist for anything you are weighing up. It runs offline, with no connection to Amazon or any other retailer: no live prices, no cart, no checkout. The searching and the buying still happen in your own browser, on your own account.",
+          "canDo": [
+            "Turn a list of items into a per item research plan",
+            "Set a quantity and buying guidance for each item",
+            "Get a pre-purchase comparison checklist for one item",
+            "Compare price per unit, ratings, seller trust and return window",
+            "Save the plan locally to work through later"
+          ],
+          "needs": "Nothing, works offline",
+          "confirmationGated": false,
+          "recipeCount": 3
+        },
+        {
+          "name": "smart-home",
+          "label": "Smart Home",
+          "kind": "agent",
+          "category": "home-automation",
+          "categoryLabel": "Home and office",
+          "tagline": "Controls your own Hue lights and Tuya devices by outcome, not by command.",
+          "description": "This talks to a Philips Hue bridge on your local network and to your own Tuya account. Ask for cosy, focus, or movie, and it runs the Hue scene you made under that name, or falls back to a set brightness and warmth. Rooms go on, off, brighter, dimmer, or warmer. Tuya devices switch on and off only. These run straight away, with no confirmation step.",
+          "canDo": [
+            "List your lights, rooms, scenes, and Tuya devices",
+            "Check what is still on, across the house or in one room",
+            "Set the mood for a film, a call, or reading",
+            "Turn a room on, off, brighter, dimmer, or warmer",
+            "Turn every light and device off in one go"
+          ],
+          "needs": "A paired Hue bridge on your network, plus Tuya cloud keys if you use Tuya",
+          "confirmationGated": false,
+          "recipeCount": 5
+        },
+        {
+          "name": "spotify",
+          "label": "Spotify",
+          "kind": "agent",
+          "category": "music",
+          "categoryLabel": "Music",
+          "tagline": "Search, play, and build playlists on your own Spotify account.",
+          "description": "It connects to a Spotify account you authorised yourself, through your own developer app and token. It searches the catalogue, tells you what is playing, lists your devices and playlists, and controls playback. Creating a playlist runs straight away and reports back the name, how many tracks went in, and any track it could not find.",
+          "canDo": [
+            "Search the catalogue for a track, album, or playlist",
+            "Show what is playing right now",
+            "Play, pause, skip, and change the volume",
+            "List the devices that can play music",
+            "Create a playlist from tracks you name, and list the ones you have",
+            "Check whether your connection is still authorised"
+          ],
+          "needs": "Your own Spotify client ID and access token",
+          "confirmationGated": false,
+          "recipeCount": 7
+        }
+      ]
+    }
+  ]
+}
