@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-07T03:21:30.582Z",
+  "generatedAt": "2026-08-07T05:24:20.792Z",
   "generatedBy": "projects/all-sorted/scripts/build-agent-catalog.js",
   "source": "allsorted-dist shipped member repo",
   "counts": {
     "total": 66,
     "agents": 61,
-    "recipes": 365,
+    "recipes": 367,
     "categories": 43,
     "groups": 11,
     "offline": 22,
@@ -33,7 +33,7 @@
           ],
           "needs": "Nothing, works offline. You fill in the policy files yourself.",
           "confirmationGated": false,
-          "recipeCount": 3
+          "recipeCount": 5
         },
         {
           "name": "doctor",
