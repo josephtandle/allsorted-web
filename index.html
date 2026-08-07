@@ -545,11 +545,18 @@
     @media (min-width: 560px) {
       .waitlist-form-fields {
         flex-direction: row;
+        flex-wrap: wrap;
         gap: var(--space-3);
       }
+      /* Three fields plus a button will not sit on one 580px row without
+         squeezing the email field to nothing. Fields share the top row, the
+         button takes its own. */
+      .waitlist-form-fields > input { flex: 1 1 150px; }
+      .waitlist-form-fields > button { flex: 1 0 100%; }
     }
 
     .waitlist-form input[type="text"],
+    .waitlist-form input[type="tel"],
     .waitlist-form input[type="email"] {
       flex: 1;
       min-width: 0;
@@ -569,11 +576,13 @@
     }
 
     .waitlist-form input[type="text"]::placeholder,
+    .waitlist-form input[type="tel"]::placeholder,
     .waitlist-form input[type="email"]::placeholder {
       color: var(--color-text-muted);
     }
 
     .waitlist-form input[type="text"]:focus,
+    .waitlist-form input[type="tel"]:focus,
     .waitlist-form input[type="email"]:focus {
       border-color: var(--color-accent-muted);
       box-shadow: 0 0 0 3px rgba(240, 160, 48, 0.1);
@@ -2125,10 +2134,18 @@
               type="text"
               name="firstName"
               id="hero-firstName"
-              placeholder="First name"
+              placeholder="Name"
               autocomplete="given-name"
               required
-              aria-label="First name"
+              aria-label="Name"
+            >
+            <input
+              type="tel"
+              name="whatsapp"
+              id="hero-whatsapp"
+              placeholder="WhatsApp"
+              autocomplete="tel"
+              aria-label="WhatsApp number"
             >
             <input
               type="email"
@@ -2140,15 +2157,15 @@
               aria-label="Email address"
             >
             <button type="submit" class="btn-primary" id="hero-btn">
-              Get on the Waiting List
+              Contact us
             </button>
           </div>
           <div class="form-error" id="hero-error" role="alert" aria-live="polite"></div>
         </form>
         <div class="form-success" id="hero-success" role="status" aria-live="polite">
-          You're on the list. We'll be in touch.
+          Thanks. We have your details and will be in touch.
         </div>
-        <p class="form-social-proof">Join 200+ business owners on the waiting list</p>
+        <p class="form-social-proof">Leave a WhatsApp number and we will pick it up there. Otherwise we will email you.</p>
       </div>
 
       <p style="margin-top: var(--space-6); text-align: center; color: var(--color-text-secondary); font-size: var(--text-sm);">
@@ -2226,180 +2243,6 @@
           </div>
           <h3 class="feature-title">One tool. Not ten.</h3>
           <p class="feature-desc">CRM, billing, email, scheduling, content, security, every tab you have open right now. One dashboard replaces them all. And they talk to each other, automatically, so nothing gets lost in the handoff.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================
-       WEBSITE BUILDER SECTION
-       ========================================= -->
-  <section class="section" aria-labelledby="websites-title" style="background: var(--color-surface-1);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">WEBSITES</span>
-        <h2 class="section-title" id="websites-title">Build gorgeous websites and deploy them in minutes.</h2>
-        <p class="section-sub">No developers. No agencies. No waiting weeks for a quote. Describe what you want and All Sorted builds it, deploys it, and keeps it live.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-card" style="border-top: 2px solid var(--color-accent);">
-          <div class="feature-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-          </div>
-          <h3 class="feature-title">Describe it. It builds it.</h3>
-          <p class="feature-desc">Tell All Sorted what you need: a landing page for your new offer, a booking page, a portfolio site. It writes the code, designs the layout, and deploys it live. Usually in under 10 minutes.</p>
-        </div>
-        <div class="feature-card" style="border-top: 2px solid var(--color-accent);">
-          <div class="feature-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="feature-title">Deployed instantly on your domain.</h3>
-          <p class="feature-desc">Every site All Sorted builds goes live on your custom domain automatically. SSL certificate, fast global hosting, and clean URLs. No FTP. No hosting panels. No technical knowledge required.</p>
-        </div>
-        <div class="feature-card" style="border-top: 2px solid var(--color-accent);">
-          <div class="feature-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </div>
-          <h3 class="feature-title">Update it any time, just by asking.</h3>
-          <p class="feature-desc">Change the headline. Add a new section. Swap the pricing. No need to log into anything or learn a page builder. Just tell All Sorted what to change and it updates the live site automatically.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================
-       HOW IT WORKS
-       ========================================= -->
-  <section class="section" aria-labelledby="how-title">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">How it works</span>
-        <h2 class="section-title" id="how-title">A guided install. Then your business runs itself.</h2>
-        <p class="section-sub">We did the work so you do not have to. The architecture is built. The agents are wired. We install it on your machine and walk you through it.</p>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-number" aria-hidden="true">1</div>
-          <div class="step-content">
-            <div class="step-title">Book a founding-member install</div>
-            <div class="step-desc">Join the waiting list. We schedule your install once you are in.</div>
-          </div>
-        </div>
-
-        <div class="step-connector" aria-hidden="true"></div>
-
-        <div class="step">
-          <div class="step-number" aria-hidden="true">2</div>
-          <div class="step-content">
-            <div class="step-title">We install it for you</div>
-            <div class="step-desc">A guided setup pass on your Mac. We bring your AI sessions and project context in, wire your API keys, and configure the 61 agents to your business.</div>
-          </div>
-        </div>
-
-        <div class="step-connector" aria-hidden="true"></div>
-
-        <div class="step">
-          <div class="step-number" aria-hidden="true">3</div>
-          <div class="step-content">
-            <div class="step-title">Open your dashboard</div>
-            <div class="step-desc">Mission Control is ready. Task board, security stack, automated jobs, agent toggles, all already running. Switch on what you need. Leave off what you do not.</div>
-          </div>
-        </div>
-
-        <div class="step-connector" aria-hidden="true"></div>
-
-        <div class="step">
-          <div class="step-number" aria-hidden="true">4</div>
-          <div class="step-content">
-            <div class="step-title">Go run your business</div>
-            <div class="step-desc">All Sorted handles the operations. You handle the work that only you can do. 30 days of support keeps you covered while you settle in.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================
-       UNDER THE HOOD, TECH SECTION
-       ========================================= -->
-  <section class="section tech-section" aria-labelledby="tech-title">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Under the Hood</span>
-        <h2 class="section-title" id="tech-title">The architecture from the book. Installed on your machine.</h2>
-      </div>
-      <p class="tech-body">All Sorted is the commercial install of the architecture documented in <em>How to Build Your Own AI Agent Operating System</em>. The book teaches you to build it in 3 to 8 months. All Sorted ships the same system, working, on day one. The dispatch layer, project index, capability routing, durable data, verification, and security stack are the same ones running on MyOS in Bali right now.</p>
-      <figure style="margin: 40px auto; max-width: 860px;">
-        <img src="/images/all-sorted-core-architecture.jpg" alt="The All Sorted Core architecture: a user request flows into Dispatch, connected to Graphify and GitNexus code intelligence, while the Organizer feeds the Brain database with a capability index and FastPaths, and a loop labeled gets smarter as you build returns to Dispatch." loading="lazy" style="width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);" />
-        <figcaption style="margin-top: 12px; text-align: center; font-size: 13px; color: rgba(252,244,235,0.45); line-height: 1.5;">One install, four connected layers. Everything you build feeds the Brain, and the Brain makes the next request smarter.</figcaption>
-      </figure>
-      <p class="tech-body">Underneath Dispatch sits the relationship graph layer: four live graphs that map your business, your code, your files, and your projects. The newest is the Ontology, which turns every contact, member, and payment scattered across your databases into one resolved identity with an audit trail on every write. Dispatch reads all four graphs as evidence before it routes anything, which is why the system gets sharper the longer it runs. A fifth graph, Graphiti temporal memory, is proving out on MyOS now and lands in the core next.</p>
-      <figure style="margin: 40px auto; max-width: 860px;">
-        <img src="/images/relationship-graph-layer-web.jpg" alt="The relationship graph layer: four graph systems, Ontology for business entities, GitNexus for code call graphs, Graphify for live file topology, and Understand Anything for per-project comprehension graphs, all converging into Dispatch as typed evidence." loading="lazy" style="width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);" />
-        <figcaption style="margin-top: 12px; text-align: center; font-size: 13px; color: rgba(252,244,235,0.45); line-height: 1.5;">The relationship graph layer: the system knows your business, your code, your files, and your projects before you ask it anything.</figcaption>
-      </figure>
-      <p class="tech-intro">Here is what that means for you.</p>
-
-      <div class="tech-grid">
-        <div class="tech-card">
-          <h3 class="tech-card-title">155 agents in the live system. 61 supported on day one.</h3>
-          <p class="tech-card-desc">Joe's working MyOS workspace has 155 agents and grows every week. All Sorted ships the 61 supported, sanitized agents that cover the full service-business workflow, and you can read every one of them on the <a href="/agents">full agent catalog</a> before you buy. The rest are pulled into your install as they harden, on your schedule, never forced.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Provider-agnostic. Your keys. Your account.</h3>
-          <p class="tech-card-desc">All Sorted routes work across Anthropic, OpenAI, and Google Gemini using your own API keys. When one provider rate-limits, changes pricing, or blocks an account, the system keeps running on the others. Joe lost three days of business to a provider ban once. He built this so you never lose one.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Yours alone. On your machine.</h3>
-          <p class="tech-card-desc">Your instance of All Sorted runs on your Mac or your own Hetzner server. No shared database. No third-party data access. No SaaS vendor who can change the rules. Your clients, your financials, your content, your agents, all stay with you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================
-       INFRASTRUCTURE
-       ========================================= -->
-  <section class="section" id="infrastructure" aria-labelledby="infra-title" style="background: var(--color-surface-1);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Infrastructure</span>
-        <h2 class="section-title" id="infra-title">You own it. The way a business should.</h2>
-        <p class="section-sub">All Sorted is not a SaaS. It runs on a machine you own, with your API keys, on your network. No vendor that can change the rules, raise the price, or close your account.</p>
-      </div>
-
-      <div class="tech-grid">
-        <div class="tech-card">
-          <h3 class="tech-card-title">Self-hosted on your hardware</h3>
-          <p class="tech-card-desc">Mac mini, Mac Studio, or Hetzner Cloud ARM. Whatever you already have or want to buy. The system runs locally, the data stays local, and the running cost is roughly $20/month for your Claude or ChatGPT account plus $7/month if you choose a Hetzner box. No monthly SaaS bill from me.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Tailscale-only access. Zero public ports.</h3>
-          <p class="tech-card-desc">All Sorted ships with Tailscale pre-configured. Your dashboard and your terminal are reachable from your phone, your laptop, anywhere you log in, with no port exposed to the public internet. Your business surface area is invisible to scanners.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Mission Control + Terminal in one PWA</h3>
-          <p class="tech-card-desc">A Progressive Web App dashboard that works on desktop, laptop, and phone. Embedded xterm.js terminal so you can give the system commands in plain English from anywhere. Telegram gateway for when you do not want to open the laptop at all.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Security stack built in</h3>
-          <p class="tech-card-desc">Guard-dog runs a nightly CVE scan at 02:30 against the NVD, CISA, and 70+ antivirus engines via VirusTotal. Six real-time threat feeds. Encrypted credential vault with audit logging. Daily encrypted backups. 365-day audit trail. 5-year legal hold on zero-days. Telegram alerts for anything critical.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Editable. Forkable. Yours to extend.</h3>
-          <p class="tech-card-desc">Every agent is a readable file. Every page in Mission Control is editable code. Add new skills, wire integrations that do not exist yet, change the dashboards, build custom agents for the workflows that only your business needs. The system is your foundation, not your ceiling.</p>
-        </div>
-
-        <div class="tech-card">
-          <h3 class="tech-card-title">Built by the engineer who wrote the book</h3>
-          <p class="tech-card-desc">Joe documented this architecture in <em>How to Build Your Own AI Agent Operating System</em>. All Sorted is the installed version of that book. Same dispatch, same routing, same verification layer that handles 50 billion tokens of work on the MyOS instance running 24/7 in Bali. You skip the 3 to 8 months it takes to build it from scratch.</p>
         </div>
       </div>
     </div>
@@ -4905,6 +4748,182 @@
   <!-- AGENT-CATALOG:END -->
 
   <!-- =========================================
+       WEBSITE BUILDER SECTION
+       ========================================= -->
+  <section class="section" aria-labelledby="websites-title" style="background: var(--color-surface-1);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">WEBSITES</span>
+        <h2 class="section-title" id="websites-title">Build gorgeous websites and deploy them in minutes.</h2>
+        <p class="section-sub">No developers. No agencies. No waiting weeks for a quote. Describe what you want and All Sorted builds it, deploys it, and keeps it live.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card" style="border-top: 2px solid var(--color-accent);">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h3 class="feature-title">Describe it. It builds it.</h3>
+          <p class="feature-desc">Tell All Sorted what you need: a landing page for your new offer, a booking page, a portfolio site. It writes the code, designs the layout, and deploys it live. Usually in under 10 minutes.</p>
+        </div>
+        <div class="feature-card" style="border-top: 2px solid var(--color-accent);">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="feature-title">Deployed instantly on your domain.</h3>
+          <p class="feature-desc">Every site All Sorted builds goes live on your custom domain automatically. SSL certificate, fast global hosting, and clean URLs. No FTP. No hosting panels. No technical knowledge required.</p>
+        </div>
+        <div class="feature-card" style="border-top: 2px solid var(--color-accent);">
+          <div class="feature-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <h3 class="feature-title">Update it any time, just by asking.</h3>
+          <p class="feature-desc">Change the headline. Add a new section. Swap the pricing. No need to log into anything or learn a page builder. Just tell All Sorted what to change and it updates the live site automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       HOW IT WORKS
+       ========================================= -->
+  <section class="section" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">How it works</span>
+        <h2 class="section-title" id="how-title">A guided install. Then your business runs itself.</h2>
+        <p class="section-sub">We did the work so you do not have to. The architecture is built. The agents are wired. We install it on your machine and walk you through it.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number" aria-hidden="true">1</div>
+          <div class="step-content">
+            <div class="step-title">Book a founding-member install</div>
+            <div class="step-desc">Send us your details. We schedule your install from there.</div>
+          </div>
+        </div>
+
+        <div class="step-connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <div class="step-number" aria-hidden="true">2</div>
+          <div class="step-content">
+            <div class="step-title">We install it for you</div>
+            <div class="step-desc">A guided setup pass on your Mac. We bring your AI sessions and project context in, wire your API keys, and configure the 61 agents to your business.</div>
+          </div>
+        </div>
+
+        <div class="step-connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <div class="step-number" aria-hidden="true">3</div>
+          <div class="step-content">
+            <div class="step-title">Open your dashboard</div>
+            <div class="step-desc">Mission Control is ready. Task board, security stack, automated jobs, agent toggles, all already running. Switch on what you need. Leave off what you do not.</div>
+          </div>
+        </div>
+
+        <div class="step-connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <div class="step-number" aria-hidden="true">4</div>
+          <div class="step-content">
+            <div class="step-title">Go run your business</div>
+            <div class="step-desc">All Sorted handles the operations. You handle the work that only you can do. 30 days of support keeps you covered while you settle in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       UNDER THE HOOD, TECH SECTION
+       ========================================= -->
+  <section class="section tech-section" aria-labelledby="tech-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Under the Hood</span>
+        <h2 class="section-title" id="tech-title">The architecture from the book. Installed on your machine.</h2>
+      </div>
+      <p class="tech-body">All Sorted is the commercial install of the architecture documented in <em>How to Build Your Own AI Agent Operating System</em>. The book teaches you to build it in 3 to 8 months. All Sorted ships the same system, working, on day one. The dispatch layer, project index, capability routing, durable data, verification, and security stack are the same ones running on MyOS in Bali right now.</p>
+      <figure style="margin: 40px auto; max-width: 860px;">
+        <img src="/images/all-sorted-core-architecture.jpg" alt="The All Sorted Core architecture: a user request flows into Dispatch, connected to Graphify and GitNexus code intelligence, while the Organizer feeds the Brain database with a capability index and FastPaths, and a loop labeled gets smarter as you build returns to Dispatch." loading="lazy" style="width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);" />
+        <figcaption style="margin-top: 12px; text-align: center; font-size: 13px; color: rgba(252,244,235,0.45); line-height: 1.5;">One install, four connected layers. Everything you build feeds the Brain, and the Brain makes the next request smarter.</figcaption>
+      </figure>
+      <p class="tech-body">Underneath Dispatch sits the relationship graph layer: four live graphs that map your business, your code, your files, and your projects. The newest is the Ontology, which turns every contact, member, and payment scattered across your databases into one resolved identity with an audit trail on every write. Dispatch reads all four graphs as evidence before it routes anything, which is why the system gets sharper the longer it runs. A fifth graph, Graphiti temporal memory, is proving out on MyOS now and lands in the core next.</p>
+      <figure style="margin: 40px auto; max-width: 860px;">
+        <img src="/images/relationship-graph-layer-web.jpg" alt="The relationship graph layer: four graph systems, Ontology for business entities, GitNexus for code call graphs, Graphify for live file topology, and Understand Anything for per-project comprehension graphs, all converging into Dispatch as typed evidence." loading="lazy" style="width: 100%; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08);" />
+        <figcaption style="margin-top: 12px; text-align: center; font-size: 13px; color: rgba(252,244,235,0.45); line-height: 1.5;">The relationship graph layer: the system knows your business, your code, your files, and your projects before you ask it anything.</figcaption>
+      </figure>
+      <p class="tech-intro">Here is what that means for you.</p>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3 class="tech-card-title">155 agents in the live system. 61 supported on day one.</h3>
+          <p class="tech-card-desc">Joe's working MyOS workspace has 155 agents and grows every week. All Sorted ships the 61 supported, sanitized agents that cover the full service-business workflow, and you can read every one of them on the <a href="/agents">full agent catalog</a> before you buy. The rest are pulled into your install as they harden, on your schedule, never forced.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Provider-agnostic. Your keys. Your account.</h3>
+          <p class="tech-card-desc">All Sorted routes work across Anthropic, OpenAI, and Google Gemini using your own API keys. When one provider rate-limits, changes pricing, or blocks an account, the system keeps running on the others. Joe lost three days of business to a provider ban once. He built this so you never lose one.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Yours alone. On your machine.</h3>
+          <p class="tech-card-desc">Your instance of All Sorted runs on your Mac or your own Hetzner server. No shared database. No third-party data access. No SaaS vendor who can change the rules. Your clients, your financials, your content, your agents, all stay with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       INFRASTRUCTURE
+       ========================================= -->
+  <section class="section" id="infrastructure" aria-labelledby="infra-title" style="background: var(--color-surface-1);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Infrastructure</span>
+        <h2 class="section-title" id="infra-title">You own it. The way a business should.</h2>
+        <p class="section-sub">All Sorted is not a SaaS. It runs on a machine you own, with your API keys, on your network. No vendor that can change the rules, raise the price, or close your account.</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3 class="tech-card-title">Self-hosted on your hardware</h3>
+          <p class="tech-card-desc">Mac mini, Mac Studio, or Hetzner Cloud ARM. Whatever you already have or want to buy. The system runs locally, the data stays local, and the running cost is roughly $20/month for your Claude or ChatGPT account plus $7/month if you choose a Hetzner box. No monthly SaaS bill from me.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Tailscale-only access. Zero public ports.</h3>
+          <p class="tech-card-desc">All Sorted ships with Tailscale pre-configured. Your dashboard and your terminal are reachable from your phone, your laptop, anywhere you log in, with no port exposed to the public internet. Your business surface area is invisible to scanners.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Mission Control + Terminal in one PWA</h3>
+          <p class="tech-card-desc">A Progressive Web App dashboard that works on desktop, laptop, and phone. Embedded xterm.js terminal so you can give the system commands in plain English from anywhere. Telegram gateway for when you do not want to open the laptop at all.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Security stack built in</h3>
+          <p class="tech-card-desc">Guard-dog runs a nightly CVE scan at 02:30 against the NVD, CISA, and 70+ antivirus engines via VirusTotal. Six real-time threat feeds. Encrypted credential vault with audit logging. Daily encrypted backups. 365-day audit trail. 5-year legal hold on zero-days. Telegram alerts for anything critical.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Editable. Forkable. Yours to extend.</h3>
+          <p class="tech-card-desc">Every agent is a readable file. Every page in Mission Control is editable code. Add new skills, wire integrations that do not exist yet, change the dashboards, build custom agents for the workflows that only your business needs. The system is your foundation, not your ceiling.</p>
+        </div>
+
+        <div class="tech-card">
+          <h3 class="tech-card-title">Built by the engineer who wrote the book</h3>
+          <p class="tech-card-desc">Joe documented this architecture in <em>How to Build Your Own AI Agent Operating System</em>. All Sorted is the installed version of that book. Same dispatch, same routing, same verification layer that handles 50 billion tokens of work on the MyOS instance running 24/7 in Bali. You skip the 3 to 8 months it takes to build it from scratch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- =========================================
        DEEP-DIVE: TASK BOARD
        ========================================= -->
   <div class="feature-deep" id="feature-taskboard">
@@ -5521,7 +5540,7 @@
   <section class="section bottom-cta" aria-labelledby="cta-title">
     <div class="container">
       <h2 class="section-title" id="cta-title">Stop being the bottleneck.<br>Get sorted.</h2>
-      <p class="section-sub">Founding-member installs are open in small cohorts. Founding rates lock in for the life of the customer. Join the waiting list and I will reach out as your slot comes up. Rather talk it through first? <a href="mailto:hello@getallsorted.ai?subject=All%20Sorted%20install%20scoping%20call" style="color: var(--color-accent); border-bottom: 1px solid var(--color-accent-muted);">Book a 30-minute install scoping call</a>.</p>
+      <p class="section-sub">Founding-member installs are open in small cohorts. Founding rates lock in for the life of the customer. Send us your details and I will reach out as your slot comes up. Rather talk it through first? <a href="mailto:hello@getallsorted.ai?subject=All%20Sorted%20install%20scoping%20call" style="color: var(--color-accent); border-bottom: 1px solid var(--color-accent-muted);">Book a 30-minute install scoping call</a>.</p>
 
       <!-- BOTTOM WAITLIST FORM -->
       <div style="margin-top: var(--space-10);" id="bottom-form-wrap">
@@ -5531,10 +5550,18 @@
               type="text"
               name="firstName"
               id="bottom-firstName"
-              placeholder="First name"
+              placeholder="Name"
               autocomplete="given-name"
               required
-              aria-label="First name"
+              aria-label="Name"
+            >
+            <input
+              type="tel"
+              name="whatsapp"
+              id="bottom-whatsapp"
+              placeholder="WhatsApp"
+              autocomplete="tel"
+              aria-label="WhatsApp number"
             >
             <input
               type="email"
@@ -5546,13 +5573,13 @@
               aria-label="Email address"
             >
             <button type="submit" class="btn-primary" id="bottom-btn">
-              Get on the Waiting List
+              Contact us
             </button>
           </div>
           <div class="form-error" id="bottom-error" role="alert" aria-live="polite"></div>
         </form>
         <div class="form-success" id="bottom-success" role="status" aria-live="polite" style="max-width: 580px; margin: var(--space-4) auto 0;">
-          You're on the list. We'll be in touch.
+          Thanks. We have your details and will be in touch.
         </div>
       </div>
     </div>
@@ -5649,11 +5676,13 @@
 
           var firstNameInput = form.querySelector('[name="firstName"]');
           var emailInput = form.querySelector('[name="email"]');
+          var whatsappInput = form.querySelector('[name="whatsapp"]');
           var firstName = firstNameInput ? firstNameInput.value.trim() : '';
           var email = emailInput ? emailInput.value.trim() : '';
+          var whatsapp = whatsappInput ? whatsappInput.value.trim() : '';
 
           if (!firstName) {
-            errorEl.textContent = 'Please enter your first name.';
+            errorEl.textContent = 'Please enter your name.';
             errorEl.style.display = 'block';
             firstNameInput && firstNameInput.focus();
             return;
@@ -5669,7 +5698,14 @@
 
           btn.disabled = true;
           var originalText = btn.textContent;
-          btn.textContent = 'Adding you\u2026';
+          btn.textContent = 'Sending\u2026';
+
+          /* A WhatsApp number is the signal that they want to talk on WhatsApp.
+             We open the chat for them, prefilled, so the first message is
+             already written. Without a number there is nothing to open, so the
+             server emails the details instead. Either way the details are
+             saved first, so a blocked popup never costs us the enquiry. */
+          var hasWhatsapp = whatsapp.replace(/[^0-9]/g, '').length >= 7;
 
           fetch('/api/waitlist', {
             method: 'POST',
@@ -5677,6 +5713,8 @@
             body: JSON.stringify({
               firstName: firstName,
               email: email,
+              whatsapp: whatsapp || undefined,
+              preferredChannel: hasWhatsapp ? 'whatsapp' : 'email',
               journeyId: getJourneyId(),
               acquisitionRoute: window.location.pathname,
               acquisitionQuery: window.location.search,
@@ -5692,6 +5730,25 @@
             if (result.status === 200 && result.data.success) {
               form.style.display = 'none';
               successEl.style.display = 'block';
+
+              if (hasWhatsapp) {
+                var msg = 'Hi Joe, this is ' + firstName + '. I just filled in the form on getallsorted.ai'
+                  + ' and I would like to talk about an install. My email is ' + email + '.';
+                var waUrl = 'https://wa.me/16462092333?text=' + encodeURIComponent(msg);
+                var opened = window.open(waUrl, '_blank');
+                /* Popup blockers are common on form submit. Never leave them
+                   stranded: give them the link to press themselves. */
+                if (!opened) {
+                  var a = document.createElement('a');
+                  a.href = waUrl;
+                  a.target = '_blank';
+                  a.rel = 'noopener';
+                  a.className = 'btn-primary';
+                  a.style.cssText = 'display:inline-block;margin-top:16px;';
+                  a.textContent = 'Open WhatsApp';
+                  successEl.appendChild(a);
+                }
+              }
             } else {
               errorEl.textContent = result.data.error || 'Something went wrong. Please try again.';
               errorEl.style.display = 'block';

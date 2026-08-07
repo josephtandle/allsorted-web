@@ -81,6 +81,58 @@ async function trackWaitlistJoin(email, firstName) {
   }
 }
 
+const RESEND_API_KEY = process.env.RESEND_API_KEY ?? "";
+const CONTACT_TO = process.env.CONTACT_NOTIFY_EMAIL ?? "hello@getallsorted.ai";
+const CONTACT_FROM = process.env.CONTACT_FROM_EMAIL ?? "All Sorted <onboarding@resend.dev>";
+
+/**
+ * Someone who left no WhatsApp number has no chat for us to open, so the
+ * enquiry has to reach Joe by email instead.
+ *
+ * Never throws and never blocks the response: the enquiry is already saved in
+ * Supabase by the time this runs, so a mail failure costs a notification, not
+ * a lead. Without RESEND_API_KEY set it logs loudly and returns, which keeps
+ * the form working while the key is still missing.
+ */
+async function emailEnquiry({ firstName, email, whatsapp, acquisitionRoute, referrer }) {
+  if (!RESEND_API_KEY) {
+    console.warn("[contact] RESEND_API_KEY not set, enquiry saved to Supabase but not emailed:", email);
+    return;
+  }
+  const lines = [
+    `Name: ${firstName}`,
+    `Email: ${email}`,
+    `WhatsApp: ${whatsapp ? whatsapp : "not given, they asked to be contacted by email"}`,
+    `Page: ${acquisitionRoute || "/"}`,
+    `Referrer: ${referrer || "direct"}`,
+  ];
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 4000);
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: CONTACT_FROM,
+        to: [CONTACT_TO],
+        reply_to: email,
+        subject: `All Sorted enquiry from ${firstName}`,
+        text: lines.join("\n"),
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+    if (!response.ok) {
+      console.error("[contact] resend rejected the enquiry email:", response.status, await response.text());
+    }
+  } catch (err) {
+    console.error("[contact] enquiry email failed:", err?.message ?? err);
+  }
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -91,11 +143,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { firstName, email, journeyId, acquisitionRoute, acquisitionQuery, referrer } = req.body;
+  const {
+    firstName, email, whatsapp, preferredChannel,
+    journeyId, acquisitionRoute, acquisitionQuery, referrer,
+  } = req.body;
 
   if (!firstName || !email) {
     await trackInsightEvent("waitlist_submit_failed", { reason: "missing_fields" });
-    return res.status(400).json({ error: 'First name and email required' });
+    return res.status(400).json({ error: 'Name and email required' });
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -113,23 +168,53 @@ export default async function handler(req, res) {
   });
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
-        'apikey': SUPABASE_SERVICE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal',
-      },
-      body: JSON.stringify({
-        first_name: firstName.trim(),
-        email: email.trim().toLowerCase(),
-        source: 'all-sorted',
-      }),
-    });
+    function insert(row) {
+      return fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
+          'apikey': SUPABASE_SERVICE_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify(row),
+      });
+    }
+
+    const base = {
+      first_name: firstName.trim(),
+      email: email.trim().toLowerCase(),
+      source: 'all-sorted',
+    };
+
+    /* The whatsapp column may not exist on this table yet. Rather than make the
+       form depend on a migration, try with it and fall back without it. Add the
+       column and the number starts persisting on its own, no code change. */
+    let response = whatsapp
+      ? await insert({ ...base, whatsapp: String(whatsapp).trim() })
+      : await insert(base);
+
+    if (whatsapp && response.status === 400) {
+      const detail = await response.clone().text();
+      if (/whatsapp/i.test(detail) && /column|schema|find/i.test(detail)) {
+        console.warn("[contact] waitlist.whatsapp column missing, saving without it. Number was:", whatsapp);
+        response = await insert(base);
+      }
+    }
 
     // 409 = duplicate email, treat as success so we don't leak whether email exists
     if (response.status === 409) {
+      /* This is a contact form, not just a signup list. Someone writing in a
+         second time still needs to reach Joe, so notify on duplicates too. */
+      if (preferredChannel !== 'whatsapp') {
+        await emailEnquiry({
+          firstName: firstName.trim(),
+          email: email.trim().toLowerCase(),
+          whatsapp,
+          acquisitionRoute,
+          referrer,
+        });
+      }
       await trackInsightEvent("waitlist_submit_success", {
         email: email.trim().toLowerCase(),
         sessionId: journeyId,
@@ -151,6 +236,18 @@ export default async function handler(req, res) {
     }
 
     void trackWaitlistJoin(email.trim().toLowerCase(), firstName.trim());
+
+    /* No number means no chat to open, so this is the only way it reaches Joe. */
+    if (preferredChannel !== 'whatsapp') {
+      await emailEnquiry({
+        firstName: firstName.trim(),
+        email: email.trim().toLowerCase(),
+        whatsapp,
+        acquisitionRoute,
+        referrer,
+      });
+    }
+
     await trackInsightEvent("waitlist_submit_success", {
       email: email.trim().toLowerCase(),
       sessionId: journeyId,
