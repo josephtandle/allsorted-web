@@ -1632,7 +1632,7 @@
       background:
         radial-gradient(ellipse at 60% 0%,  rgba(240,160,48,0.10) 0%, transparent 60%),
         radial-gradient(ellipse at 20% 80%, rgba(74,122,175,0.06) 0%, transparent 50%),
-        #0F1117;
+        transparent;
     }
 
     /* Animated dot grid */
@@ -2054,9 +2054,37 @@
       * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
     }
 
+    /* 7. Ambient particle field
+       The page background colour moves to <html> so the fixed canvas at
+       --z-below can sit between it and the content. If WebGL is unavailable
+       the canvas is never inserted and <html> renders the flat --color-bg,
+       which is byte-identical to the previous appearance. */
+    html {
+      background-color: var(--color-bg);
+    }
+
+    body {
+      background-color: transparent;
+    }
+
+    #as-particle-bg {
+      position: fixed;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: var(--z-below);
+      pointer-events: none;
+      contain: layout paint style;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Ambient particle field. The canvas is inserted as the first child of
+       <body> by the script at the end of this file, and only when WebGL is
+       actually available. -->
 
   <!-- =========================================
        NAV
@@ -4861,8 +4889,8 @@
 
       <div class="tech-grid">
         <div class="tech-card">
-          <h3 class="tech-card-title">155 agents in the live system. 61 supported on day one.</h3>
-          <p class="tech-card-desc">Joe's working MyOS workspace has 155 agents and grows every week. All Sorted ships the 61 supported, sanitized agents that cover the full service-business workflow, and you can read every one of them in <a href="#agents">the full catalog above</a> before you buy. The rest are pulled into your install as they harden, on your schedule, never forced.</p>
+          <h3 class="tech-card-title">61 agents, working on day one.</h3>
+          <p class="tech-card-desc">They cover the full service-business workflow, and every one of them is in <a href="#agents">the full catalog above</a>, so you can read what each does before you buy. A third work with no API key at all. More arrive as they harden, on your schedule, never forced. If you would rather build it yourself, the architecture is documented in <a href="https://a.mastermindshq.business/ai-os-book">How to Build Your Own AI Agent Operating System</a>.</p>
         </div>
 
         <div class="tech-card">
@@ -5345,7 +5373,7 @@
       <div style="margin-top: var(--space-12); padding: var(--space-8); background: var(--color-surface-2); border: 1px solid var(--color-border); border-top: 2px solid var(--color-accent); border-radius: var(--radius-lg); max-width: 720px; margin-left: auto; margin-right: auto;">
         <h3 style="font-family: var(--font-heading); font-size: var(--text-xl); margin-bottom: var(--space-3);">Want to understand the architecture before you buy?</h3>
         <p style="color: var(--color-text-secondary); line-height: var(--leading-normal);">
-          Read the $97 book first. <em>How to Build Your Own AI Agent Operating System</em> is the blueprint All Sorted installs. If you would rather build it yourself, the book is the path. If you would rather have it installed, founding-member installs include the book.
+          Read the $9.99 book first. <em>How to Build Your Own AI Agent Operating System</em> is the blueprint All Sorted installs. If you would rather build it yourself, the book is the path. If you would rather have it installed, founding-member installs include the book.
         </p>
         <p style="margin-top: var(--space-4);">
           <a href="https://a.mastermindshq.business/ai-os-book" style="color: var(--color-accent); border-bottom: 1px solid var(--color-accent-muted);">Read the book first</a>
@@ -5358,7 +5386,7 @@
           <li>You have 30 or more employees. You need SOC2, SSO, and procurement processes the alpha does not yet cover. I will email you when there is an enterprise tier.</li>
           <li>Your operations problem is inventory and supply chain rather than client context and admin. The architecture can do it, the agents are not yet pre-wired for it.</li>
           <li>You want a $20-a-month SaaS. This is a one-time install of software you will own.</li>
-          <li>You want to build it yourself from the source files. Read the $97 book.</li>
+          <li>You want to build it yourself from the source files. Read the $9.99 book.</li>
         </ul>
       </div>
 
@@ -5846,6 +5874,412 @@
         if (window.scrollY > 20) nav.classList.add('scrolled');
       }
 
+    })();
+  </script>
+
+  <!-- =========================================
+       AMBIENT PARTICLE FIELD
+       WebGL point sprites drifting on a gradient-noise flow field.
+       No dependencies, no build step. If WebGL is unavailable the canvas is
+       never inserted and the page renders the flat --color-bg on <html>.
+       ========================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      var CANVAS_ID = 'as-particle-bg';
+      if (document.getElementById(CANVAS_ID)) return;
+
+      var mm = window.matchMedia;
+      var reduceMotion = mm && mm('(prefers-reduced-motion: reduce)').matches;
+      var coarse = mm && mm('(pointer: coarse)').matches;
+
+      var canvas = document.createElement('canvas');
+      canvas.id = CANVAS_ID;
+      canvas.setAttribute('aria-hidden', 'true');
+
+      var gl = null;
+      try {
+        var opts = {
+          alpha: false, antialias: false, depth: false, stencil: false,
+          premultipliedAlpha: false, powerPreference: 'low-power',
+          failIfMajorPerformanceCaveat: true
+        };
+        gl = canvas.getContext('webgl2', opts) || canvas.getContext('webgl', opts);
+      } catch (e) { gl = null; }
+      if (!gl) return;
+
+      /* palette - All Sorted tokens only */
+      var BG         = [0x0F / 255, 0x11 / 255, 0x17 / 255]; /* #0F1117 */
+      var SLATE_DEEP = [0x5E / 255, 0x6B / 255, 0x82 / 255]; /* #5E6B82 */
+      var SLATE      = [0x9B / 255, 0xA8 / 255, 0xBE / 255]; /* #9BA8BE */
+      var GOLD       = [0xC9 / 255, 0xA8 / 255, 0x4C / 255]; /* #C9A84C logo gold */
+      var ACCENT     = [0xF0 / 255, 0xA0 / 255, 0x30 / 255]; /* #F0A030 brand accent */
+      var HOT        = [0xF5 / 255, 0xB8 / 255, 0x4A / 255]; /* #F5B84A */
+
+      var VERT = [
+        'precision highp float;',
+        'attribute vec4 aSeed;',
+        'attribute float aTint;',
+        'uniform float uTime, uAspect, uDpr, uPointer, uMotion, uFade, uIntensity;',
+        'uniform vec2 uMouse;',
+        'uniform vec2 uCol;',
+        'uniform vec3 uSlateDeep, uSlate, uGold, uAccent, uHot;',
+        'varying vec3 vColor;',
+        'varying float vAlpha;',
+        'varying float vSoft;',
+
+        'vec3 hash33(vec3 p){',
+        '  p = vec3(dot(p, vec3(127.1, 311.7,  74.7)),',
+        '           dot(p, vec3(269.5, 183.3, 246.1)),',
+        '           dot(p, vec3(113.5, 271.9, 124.6)));',
+        '  return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);',
+        '}',
+
+        'float gnoise(vec3 p){',
+        '  vec3 i = floor(p); vec3 f = fract(p);',
+        '  vec3 u = f * f * (3.0 - 2.0 * f);',
+        '  return mix(mix(mix(dot(hash33(i+vec3(0,0,0)), f-vec3(0,0,0)),',
+        '                     dot(hash33(i+vec3(1,0,0)), f-vec3(1,0,0)), u.x),',
+        '                 mix(dot(hash33(i+vec3(0,1,0)), f-vec3(0,1,0)),',
+        '                     dot(hash33(i+vec3(1,1,0)), f-vec3(1,1,0)), u.x), u.y),',
+        '             mix(mix(dot(hash33(i+vec3(0,0,1)), f-vec3(0,0,1)),',
+        '                     dot(hash33(i+vec3(1,0,1)), f-vec3(1,0,1)), u.x),',
+        '                 mix(dot(hash33(i+vec3(0,1,1)), f-vec3(0,1,1)),',
+        '                     dot(hash33(i+vec3(1,1,1)), f-vec3(1,1,1)), u.x), u.y), u.z);',
+        '}',
+
+        'void main(){',
+        '  float depth = aSeed.z;',
+        '  float phase = aSeed.w;',
+
+        '  vec2 p = aSeed.xy;',
+        '  p.x = fract(p.x + uTime * (0.0032 + depth * 0.0052) * uMotion);',
+        '  p.y = fract(p.y - uTime * 0.0010 * uMotion);',
+        '  p = p * 2.0 - 1.0;',
+
+        '  vec3 np = vec3(p.x * uAspect * 0.85, p.y * 0.85, uTime * 0.050 + phase * 4.0);',
+        '  float n1 = gnoise(np);',
+        '  float n2 = gnoise(np + vec3(19.3, 7.1, 4.2));',
+        '  p += vec2(n1, n2) * (0.042 + depth * 0.070) * uMotion;',
+
+        '  p += uMouse * (0.009 + depth * 0.034) * uPointer;',
+
+        '  vec2 d = vec2((p.x - uMouse.x) * uAspect, p.y - uMouse.y);',
+        '  float infl = exp(-dot(d, d) * 3.2);',
+        '  p += normalize(d + vec2(1e-4)) * infl * 0.050 * uPointer;',
+
+        /* large-scale drifting density so the field forms filaments and
+           voids instead of reading as uniform scatter */
+        '  float cl = gnoise(vec3(p.x * uAspect * 1.15, p.y * 1.15, uTime * 0.028 + 41.0));',
+        '  float density = smoothstep(-0.18, 0.30, cl);',
+
+        /* Quiet zone follows the measured text column (uCol = its left and
+           right edge in clip space), so the field keeps out from behind the
+           copy whether the layout is centred or left-aligned. */
+        '  float outside = max(max(uCol.x - p.x, p.x - uCol.y), 0.0);',
+        '  float sideOpen = smoothstep(0.02, 0.50, outside);',
+        '  float edgeOpen = smoothstep(0.34, 0.98, abs(p.y)) * 0.62;',
+        '  float calm = mix(0.16, 1.0, max(sideOpen, edgeOpen));',
+
+        /* depth^2 keeps the bulk of the field fine and lets only the nearest
+           points grow into soft, readable motes */
+        '  float tw = 0.86 + 0.20 * sin(uTime * 0.55 + phase * 24.0);',
+        '  gl_PointSize = mix(0.9, 4.2, depth * depth) * mix(1.0, tw, uMotion) * uDpr;',
+        '  vSoft = depth;',
+
+        /* the field reads gold; only the deepest points fall toward slate */
+        '  vec3 c = mix(uSlateDeep, uSlate, smoothstep(0.00, 0.30, depth));',
+        '  c = mix(c, uGold, smoothstep(0.04, 0.52, depth));',
+        '  c = mix(c, uAccent, smoothstep(0.45, 0.92, depth) * aTint * 0.55);',
+        '  c = mix(c, uHot, smoothstep(0.82, 1.00, depth) * aTint * 0.45);',
+        '  vColor = c;',
+
+        '  float a = mix(0.14, 0.58, depth * depth);',
+        '  a *= 0.78 + 0.22 * sin(uTime * 0.35 + phase * 17.0) * uMotion;',
+        '  a *= mix(0.45, 1.22, density);',
+        '  vAlpha = a * calm * uFade * uIntensity;',
+
+        '  gl_Position = vec4(p, 0.0, 1.0);',
+        '}'
+      ].join('\n');
+
+      var FRAG = [
+        'precision mediump float;',
+        'varying vec3 vColor;',
+        'varying float vAlpha;',
+        'varying float vSoft;',
+        'void main(){',
+        '  vec2 uv = gl_PointCoord - 0.5;',
+        '  float d = dot(uv, uv) * 4.0;',
+        /* distant points stay crisp specks, near points bloom softly */
+        '  float core = smoothstep(1.0, mix(0.05, 0.55, vSoft), d);',
+        '  float glow = smoothstep(1.0, 0.0, d) * mix(0.30, 0.60, vSoft);',
+        '  float a = (core * core + glow) * vAlpha;',
+        '  if (a < 0.002) discard;',
+        '  gl_FragColor = vec4(vColor, a);',
+        '}'
+      ].join('\n');
+
+      function compile(type, src) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+          if (window.console) console.warn('[as-bg]', gl.getShaderInfoLog(s));
+          return null;
+        }
+        return s;
+      }
+
+      var vs = compile(gl.VERTEX_SHADER, VERT);
+      var fs = compile(gl.FRAGMENT_SHADER, FRAG);
+      if (!vs || !fs) return;
+      var prog = gl.createProgram();
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+      gl.useProgram(prog);
+
+      /* Viewport readers that survive a zero-sized window at init
+         (prerender, background tab, offscreen frame). */
+      function vpW() {
+        return window.innerWidth || document.documentElement.clientWidth ||
+               (window.screen && window.screen.width) || 1280;
+      }
+      function vpH() {
+        return window.innerHeight || document.documentElement.clientHeight ||
+               (window.screen && window.screen.height) || 800;
+      }
+
+      /* Insert before measuring so the particle budget and the drawing
+         buffer are both sized from the canvas's real laid-out box. */
+      document.body.insertBefore(canvas, document.body.firstChild);
+
+      /* Budget by viewport AREA, not width, so perceived density stays
+         constant. Sizing by width alone over-populates short windows. */
+      var areaK = (canvas.clientWidth || vpW()) * (canvas.clientHeight || vpH()) / 1000;
+      var perK = coarse ? 1.3 : 1.9;   /* particles per 1000 css px^2 */
+      var COUNT = Math.round(Math.min(Math.max(areaK * perK, 550), coarse ? 1100 : 3400));
+
+      var seeds = new Float32Array(COUNT * 4);
+      var tints = new Float32Array(COUNT);
+      for (var i = 0; i < COUNT; i++) {
+        seeds[i * 4]     = Math.random();
+        seeds[i * 4 + 1] = Math.random();
+        seeds[i * 4 + 2] = Math.pow(Math.random(), 1.25); /* mild bias to the far plane */
+        seeds[i * 4 + 3] = Math.random();
+        tints[i] = Math.random() < 0.35 ? Math.random() : 0.0;
+      }
+
+      function attrib(name, data, size) {
+        var buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+        var loc = gl.getAttribLocation(prog, name);
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+      }
+      attrib('aSeed', seeds, 4);
+      attrib('aTint', tints, 1);
+
+      var U = {};
+      ['uTime', 'uAspect', 'uDpr', 'uMouse', 'uPointer', 'uMotion', 'uFade',
+       'uIntensity', 'uCol', 'uSlateDeep', 'uSlate', 'uGold', 'uAccent',
+       'uHot'].forEach(function (n) {
+        U[n] = gl.getUniformLocation(prog, n);
+      });
+      gl.uniform3fv(U.uSlateDeep, SLATE_DEEP);
+      gl.uniform3fv(U.uSlate, SLATE);
+      gl.uniform3fv(U.uGold, GOLD);
+      gl.uniform3fv(U.uAccent, ACCENT);
+      gl.uniform3fv(U.uHot, HOT);
+      gl.uniform1f(U.uMotion, reduceMotion ? 0.0 : 1.0);
+      /* touch devices get a quieter field: the content column fills the
+         screen there, so there is no side margin for it to live in */
+      gl.uniform1f(U.uIntensity, coarse ? 0.72 : 1.0);
+
+      gl.disable(gl.DEPTH_TEST);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.clearColor(BG[0], BG[1], BG[2], 1.0);
+
+      /* Measure the horizontal span the page's text actually occupies in the
+         first screenful, in clip space. The field then keeps out of that
+         band, which works for centred and left-aligned layouts alike.
+         Falls back to a centred column if nothing measurable is found. */
+      function measureColumn() {
+        var vw = canvas.clientWidth || vpW();
+        var vh = canvas.clientHeight || vpH();
+        var nodes = document.body.querySelectorAll('h1,h2,h3,p,li,blockquote');
+        var lo = Infinity, hi = -Infinity, seen = 0;
+        for (var i = 0; i < nodes.length && i < 300; i++) {
+          var el = nodes[i];
+          if (el.closest && el.closest('#as-particle-bg')) continue;
+          var r = el.getBoundingClientRect();
+          if (r.width < 48 || r.height < 8) continue;
+          if (r.bottom < 0 || r.top > vh * 1.15) continue;   /* first screenful */
+          if (!el.textContent || !el.textContent.trim()) continue;
+          if (r.left < lo) lo = r.left;
+          if (r.right > hi) hi = r.right;
+          seen++;
+        }
+        if (!seen || !isFinite(lo) || hi <= lo) return [-0.45, 0.45];
+        var pad = 26;                                        /* breathing room */
+        return [
+          Math.max(((lo - pad) / vw) * 2 - 1, -1.0),
+          Math.min(((hi + pad) / vw) * 2 - 1, 1.0)
+        ];
+      }
+
+      var dprCap = coarse ? 1.5 : 2.0;
+      var W = 0, H = 0;
+      function resize() {
+        /* measure the canvas box, not the window: excludes the scrollbar
+           gutter, so the aspect passed to the shader stays true */
+        var cw = canvas.clientWidth || vpW();
+        var ch = canvas.clientHeight || vpH();
+        var dpr = Math.min(window.devicePixelRatio || 1, dprCap);
+        var w = Math.max(1, Math.round(cw * dpr));
+        var h = Math.max(1, Math.round(ch * dpr));
+        if (w === W && h === H) return false;
+        W = w; H = h;
+        canvas.width = w; canvas.height = h;
+        gl.viewport(0, 0, w, h);
+        gl.uniform1f(U.uAspect, cw / Math.max(ch, 1));
+        gl.uniform1f(U.uDpr, dpr);
+        var col = measureColumn();
+        gl.uniform2f(U.uCol, col[0], col[1]);
+        return true;
+      }
+
+      var mx = 0, my = 0, tx = 0, ty = 0, pointer = 0, pointerTarget = 0;
+      if (!coarse && !reduceMotion) {
+        window.addEventListener('pointermove', function (e) {
+          tx = (e.clientX / vpW()) * 2 - 1;
+          ty = 1 - (e.clientY / vpH()) * 2;
+          pointerTarget = 1;
+        }, { passive: true });
+        document.addEventListener('mouseleave', function () { pointerTarget = 0; }, { passive: true });
+      }
+
+      var fade = 1, fadeTarget = 1, scrollDirty = true;
+      function readScroll() {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var span = Math.max(vpH() * 1.45, 600);
+        var t = Math.min(Math.max(1 - y / span, 0), 1);
+        fadeTarget = t * t * (3 - 2 * t);
+      }
+
+      var FRAME_MS = 1000 / 30;
+      var last = 0, t0 = 0, running = false, rafId = 0, hidden = false;
+
+      function draw(now) {
+        rafId = 0;
+        if (!running) return;
+        if (now - last < FRAME_MS - 1) { rafId = requestAnimationFrame(draw); return; }
+        last = now;
+
+        if (scrollDirty) { readScroll(); scrollDirty = false; }
+        fade += (fadeTarget - fade) * 0.10;
+        /* scrolled past the field: stop rendering entirely */
+        if (fade < 0.012 && fadeTarget < 0.012) { running = false; return; }
+
+        mx += (tx - mx) * 0.045;
+        my += (ty - my) * 0.045;
+        pointer += (pointerTarget - pointer) * 0.05;
+
+        if (!t0) t0 = now;
+        gl.uniform1f(U.uTime, (now - t0) / 1000);
+        gl.uniform2f(U.uMouse, mx, my);
+        gl.uniform1f(U.uPointer, pointer);
+        gl.uniform1f(U.uFade, fade);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.POINTS, 0, COUNT);
+
+        rafId = requestAnimationFrame(draw);
+      }
+
+      function start() {
+        if (running || hidden || reduceMotion) return;
+        readScroll();
+        if (fadeTarget < 0.012 && fade < 0.012) return;
+        running = true;
+        last = 0;
+        if (!rafId) rafId = requestAnimationFrame(draw);
+      }
+      function stop() {
+        running = false;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
+      }
+      /* reduced motion redraws only on geometry/scroll change, coalesced to
+         one frame so a scroll burst cannot trigger a draw per event */
+      var stillQueued = false;
+      function queueStill() {
+        if (stillQueued || hidden) return;
+        stillQueued = true;
+        requestAnimationFrame(function () { stillQueued = false; renderStill(); });
+      }
+      function renderStill() {
+        readScroll();
+        fade = fadeTarget;
+        gl.uniform1f(U.uTime, 12.0);
+        gl.uniform2f(U.uMouse, 0, 0);
+        gl.uniform1f(U.uPointer, 0);
+        gl.uniform1f(U.uFade, fade);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.POINTS, 0, COUNT);
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        hidden = !!document.hidden;
+        if (hidden) stop(); else if (reduceMotion) queueStill(); else start();
+      });
+      window.addEventListener('scroll', function () {
+        scrollDirty = true;
+        if (reduceMotion) queueStill(); else start();
+      }, { passive: true });
+      function onGeometryChange() {
+        var changed = resize();
+        if (reduceMotion) { if (changed) queueStill(); }
+        else start();
+      }
+      window.addEventListener('resize', onGeometryChange, { passive: true });
+      window.addEventListener('orientationchange', onGeometryChange, { passive: true });
+
+      /* The window resize event does not fire in every embedding context
+         (prerender, offscreen frame, some automation harnesses). Observing
+         the canvas box itself catches those, so the drawing buffer is never
+         left at the default 300x150. */
+      if (window.ResizeObserver) {
+        try { new ResizeObserver(onGeometryChange).observe(canvas); }
+        catch (e) { /* non-fatal */ }
+      }
+
+      /* Webfonts reflow the text column after first paint, and resize() skips
+         work when the viewport has not changed, so re-measure on the events
+         that can move the column without changing the viewport. */
+      var lastCol = null;
+      function remeasure() {
+        var col = measureColumn();
+        if (lastCol && col[0] === lastCol[0] && col[1] === lastCol[1]) return;
+        lastCol = col;
+        gl.uniform2f(U.uCol, col[0], col[1]);
+        if (reduceMotion) queueStill();
+      }
+      window.addEventListener('load', remeasure);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(remeasure).catch(function () {});
+      }
+
+      resize();
+      if (reduceMotion) queueStill(); else start();
+
+      window.__asBg = function () {
+        return { count: COUNT, reduceMotion: reduceMotion, coarse: coarse,
+                 column: lastCol || measureColumn() };
+      };
     })();
   </script>
 
