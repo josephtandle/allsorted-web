@@ -1424,6 +1424,7 @@
       var GOLD       = [0xC9 / 255, 0xA8 / 255, 0x4C / 255]; /* #C9A84C logo gold */
       var ACCENT     = [0xF0 / 255, 0xA0 / 255, 0x30 / 255]; /* #F0A030 brand accent */
       var HOT        = [0xF5 / 255, 0xB8 / 255, 0x4A / 255]; /* #F5B84A */
+      var BLUE       = [0x4A / 255, 0x7A / 255, 0xAF / 255]; /* #4A7AAF slate blue */
 
       var VERT = [
         'precision highp float;',
@@ -1432,7 +1433,7 @@
         'uniform float uTime, uAspect, uDpr, uPointer, uMotion, uFade, uIntensity;',
         'uniform vec2 uMouse;',
         'uniform vec2 uCol;',
-        'uniform vec3 uSlateDeep, uSlate, uGold, uAccent, uHot;',
+        'uniform vec3 uSlateDeep, uSlate, uGold, uAccent, uHot, uBlue;',
         'varying vec3 vColor;',
         'varying float vAlpha;',
         'varying float vSoft;',
@@ -1461,51 +1462,47 @@
         '  float depth = aSeed.z;',
         '  float phase = aSeed.w;',
 
+        /* Suspended dust: a slow settle downward with a barely-there sideways
+           creep. The reference drifts, it does not stream. */
         '  vec2 p = aSeed.xy;',
-        '  p.x = fract(p.x + uTime * (0.0032 + depth * 0.0052) * uMotion);',
-        '  p.y = fract(p.y - uTime * 0.0010 * uMotion);',
+        '  p.y = fract(p.y - uTime * (0.0026 + depth * 0.0030) * uMotion);',
+        '  p.x = fract(p.x + uTime * 0.00055 * uMotion);',
         '  p = p * 2.0 - 1.0;',
 
-        '  vec3 np = vec3(p.x * uAspect * 0.85, p.y * 0.85, uTime * 0.050 + phase * 4.0);',
-        '  float n1 = gnoise(np);',
-        '  float n2 = gnoise(np + vec3(19.3, 7.1, 4.2));',
-        '  p += vec2(n1, n2) * (0.042 + depth * 0.070) * uMotion;',
+        /* Low-amplitude wander so the field breathes. Deliberately weaker than
+           before: the old value swirled the dust into visible currents. */
+        '  vec3 np = vec3(p.x * uAspect * 0.70, p.y * 0.70, uTime * 0.030 + phase * 5.0);',
+        '  p += vec2(gnoise(np), gnoise(np + vec3(11.7, 3.1, 8.4)))',
+        '       * (0.018 + depth * 0.026) * uMotion;',
 
-        '  p += uMouse * (0.009 + depth * 0.034) * uPointer;',
+        '  p += uMouse * (0.004 + depth * 0.015) * uPointer;',
 
-        '  vec2 d = vec2((p.x - uMouse.x) * uAspect, p.y - uMouse.y);',
-        '  float infl = exp(-dot(d, d) * 3.2);',
-        '  p += normalize(d + vec2(1e-4)) * infl * 0.050 * uPointer;',
-
-        /* large-scale drifting density so the field forms filaments and
-           voids instead of reading as uniform scatter */
-        '  float cl = gnoise(vec3(p.x * uAspect * 1.15, p.y * 1.15, uTime * 0.028 + 41.0));',
-        '  float density = smoothstep(-0.18, 0.30, cl);',
-
-        /* Quiet zone follows the measured text column (uCol = its left and
-           right edge in clip space), so the field keeps out from behind the
-           copy whether the layout is centred or left-aligned. */
+        /* Quiet zone across the measured text column, so the copy never has to
+           compete with the field. */
         '  float outside = max(max(uCol.x - p.x, p.x - uCol.y), 0.0);',
-        '  float sideOpen = smoothstep(0.02, 0.50, outside);',
-        '  float edgeOpen = smoothstep(0.34, 0.98, abs(p.y)) * 0.62;',
-        '  float calm = mix(0.16, 1.0, max(sideOpen, edgeOpen));',
+        '  float sideOpen = smoothstep(0.02, 0.46, outside);',
+        '  float edgeOpen = smoothstep(0.40, 1.00, abs(p.y)) * 0.55;',
+        '  float calm = mix(0.30, 1.0, max(sideOpen, edgeOpen));',
 
-        /* depth^2 keeps the bulk of the field fine and lets only the nearest
-           points grow into soft, readable motes */
-        '  float tw = 0.86 + 0.20 * sin(uTime * 0.55 + phase * 24.0);',
-        '  gl_PointSize = mix(0.9, 4.2, depth * depth) * mix(1.0, tw, uMotion) * uDpr;',
+        /* Fine specks. The reference tops out around two device pixels, so the
+           range is tight and small: no near-plane motes. */
+        '  gl_PointSize = mix(0.7, 2.1, depth) * uDpr;',
         '  vSoft = depth;',
 
-        /* the field reads gold; only the deepest points fall toward slate */
-        '  vec3 c = mix(uSlateDeep, uSlate, smoothstep(0.00, 0.30, depth));',
-        '  c = mix(c, uGold, smoothstep(0.04, 0.52, depth));',
-        '  c = mix(c, uAccent, smoothstep(0.45, 0.92, depth) * aTint * 0.55);',
-        '  c = mix(c, uHot, smoothstep(0.82, 1.00, depth) * aTint * 0.45);',
+        /* Mostly neutral dust. A minority carries one faint brand hue, which is
+           what gives the reference its occasional colour without ever reading
+           as a coloured field. */
+        '  vec3 c = mix(uSlateDeep, uSlate, smoothstep(0.0, 0.60, depth));',
+        '  float t = aTint;',
+        '  if (t > 0.96)      { c = mix(c, uHot, 0.70); }',
+        '  else if (t > 0.88) { c = mix(c, uBlue, 0.65); }',
+        '  else if (t > 0.75) { c = mix(c, uAccent, 0.75); }',
+        '  else if (t > 0.55) { c = mix(c, uGold, 0.75); }',
         '  vColor = c;',
 
-        '  float a = mix(0.14, 0.58, depth * depth);',
-        '  a *= 0.78 + 0.22 * sin(uTime * 0.35 + phase * 17.0) * uMotion;',
-        '  a *= mix(0.45, 1.22, density);',
+        /* Faint, with a slow twinkle. Texture, not decoration. */
+        '  float a = mix(0.10, 0.38, depth);',
+        '  a *= 0.82 + 0.18 * sin(uTime * 0.30 + phase * 19.0) * uMotion;',
         '  vAlpha = a * calm * uFade * uIntensity;',
 
         '  gl_Position = vec4(p, 0.0, 1.0);',
@@ -1520,10 +1517,10 @@
         'void main(){',
         '  vec2 uv = gl_PointCoord - 0.5;',
         '  float d = dot(uv, uv) * 4.0;',
-        /* distant points stay crisp specks, near points bloom softly */
-        '  float core = smoothstep(1.0, mix(0.05, 0.55, vSoft), d);',
-        '  float glow = smoothstep(1.0, 0.0, d) * mix(0.30, 0.60, vSoft);',
-        '  float a = (core * core + glow) * vAlpha;',
+        /* A crisp speck with one soft pixel of falloff. The old bloom term is
+           gone: it was what made these read as glowing motes rather than dust. */
+        '  float core = smoothstep(1.0, 0.18, d);',
+        '  float a = core * vAlpha;',
         '  if (a < 0.002) discard;',
         '  gl_FragColor = vec4(vColor, a);',
         '}'
@@ -1568,8 +1565,8 @@
       /* Budget by viewport AREA, not width, so perceived density stays
          constant. Sizing by width alone over-populates short windows. */
       var areaK = (canvas.clientWidth || vpW()) * (canvas.clientHeight || vpH()) / 1000;
-      var perK = coarse ? 1.3 : 1.9;   /* particles per 1000 css px^2 */
-      var COUNT = Math.round(Math.min(Math.max(areaK * perK, 550), coarse ? 1100 : 3400));
+      var perK = coarse ? 0.80 : 1.15;  /* particles per 1000 css px^2 */
+      var COUNT = Math.round(Math.min(Math.max(areaK * perK, 420), coarse ? 820 : 2200));
 
       var seeds = new Float32Array(COUNT * 4);
       var tints = new Float32Array(COUNT);
@@ -1594,7 +1591,7 @@
 
       var U = {};
       ['uTime', 'uAspect', 'uDpr', 'uMouse', 'uPointer', 'uMotion', 'uFade',
-       'uIntensity', 'uCol', 'uSlateDeep', 'uSlate', 'uGold', 'uAccent',
+       'uIntensity', 'uCol', 'uSlateDeep', 'uSlate', 'uGold', 'uAccent', 'uBlue',
        'uHot'].forEach(function (n) {
         U[n] = gl.getUniformLocation(prog, n);
       });
@@ -1603,6 +1600,7 @@
       gl.uniform3fv(U.uGold, GOLD);
       gl.uniform3fv(U.uAccent, ACCENT);
       gl.uniform3fv(U.uHot, HOT);
+      gl.uniform3fv(U.uBlue, BLUE);
       gl.uniform1f(U.uMotion, reduceMotion ? 0.0 : 1.0);
       /* touch devices get a quieter field: the content column fills the
          screen there, so there is no side margin for it to live in */
@@ -1712,6 +1710,10 @@
       function start() {
         if (running || hidden || reduceMotion) return;
         readScroll();
+        /* First frame after a load at a scrolled position: adopt the target
+           outright. Relaxing into it from 1.0 flashes the field over the whole
+           page for about a second on refresh, back/forward and #agents links. */
+        if (!t0) { fade = fadeTarget; }
         if (fadeTarget < 0.012 && fade < 0.012) return;
         running = true;
         last = 0;
@@ -1739,6 +1741,9 @@
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.POINTS, 0, COUNT);
       }
+
+      canvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); stop(); }, false);
+
 
       document.addEventListener('visibilitychange', function () {
         hidden = !!document.hidden;
@@ -1783,11 +1788,6 @@
 
       resize();
       if (reduceMotion) queueStill(); else start();
-
-      window.__asBg = function () {
-        return { count: COUNT, reduceMotion: reduceMotion, coarse: coarse,
-                 column: lastCol || measureColumn() };
-      };
     })();
   </script>
 
