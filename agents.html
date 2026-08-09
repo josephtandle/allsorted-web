@@ -3363,7 +3363,7 @@
 
         /* Fine specks. The reference tops out around two device pixels, so the
            range is tight and small: no near-plane motes. */
-        '  gl_PointSize = mix(0.7, 2.1, depth) * uDpr;',
+        '  gl_PointSize = mix(1.2, 3.4, depth) * uDpr;',
         '  vSoft = depth;',
 
         /* Mostly neutral dust. A minority carries one faint brand hue, which is
@@ -3378,8 +3378,8 @@
         '  vColor = c;',
 
         /* Faint, with a slow twinkle. Texture, not decoration. */
-        '  float a = mix(0.10, 0.38, depth);',
-        '  a *= 0.82 + 0.18 * sin(uTime * 0.30 + phase * 19.0) * uMotion;',
+        '  float a = mix(0.30, 0.85, depth);',
+        '  a *= 0.80 + 0.20 * sin(uTime * 0.30 + phase * 19.0) * uMotion;',
         '  vAlpha = a * calm * uFade * uIntensity;',
 
         '  gl_Position = vec4(p, 0.0, 1.0);',
@@ -3396,8 +3396,9 @@
         '  float d = dot(uv, uv) * 4.0;',
         /* A crisp speck with one soft pixel of falloff. The old bloom term is
            gone: it was what made these read as glowing motes rather than dust. */
-        '  float core = smoothstep(1.0, 0.18, d);',
-        '  float a = core * vAlpha;',
+        '  float core = smoothstep(1.0, 0.22, d);',
+        '  float glow = smoothstep(1.0, 0.0, d) * mix(0.16, 0.34, vSoft);',
+        '  float a = (core + glow) * vAlpha;',
         '  if (a < 0.002) discard;',
         '  gl_FragColor = vec4(vColor, a);',
         '}'
@@ -3442,8 +3443,8 @@
       /* Budget by viewport AREA, not width, so perceived density stays
          constant. Sizing by width alone over-populates short windows. */
       var areaK = (canvas.clientWidth || vpW()) * (canvas.clientHeight || vpH()) / 1000;
-      var perK = coarse ? 0.80 : 1.15;  /* particles per 1000 css px^2 */
-      var COUNT = Math.round(Math.min(Math.max(areaK * perK, 420), coarse ? 820 : 2200));
+      var perK = coarse ? 1.25 : 1.75;  /* particles per 1000 css px^2 */
+      var COUNT = Math.round(Math.min(Math.max(areaK * perK, 700), coarse ? 1300 : 3200));
 
       var seeds = new Float32Array(COUNT * 4);
       var tints = new Float32Array(COUNT);
@@ -3550,7 +3551,7 @@
       var fade = 1, fadeTarget = 1, scrollDirty = true;
       function readScroll() {
         var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        var span = Math.max(vpH() * 1.45, 600);
+        var span = Math.max(vpH() * 1.9, 780);
         var t = Math.min(Math.max(1 - y / span, 0), 1);
         fadeTarget = t * t * (3 - 2 * t);
       }
