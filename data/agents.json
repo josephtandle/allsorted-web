@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-20T15:39:56.598Z",
+  "generatedAt": "2026-08-22T12:57:06.601Z",
   "generatedBy": "projects/all-sorted/scripts/build-agent-catalog.js",
   "source": "allsorted-dist shipped member repo",
   "counts": {
-    "total": 71,
+    "total": 73,
     "agents": 66,
-    "recipes": 412,
+    "recipes": 439,
     "categories": 48,
     "groups": 11,
     "offline": 23,
-    "gated": 25
+    "gated": 27
   },
   "groups": [
     {
@@ -34,6 +34,28 @@
           "needs": "Nothing, works offline. You fill in the policy files yourself.",
           "confirmationGated": false,
           "recipeCount": 5
+        },
+        {
+          "name": "clickup",
+          "label": "ClickUp",
+          "kind": "connector",
+          "category": "productivity",
+          "categoryLabel": "Productivity",
+          "tagline": "Reads your ClickUp workspace and updates tasks once you approve the change.",
+          "description": "This connects to your own ClickUp workspace through its API. It walks your spaces, folders and lists, finds tasks by name, assignee, status, tag or due date, and reads a task in full including its custom fields and subtasks. Anything that writes shows you exactly what it would send and waits for your approval before it touches a task. It resolves your workspace, list and member ids at runtime, so nothing is hardcoded to somebody else's setup.",
+          "canDo": [
+            "Walk your spaces, folders and lists as a tree",
+            "Find a task by name, assignee, status, tag or due date",
+            "Read a task in full, custom fields and subtasks included",
+            "Create a task once you approve it",
+            "Change a status, assignee, priority, due date or custom field after you confirm",
+            "Add or read comments on a task",
+            "Start, stop and list time entries",
+            "List workspace members so assignees resolve to real people"
+          ],
+          "needs": "Your own ClickUp personal API token",
+          "confirmationGated": true,
+          "recipeCount": 10
         },
         {
           "name": "connectors",
@@ -388,6 +410,27 @@
           "recipeCount": 0
         },
         {
+          "name": "gohighlevel",
+          "label": "GoHighLevel",
+          "kind": "connector",
+          "category": "crm",
+          "categoryLabel": "Clients and pipeline",
+          "tagline": "Works your GoHighLevel contacts and pipeline, and sends what you have approved.",
+          "description": "This connects to your own GoHighLevel location through its API. It searches contacts, reads them in full, walks your pipelines and opportunities, checks calendar availability, and reads conversation history. It can send a message, and it shows you the message first: the channel, the recipient, the exact number or address and the complete body. You approve it, then the agent sends it. Approval is tied to that exact message, so if a word changes after you said yes, the approval no longer counts and it asks again. Enrolling someone in a campaign or workflow stays switched off entirely, because that is an unbounded number of future messages nobody read first. Nothing can send until you have connected your own token and location id.",
+          "canDo": [
+            "Find a contact by email, phone, name or tag",
+            "Read a contact in full with custom fields",
+            "Walk your pipelines, stages and opportunities",
+            "Move an opportunity stage, status, value or owner once you approve",
+            "Check calendars and free slots",
+            "Read conversation history without joining the thread",
+            "Send a message you have read and approved, on the channel you choose"
+          ],
+          "needs": "Your own GoHighLevel private integration token and location id",
+          "confirmationGated": true,
+          "recipeCount": 11
+        },
+        {
           "name": "kajabi",
           "label": "Kajabi",
           "kind": "agent",
@@ -528,7 +571,7 @@
           ],
           "needs": "Nothing to start. Your own Google OAuth connector only if you want it reading a live mailbox",
           "confirmationGated": false,
-          "recipeCount": 9
+          "recipeCount": 4
         },
         {
           "name": "postmaster-tools",
@@ -856,7 +899,7 @@
           ],
           "needs": "Your own Meta access token and ad account ID",
           "confirmationGated": true,
-          "recipeCount": 10
+          "recipeCount": 21
         },
         {
           "name": "seo",
