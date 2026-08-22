@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-09T06:55:07.312Z",
+  "generatedAt": "2026-08-20T15:39:56.598Z",
   "generatedBy": "projects/all-sorted/scripts/build-agent-catalog.js",
   "source": "allsorted-dist shipped member repo",
   "counts": {
-    "total": 66,
-    "agents": 61,
-    "recipes": 367,
-    "categories": 43,
+    "total": 71,
+    "agents": 66,
+    "recipes": 412,
+    "categories": 48,
     "groups": 11,
-    "offline": 22,
-    "gated": 23
+    "offline": 23,
+    "gated": 25
   },
   "groups": [
     {
@@ -34,6 +34,24 @@
           "needs": "Nothing, works offline. You fill in the policy files yourself.",
           "confirmationGated": false,
           "recipeCount": 5
+        },
+        {
+          "name": "connectors",
+          "label": "Connectors",
+          "kind": "agent",
+          "category": "core-os",
+          "categoryLabel": "The operating system itself",
+          "tagline": "Work out what a service needs from you before you try to connect it.",
+          "description": "A directory of the connection paths available on this machine. It checks what is already configured, lists which routes exist for a service, and explains in plain terms what that particular service will ask you for. It connects nothing by itself, so nothing here can spend or send.",
+          "canDo": [
+            "Check whether a configured connection is live",
+            "List the connector paths available for a service",
+            "Explain what a specific service needs before you start",
+            "Tell you which services are already connected"
+          ],
+          "needs": "Nothing. It only reads what is already configured and explains what each service will ask you for.",
+          "confirmationGated": false,
+          "recipeCount": 3
         },
         {
           "name": "doctor",
@@ -75,6 +93,27 @@
           "recipeCount": 3
         },
         {
+          "name": "google",
+          "label": "Google Workspace",
+          "kind": "agent",
+          "category": "inbox-and-conversations",
+          "categoryLabel": "Inbox And Conversations",
+          "tagline": "Read your Gmail, Calendar, Drive and Contacts, and draft rather than send.",
+          "description": "Triage unread mail, find the conflicts and back-to-backs in your week, prepare for a meeting, look up a person, and find a file. It drafts replies and forwards for you to approve. Archiving, trashing and labelling change your mailbox, so those ask first and say exactly what they will touch.",
+          "canDo": [
+            "Triage unread Gmail and tell you what actually needs you",
+            "Find calendar conflicts and back-to-back meetings",
+            "Build a daily brief from your own calendar and mail",
+            "Look up a contact from your directory",
+            "Find a file in your Drive",
+            "Prepare a briefing for an upcoming meeting",
+            "Archive, trash or label mail, after you confirm"
+          ],
+          "needs": "Sign in to your own Google account. Nothing leaves your machine.",
+          "confirmationGated": true,
+          "recipeCount": 11
+        },
+        {
           "name": "ontology",
           "label": "Identity Ontology",
           "kind": "data",
@@ -92,6 +131,24 @@
           "needs": "Nothing, works offline",
           "confirmationGated": false,
           "recipeCount": 1
+        },
+        {
+          "name": "infrastructure-manager",
+          "label": "Infrastructure Manager",
+          "kind": "agent",
+          "category": "operations",
+          "categoryLabel": "Operations",
+          "tagline": "Watch the servers, certificates and endpoints you told it about.",
+          "description": "Checks the remote infrastructure you have listed: whether TLS certificates are close to expiring, whether HTTP endpoints answer, and whether SSH hosts are reachable. Every check is read-only, and it watches only what you put in the config.",
+          "canDo": [
+            "Check configured TLS certificates before they expire",
+            "Check whether your HTTP endpoints are answering",
+            "Check that your SSH hosts are reachable",
+            "Show the current state of everything it watches"
+          ],
+          "needs": "A config listing the hosts, endpoints and certificates you want watched. No account needed.",
+          "confirmationGated": false,
+          "recipeCount": 5
         },
         {
           "name": "mac-cleaner",
@@ -245,6 +302,24 @@
           "needs": "Node.js and Claude Code on your own machine, under your own login",
           "confirmationGated": false,
           "recipeCount": 3
+        },
+        {
+          "name": "tailscale",
+          "label": "Tailscale",
+          "kind": "agent",
+          "category": "operations",
+          "categoryLabel": "Operations",
+          "tagline": "Diagnose private-network access between your machines, in order.",
+          "description": "Checks whether your machines can actually reach each other over Tailscale, and walks SSH setup in the order that finds the fault fastest instead of guessing. Where it prepares access, a person reviews it before anything is granted.",
+          "canDo": [
+            "Check whether a peer machine is reachable",
+            "Diagnose SSH over Tailscale step by step",
+            "Show local Tailscale status",
+            "Prepare SSH access for a human to review and approve"
+          ],
+          "needs": "Tailscale installed and signed in on your own machines. No account needed.",
+          "confirmationGated": true,
+          "recipeCount": 4
         }
       ]
     },
@@ -453,7 +528,7 @@
           ],
           "needs": "Nothing to start. Your own Google OAuth connector only if you want it reading a live mailbox",
           "confirmationGated": false,
-          "recipeCount": 4
+          "recipeCount": 9
         },
         {
           "name": "postmaster-tools",
@@ -696,6 +771,25 @@
           "needs": "Nothing, works offline",
           "confirmationGated": false,
           "recipeCount": 4
+        },
+        {
+          "name": "wix",
+          "label": "Wix Escape Kit",
+          "kind": "agent",
+          "category": "content-and-brand",
+          "categoryLabel": "Content And Brand",
+          "tagline": "Get your content out of Wix, into plain files you own.",
+          "description": "Wix has no download-my-site button. This pulls out everything the API will release, content, contacts, form submissions, blog posts, collections and images, into local files. Pages, layout and visual design cannot be exported by anyone, so it says so plainly rather than pretending. Every request is checked as read-only before it is sent, so your live site cannot be changed.",
+          "canDo": [
+            "Export blog posts, collections and content to local files",
+            "Export contacts and form submissions",
+            "Download media the API will release",
+            "Report exactly what Wix refused to release, and why",
+            "Check whether the connection is configured"
+          ],
+          "needs": "A Wix API key for a site you own. Free: Wix does not charge for API access.",
+          "confirmationGated": false,
+          "recipeCount": 2
         }
       ]
     },
@@ -780,7 +874,7 @@
           ],
           "needs": "Nothing, the audit, brief and draft all run without an API key",
           "confirmationGated": false,
-          "recipeCount": 4
+          "recipeCount": 5
         },
         {
           "name": "seo-monitor",
@@ -1200,7 +1294,7 @@
           ],
           "needs": "The path to your own repository. No account, no credentials.",
           "confirmationGated": true,
-          "recipeCount": 8
+          "recipeCount": 22
         },
         {
           "name": "porkbun",
